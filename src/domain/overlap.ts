@@ -2,8 +2,7 @@ import type { Point, Zone, ZoneMap } from './types';
 import { BACK_ROW, FRONT_ROW, ZONE_BEHIND } from './zones';
 
 export type OverlapViolation =
-  | { kind: 'front-back'; front: Zone; back: Zone }
-  | { kind: 'left-right'; left: Zone; right: Zone };
+  { kind: 'front-back'; front: Zone; back: Zone } | { kind: 'left-right'; left: Zone; right: Zone };
 
 /**
  * Checks the overlap rule at the moment of serve for the team whose end line is y = 0

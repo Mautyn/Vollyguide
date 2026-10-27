@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { FREE_ZONE } from '../domain/court';
-import { useCourtStore } from './courtStore';
+import { lineupFromState, useCourtStore } from './courtStore';
 
 describe('courtStore', () => {
   beforeEach(() => useCourtStore.getState().reset());
@@ -28,5 +28,21 @@ describe('courtStore', () => {
     useCourtStore.getState().reset();
     const setter = useCourtStore.getState().players.find((p) => p.id === 's');
     expect(setter?.position).toEqual({ x: 7.5, y: 3 });
+  });
+});
+
+describe('lineupFromState', () => {
+  beforeEach(() => useCourtStore.getState().reset());
+
+  it('maps zones to the positions of the players standing there', () => {
+    const { players, serveZones } = useCourtStore.getState();
+    const lineup = lineupFromState(players, serveZones);
+    expect(lineup?.[1]).toEqual({ x: 7.5, y: 3 });
+    expect(lineup?.[4]).toEqual({ x: 1.5, y: 7.5 });
+  });
+
+  it('returns null when a zone points at a missing player', () => {
+    const { players, serveZones } = useCourtStore.getState();
+    expect(lineupFromState(players, { ...serveZones, 3: 'nobody' })).toBeNull();
   });
 });

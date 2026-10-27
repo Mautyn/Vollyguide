@@ -50,3 +50,12 @@ export function formationToPlayers(formation: Formation): Player[] {
     position: { ...position },
   }));
 }
+
+export function formationToZones(formation: Formation): ZoneMap<string> {
+  const zones: Partial<ZoneMap<string>> = {};
+  for (const player of formation.players) zones[player.zone] = player.id;
+  for (const zone of [1, 2, 3, 4, 5, 6] as const) {
+    if (!zones[zone]) throw new Error(`Formation ${formation.id} has no player in zone ${zone}`);
+  }
+  return zones as ZoneMap<string>;
+}
