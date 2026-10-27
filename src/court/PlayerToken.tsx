@@ -18,6 +18,8 @@ interface PlayerTokenProps {
   scale: CourtScale;
   /** Without it the token cannot be dragged. */
   onMove?: (id: string, position: Point) => void;
+  /** Called when the user grabs this player. */
+  onDragStart?: () => void;
   emphasis?: Emphasis;
   mark?: Mark;
 }
@@ -26,6 +28,7 @@ export function PlayerToken({
   player,
   scale,
   onMove,
+  onDragStart,
   emphasis = 'normal',
   mark,
 }: PlayerTokenProps) {
@@ -45,6 +48,7 @@ export function PlayerToken({
       draggable={draggable}
       opacity={emphasis === 'dimmed' ? 0.35 : 1}
       dragBoundFunc={(pos) => scale.toPixels(clampToPlayableArea(scale.toMeters(pos)))}
+      onDragStart={() => onDragStart?.()}
       onDragMove={handleDrag}
       onDragEnd={handleDrag}
       onMouseEnter={(e) => {

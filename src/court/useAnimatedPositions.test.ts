@@ -14,9 +14,12 @@ interface Props {
 }
 
 function setup() {
-  return renderHook(({ target, transition }: Props) => useAnimatedPositions(target, transition), {
-    initialProps: { target: start, transition: { version: 0, from: {} } },
-  });
+  return renderHook(
+    ({ target, transition }: Props) => useAnimatedPositions(target, transition).positions,
+    {
+      initialProps: { target: start, transition: { version: 0, from: {} } },
+    },
+  );
 }
 
 function mockReducedMotion(reduce: boolean) {
@@ -70,7 +73,42 @@ describe('useAnimatedPositions', () => {
   });
 
   it('does not replay a transition that happened before mounting', () => {
-    const { result } = renderHook(() => useAnimatedPositions(end, { version: 3, from: start }));
+    const { result } = renderHook(
+      () => useAnimatedPositions(end, { version: 3, from: start }).positions,
+    );
     expect(result.current).toEqual(end);
+  });
+
+  it('finish() ends a running animation at once, so a dragged player follows the pointer', () => {
+    const { result, rerender } = renderHook(
+      ({ target, transition }: Props) => useAnimatedPositions(target, transition),
+      { initialProps: { target: start, transition: { version: 0, from: {} } } },
+    );
+    rerender({ target: end, transition: { version: 1, from: start } });
+    act(() => vi.advanceTimersByTime(100));
+    expect(result.current.positions).not.toEqual(end);
+
+    act(() => result.current.finish());
+    expect(result.current.positions).toEqual(end);
+
+    // A drag moves the target: the player is drawn exactly there, with no animation left.
+    const dragged = { s: { x: 5, y: 5 } };
+    rerender({ target: dragged, transition: { version: 1, from: start } });
+    expect(result.current.positions).toEqual(dragged);
+    act(() => vi.advanceTimersByTime(600));
+    expect(result.current.positions).toEqual(dragged);
+  });
+
+  it('animates the next transition normally after finish()', () => {
+    const { result, rerender } = renderHook(
+      ({ target, transition }: Props) => useAnimatedPositions(target, transition),
+      { initialProps: { target: start, transition: { version: 0, from: {} } } },
+    );
+    rerender({ target: end, transition: { version: 1, from: start } });
+    act(() => result.current.finish());
+    rerender({ target: start, transition: { version: 2, from: end } });
+    expect(result.current.positions).toEqual(end);
+    act(() => vi.advanceTimersByTime(600));
+    expect(result.current.positions).toEqual(start);
   });
 });

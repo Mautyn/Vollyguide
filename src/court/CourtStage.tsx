@@ -57,7 +57,7 @@ export function CourtStage({
     () => Object.fromEntries(players.map((p) => [p.id, p.position])),
     [players],
   );
-  const shown = useAnimatedPositions(target, transition);
+  const { positions: shown, finish } = useAnimatedPositions(target, transition);
   const fontsReady = useFontsReady();
 
   const maxHeight = Math.min(MAX_STAGE_HEIGHT, Math.max(400, window.innerHeight - 160));
@@ -88,6 +88,7 @@ export function CourtStage({
               player={{ ...player, position: shown[player.id] ?? player.position }}
               scale={scale}
               onMove={onMove}
+              onDragStart={finish}
               mark={marks?.[player.id]}
               emphasis={
                 highlight.length === 0
