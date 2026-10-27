@@ -20,6 +20,9 @@ interface CourtState {
   serveZones: ZoneMap<string>;
   /** Players off court, e.g. the middle blocker the libero replaced. */
   benchIds: string[];
+  /** Whether to draw the opponent's serving lineup (receive phase only). Not saved. */
+  showOpponent: boolean;
+  setShowOpponent: (show: boolean) => void;
   transition: Transition;
   movePlayer: (id: string, position: Point) => void;
   /** Loads a rotation in the current phase, discarding any drags. */
@@ -63,6 +66,8 @@ export const useCourtStore = create<CourtState>()((set, get) => {
   return {
     ...formationState(1, 'base'),
     transition: { version: 0, from: {} },
+    showOpponent: false,
+    setShowOpponent: (showOpponent) => set({ showOpponent }),
     movePlayer: (id, position) =>
       set((state) => ({
         players: state.players.map((p) =>

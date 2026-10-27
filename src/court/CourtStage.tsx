@@ -87,7 +87,8 @@ export function CourtStage({
               key={player.id}
               player={{ ...player, position: shown[player.id] ?? player.position }}
               scale={scale}
-              onMove={onMove}
+              // Only our own players can be dragged.
+              onMove={player.team === 'us' ? onMove : undefined}
               onDragStart={finish}
               mark={marks?.[player.id]}
               emphasis={
