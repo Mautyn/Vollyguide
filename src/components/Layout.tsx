@@ -20,7 +20,12 @@ export function Layout() {
             <span className="sr-only sm:not-sr-only">{strings.appName}</span>
           </NavLink>
           <nav className="flex items-center gap-0.5 sm:gap-1">
-            <NavLink to="/" end className={navLinkClass}>
+            {/* On phones the logo links home, so five links still fit. */}
+            <NavLink
+              to="/"
+              end
+              className={(state) => cn(navLinkClass(state), 'hidden sm:inline-flex')}
+            >
               {strings.nav.home}
             </NavLink>
             <NavLink to="/court" className={navLinkClass}>
@@ -31,6 +36,9 @@ export function Layout() {
             </NavLink>
             <NavLink to="/practice" className={navLinkClass}>
               {strings.nav.practice}
+            </NavLink>
+            <NavLink to="/tactics" className={navLinkClass}>
+              {strings.nav.tactics}
             </NavLink>
           </nav>
         </div>
