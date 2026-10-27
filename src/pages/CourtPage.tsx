@@ -1,5 +1,6 @@
 import { MousePointer2, RotateCcw } from 'lucide-react';
 import { FormationNote } from '../components/FormationNote';
+import { LiberoToggle } from '../components/LiberoToggle';
 import { OverlapStatus } from '../components/OverlapStatus';
 import { PhasePicker } from '../components/PhasePicker';
 import { PlayerList } from '../components/PlayerList';
@@ -15,6 +16,7 @@ import { strings } from '../strings';
 export function CourtPage() {
   const players = useCourtStore((s) => s.players);
   const serveZones = useCourtStore((s) => s.serveZones);
+  const benchIds = useCourtStore((s) => s.benchIds);
   const reset = useCourtStore((s) => s.reset);
   const movePlayer = useCourtStore((s) => s.movePlayer);
   const transition = useCourtStore((s) => s.transition);
@@ -53,6 +55,7 @@ export function CourtPage() {
           <CardContent className="space-y-5">
             <RotationPicker value={rotation} onChange={setRotation} />
             <PhasePicker value={phase} onChange={setPhase} />
+            <LiberoToggle />
             <FormationNote />
           </CardContent>
         </Card>
@@ -71,7 +74,7 @@ export function CourtPage() {
           </CardHeader>
           <Separator />
           <CardContent>
-            <PlayerList players={players} />
+            <PlayerList players={players} benchIds={benchIds} />
           </CardContent>
         </Card>
       </div>

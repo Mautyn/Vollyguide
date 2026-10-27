@@ -1,4 +1,5 @@
 import { Check, CircleCheck, CircleX, Eye, RotateCcw, Shuffle } from 'lucide-react';
+import { LiberoToggle } from '../components/LiberoToggle';
 import { OverlapStatus } from '../components/OverlapStatus';
 import { PhasePicker } from '../components/PhasePicker';
 import { RoleLegend } from '../components/RoleLegend';
@@ -75,6 +76,7 @@ export function PracticePage() {
           <CardContent className="space-y-5">
             <RotationPicker value={rotation} onChange={(r) => setTask(r, phase)} />
             <PhasePicker value={phase} onChange={(p) => setTask(rotation, p)} />
+            <LiberoToggle />
             <p className="text-sm font-medium" data-testid="practice-task">
               {strings.practice.task(rotation, strings.court.phases[phase])}
             </p>

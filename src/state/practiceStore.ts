@@ -5,7 +5,9 @@ import { clampToPlayableArea } from '../domain/court';
 import { gradePlacement, type PlacementGrade, type TargetSpot } from '../domain/grading';
 import type { Transition } from '../domain/interpolate';
 import type { Player, Point, Rotation, ZoneMap } from '../domain/types';
+import { withLibero } from '../content/libero';
 import { positionsById } from './courtStore';
+import { usePreferences } from './preferences';
 
 /** Players wait on the bench left of the court before the learner places them. */
 export const BENCH_X = -1.5;
@@ -15,8 +17,10 @@ const BENCH_STEP_Y = 1.5;
 const ROTATIONS: readonly Rotation[] = [1, 2, 3, 4, 5, 6];
 const PHASES: readonly FormationPhase[] = ['base', 'receive'];
 
+/** The task's target formation; with the libero switch on, L replaces the back-row MB. */
 export function practiceFormation(rotation: Rotation, phase: FormationPhase): Formation {
-  return findFormation('5-1', rotation, phase)!;
+  const formation = findFormation('5-1', rotation, phase)!;
+  return usePreferences.getState().useLibero ? withLibero(formation).formation : formation;
 }
 
 /** The formation's players in a column on the bench, in roster order. Deterministic. */
@@ -112,4 +116,11 @@ export const usePracticeStore = create<PracticeState>()((set, get) => {
         transition: nextTransition(state),
       })),
   };
+});
+
+// Switching the libero on or off changes who is on court, so restart the current task.
+usePreferences.subscribe((prefs, previous) => {
+  if (prefs.useLibero === previous.useLibero) return;
+  const { rotation, phase, setTask } = usePracticeStore.getState();
+  setTask(rotation, phase);
 });
