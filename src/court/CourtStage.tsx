@@ -4,7 +4,7 @@ import type { Transition } from '../domain/interpolate';
 import type { Player, Point } from '../domain/types';
 import { strings } from '../strings';
 import { CourtLines } from './CourtLines';
-import { PlayerToken } from './PlayerToken';
+import { PlayerToken, type Mark } from './PlayerToken';
 import { fitCourtScale } from './scale';
 import { useAnimatedPositions } from './useAnimatedPositions';
 import { useElementSize } from './useElementSize';
@@ -39,6 +39,8 @@ interface CourtStageProps {
   highlight?: readonly string[];
   /** Shows faint zone numbers on our side of the net. */
   showZones?: boolean;
+  /** Practice feedback per player id. */
+  marks?: Readonly<Record<string, Mark>>;
 }
 
 export function CourtStage({
@@ -47,6 +49,7 @@ export function CourtStage({
   onMove,
   highlight = [],
   showZones = false,
+  marks,
 }: CourtStageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width } = useElementSize(containerRef);
@@ -85,6 +88,7 @@ export function CourtStage({
               player={{ ...player, position: shown[player.id] ?? player.position }}
               scale={scale}
               onMove={onMove}
+              mark={marks?.[player.id]}
               emphasis={
                 highlight.length === 0
                   ? 'normal'

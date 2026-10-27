@@ -10,6 +10,8 @@ const RADIUS_M = 0.4;
 const MIN_RADIUS_PX = 12;
 
 export type Emphasis = 'normal' | 'highlighted' | 'dimmed';
+/** Practice feedback: whether the player stands on the right spot. */
+export type Mark = 'correct' | 'wrong';
 
 interface PlayerTokenProps {
   player: Player;
@@ -17,9 +19,16 @@ interface PlayerTokenProps {
   /** Without it the token cannot be dragged. */
   onMove?: (id: string, position: Point) => void;
   emphasis?: Emphasis;
+  mark?: Mark;
 }
 
-export function PlayerToken({ player, scale, onMove, emphasis = 'normal' }: PlayerTokenProps) {
+export function PlayerToken({
+  player,
+  scale,
+  onMove,
+  emphasis = 'normal',
+  mark,
+}: PlayerTokenProps) {
   const pixel = scale.toPixels(player.position);
   const radius = Math.max(MIN_RADIUS_PX, scale.lengthToPixels(RADIUS_M));
 
@@ -53,6 +62,15 @@ export function PlayerToken({ player, scale, onMove, emphasis = 'normal' }: Play
           radius={radius * 1.45}
           stroke={courtColors.highlight}
           strokeWidth={Math.max(2, radius * 0.22)}
+          listening={false}
+        />
+      )}
+      {mark && (
+        <Circle
+          name={`mark-${mark}`}
+          radius={radius * 1.45}
+          stroke={mark === 'correct' ? courtColors.correct : courtColors.wrong}
+          strokeWidth={Math.max(3, radius * 0.25)}
           listening={false}
         />
       )}
