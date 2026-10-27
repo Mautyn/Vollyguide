@@ -19,6 +19,7 @@ export const courtColors = {
   distanceLabel: 'rgba(255, 255, 255, 0.6)',
   highlight: '#facc15',
   correct: '#22c55e',
+  ball: '#fde047',
   opponent: '#64748b',
   wrong: '#ef4444',
   roles: roleColors,
