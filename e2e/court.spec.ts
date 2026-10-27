@@ -19,7 +19,7 @@ test('court page loads and shows 6 players', async ({ page }) => {
 test('dragging a player updates its position in meters', async ({ page }) => {
   await page.goto('court');
   const setter = page.getByTestId('player').first();
-  await expect(setter).toHaveText('S Setter: x 7.5 m, y 3.0 m');
+  await expect(setter).toHaveText('S Setter x 7.5 m, y 3.0 m');
 
   const box = await page.getByTestId('court-stage').locator('canvas').first().boundingBox();
   if (!box) throw new Error('canvas not visible');
@@ -31,18 +31,18 @@ test('dragging a player updates its position in meters', async ({ page }) => {
   await page.mouse.move(start.x - pxPerMeter, start.y - pxPerMeter, { steps: 5 });
   await page.mouse.up();
 
-  await expect(setter).toHaveText('S Setter: x 6.5 m, y 4.0 m');
+  await expect(setter).toHaveText('S Setter x 6.5 m, y 4.0 m');
 });
 
 test('picking a rotation moves the players to its base positions', async ({ page }) => {
   await page.goto('court');
-  await page.getByRole('button', { name: 'Rotation 4' }).click();
+  await page.getByRole('radio', { name: 'Rotation 4' }).click();
 
-  await expect(page.getByRole('button', { name: 'Rotation 4' })).toHaveAttribute(
-    'aria-pressed',
+  await expect(page.getByRole('radio', { name: 'Rotation 4' })).toHaveAttribute(
+    'aria-checked',
     'true',
   );
-  await expect(page.getByTestId('player').first()).toHaveText('S Setter: x 1.5 m, y 7.5 m');
+  await expect(page.getByTestId('player').first()).toHaveText('S Setter x 1.5 m, y 7.5 m');
   await expect(page.getByRole('status')).toHaveText(/legal/);
 });
 
@@ -50,19 +50,19 @@ test('switching to Receive in rotation 1 shows the legal serve-receive formation
   page,
 }) => {
   await page.goto('court');
-  await page.getByRole('button', { name: 'Receive' }).click();
+  await page.getByRole('radio', { name: 'Receive' }).click();
 
-  await expect(page.getByRole('button', { name: 'Receive' })).toHaveAttribute(
-    'aria-pressed',
+  await expect(page.getByRole('radio', { name: 'Receive' })).toHaveAttribute(
+    'aria-checked',
     'true',
   );
   await expect(page.getByTestId('player')).toHaveText([
-    'S Setter: x 8.5 m, y 3.5 m',
-    'OH1 Outside hitter: x 7.5 m, y 4.0 m',
-    'MB2 Middle blocker: x 4.5 m, y 8.5 m',
-    'OPP Opposite: x 1.0 m, y 8.5 m',
-    'OH2 Outside hitter: x 1.5 m, y 4.0 m',
-    'MB1 Middle blocker: x 4.5 m, y 4.0 m',
+    'S Setter x 8.5 m, y 3.5 m',
+    'OH1 Outside hitter x 7.5 m, y 4.0 m',
+    'MB2 Middle blocker x 4.5 m, y 8.5 m',
+    'OPP Opposite x 1.0 m, y 8.5 m',
+    'OH2 Outside hitter x 1.5 m, y 4.0 m',
+    'MB1 Middle blocker x 4.5 m, y 4.0 m',
   ]);
   await expect(page.getByRole('status')).toHaveText(/legal/);
   await expect(page.getByTestId('formation-note')).toContainText('Setter in 1');
