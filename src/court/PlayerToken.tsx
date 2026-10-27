@@ -9,38 +9,53 @@ const RADIUS_M = 0.4;
 /** Keeps tokens readable and easy to grab on small screens. */
 const MIN_RADIUS_PX = 12;
 
+export type Emphasis = 'normal' | 'highlighted' | 'dimmed';
+
 interface PlayerTokenProps {
   player: Player;
   scale: CourtScale;
-  onMove: (id: string, position: Point) => void;
+  /** Without it the token cannot be dragged. */
+  onMove?: (id: string, position: Point) => void;
+  emphasis?: Emphasis;
 }
 
-export function PlayerToken({ player, scale, onMove }: PlayerTokenProps) {
+export function PlayerToken({ player, scale, onMove, emphasis = 'normal' }: PlayerTokenProps) {
   const pixel = scale.toPixels(player.position);
   const radius = Math.max(MIN_RADIUS_PX, scale.lengthToPixels(RADIUS_M));
 
   const handleDrag = (event: KonvaEventObject<DragEvent>) => {
-    onMove(player.id, scale.toMeters(event.target.position()));
+    onMove?.(player.id, scale.toMeters(event.target.position()));
   };
+  const draggable = onMove !== undefined;
 
   return (
     <Group
       name="player"
       x={pixel.x}
       y={pixel.y}
-      draggable
+      draggable={draggable}
+      opacity={emphasis === 'dimmed' ? 0.35 : 1}
       dragBoundFunc={(pos) => scale.toPixels(clampToPlayableArea(scale.toMeters(pos)))}
       onDragMove={handleDrag}
       onDragEnd={handleDrag}
       onMouseEnter={(e) => {
         const container = e.target.getStage()?.container();
-        if (container) container.style.cursor = 'grab';
+        if (container && draggable) container.style.cursor = 'grab';
       }}
       onMouseLeave={(e) => {
         const container = e.target.getStage()?.container();
         if (container) container.style.cursor = '';
       }}
     >
+      {emphasis === 'highlighted' && (
+        <Circle
+          name="highlight-ring"
+          radius={radius * 1.45}
+          stroke={courtColors.highlight}
+          strokeWidth={Math.max(2, radius * 0.22)}
+          listening={false}
+        />
+      )}
       <Circle
         radius={radius}
         fill={courtColors.roles[player.role]}

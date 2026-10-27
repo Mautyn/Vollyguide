@@ -16,13 +16,15 @@ export function CourtPage() {
   const players = useCourtStore((s) => s.players);
   const serveZones = useCourtStore((s) => s.serveZones);
   const reset = useCourtStore((s) => s.reset);
+  const movePlayer = useCourtStore((s) => s.movePlayer);
+  const transition = useCourtStore((s) => s.transition);
   const lineup = lineupFromState(players, serveZones);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
       <Card className="gap-4 overflow-hidden py-4">
         <CardContent className="px-4">
-          <CourtStage />
+          <CourtStage players={players} transition={transition} onMove={movePlayer} showZones />
         </CardContent>
         <CardContent className="px-4">
           <RoleLegend roles={players.map((p) => p.role)} />

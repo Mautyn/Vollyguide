@@ -25,6 +25,9 @@ export function Layout() {
             <NavLink to="/court" className={navLinkClass}>
               {strings.nav.court}
             </NavLink>
+            <NavLink to="/lessons" className={navLinkClass}>
+              {strings.nav.lessons}
+            </NavLink>
           </nav>
         </div>
       </header>

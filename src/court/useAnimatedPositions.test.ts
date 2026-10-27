@@ -1,7 +1,8 @@
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { Transition } from '../domain/interpolate';
 import type { Point } from '../domain/types';
-import type { Transition } from '../state/courtStore';
+
 import { useAnimatedPositions } from './useAnimatedPositions';
 
 const start = { s: { x: 7.5, y: 3 } };

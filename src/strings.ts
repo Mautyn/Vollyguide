@@ -4,6 +4,7 @@ export const strings = {
   nav: {
     home: 'Home',
     court: 'Court',
+    lessons: 'Lessons',
   },
   home: {
     eyebrow: 'Interactive volleyball positioning',
@@ -11,6 +12,7 @@ export const strings = {
     intro:
       'Volleyguide shows where each player stands in every rotation and phase of play, on an interactive court drawn to scale.',
     openCourt: 'Open the court',
+    browseLessons: 'Browse lessons',
     features: [
       {
         title: 'Rotations',
@@ -34,6 +36,7 @@ export const strings = {
     formationHeading: 'Formation',
     legendHeading: 'Roles',
     canvasLabel: 'Volleyball court, 9 by 18 meters, with draggable players',
+    canvasLabelReadOnly: 'Volleyball court, 9 by 18 meters, showing player positions',
     lineupLegal: 'Lineup is legal at the moment of serve.',
     lineupIllegal: 'Overlap fault at the moment of serve:',
     frontBack: (front: number, back: number) =>
@@ -52,6 +55,19 @@ export const strings = {
     nextRotation: 'Next rotation',
     rotationHint:
       'Rotation number = the zone the setter stands in. Played in the order 1, 6, 5, 4, 3, 2.',
+  },
+  lessons: {
+    title: 'Lessons',
+    intro: 'Short guided lessons. Each step explains one idea on the court.',
+    stepCount: (count: number) => `${count} steps`,
+    start: 'Start lesson',
+    allLessons: 'All lessons',
+    stepOf: (step: number, count: number) => `Step ${step} of ${count}`,
+    previous: 'Previous',
+    next: 'Next',
+    finish: 'Back to lessons',
+    stepsNav: 'Lesson steps',
+    goToStep: (step: number) => `Go to step ${step}`,
   },
   roles: {
     S: 'Setter',

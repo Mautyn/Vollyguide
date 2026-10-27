@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { easeInOut, interpolate } from '../domain/interpolate';
+import { easeInOut, interpolate, type Transition } from '../domain/interpolate';
 import type { Point } from '../domain/types';
-import type { Transition } from '../state/courtStore';
 
 export const TRANSITION_MS = 500;
 

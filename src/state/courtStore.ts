@@ -1,22 +1,13 @@
 import { create } from 'zustand';
 import { formationToPlayers, formationToZones, type Formation } from '../content/formations';
-import { RECEIVE_5_1_ROTATIONS } from '../content/receive';
-import { BASE_5_1_ROTATIONS } from '../content/rotations';
+import { findFormation, type FormationPhase } from '../content/catalog';
 import { clampToPlayableArea } from '../domain/court';
 import { ZONES } from '../domain/zones';
-import type { Phase, Player, Point, Rotation, ZoneMap } from '../domain/types';
+import type { Transition } from '../domain/interpolate';
+import type { Player, Point, Rotation, ZoneMap } from '../domain/types';
 
 /** Phases the Court page can show. */
-export type CourtPhase = Extract<Phase, 'base' | 'receive'>;
-
-/**
- * A change of formation that the court should animate. `from` holds the positions
- * before the change; `version` increases with every change. Drags are not transitions.
- */
-export interface Transition {
-  version: number;
-  from: Record<string, Point>;
-}
+export type CourtPhase = FormationPhase;
 
 interface CourtState {
   rotation: Rotation;
@@ -36,10 +27,10 @@ interface CourtState {
 }
 
 export function formationFor(rotation: Rotation, phase: CourtPhase): Formation {
-  return phase === 'receive' ? RECEIVE_5_1_ROTATIONS[rotation] : BASE_5_1_ROTATIONS[rotation];
+  return findFormation('5-1', rotation, phase)!;
 }
 
-function positionsById(players: readonly Player[]): Record<string, Point> {
+export function positionsById(players: readonly Player[]): Record<string, Point> {
   return Object.fromEntries(players.map((p) => [p.id, p.position]));
 }
 

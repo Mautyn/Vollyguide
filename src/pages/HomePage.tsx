@@ -1,4 +1,4 @@
-import { ArrowRight, RotateCw, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, RotateCw, ShieldCheck, Users } from 'lucide-react';
 import { Link } from 'react-router';
 import { Button } from '../components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -17,12 +17,20 @@ export function HomePage() {
           {strings.home.title}
         </h1>
         <p className="text-lg text-pretty text-muted-foreground">{strings.home.intro}</p>
-        <Button asChild size="lg">
-          <Link to="/court">
-            {strings.home.openCourt}
-            <ArrowRight aria-hidden />
-          </Link>
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild size="lg">
+            <Link to="/court">
+              {strings.home.openCourt}
+              <ArrowRight aria-hidden />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link to="/lessons">
+              <BookOpen aria-hidden />
+              {strings.home.browseLessons}
+            </Link>
+          </Button>
+        </div>
       </section>
       <section className="grid gap-4 sm:grid-cols-3">
         {strings.home.features.map((feature, i) => {
