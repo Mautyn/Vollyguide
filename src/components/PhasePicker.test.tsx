@@ -25,15 +25,15 @@ describe('PhasePicker', () => {
 
   it('starts on Base without a note', () => {
     render(<Harness />);
-    expect(screen.getByRole('button', { name: 'Base' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('radio', { name: 'Base' })).toHaveAttribute('aria-checked', 'true');
     expect(screen.queryByTestId('formation-note')).not.toBeInTheDocument();
   });
 
   it('switching to Receive shows the receive positions and the rotation note', async () => {
     render(<Harness />);
-    await userEvent.click(screen.getByRole('button', { name: 'Receive' }));
-    expect(screen.getByRole('button', { name: 'Receive' })).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getAllByTestId('player')[0]).toHaveTextContent('S Setter: x 8.5 m, y 3.5 m');
+    await userEvent.click(screen.getByRole('radio', { name: 'Receive' }));
+    expect(screen.getByRole('radio', { name: 'Receive' })).toHaveAttribute('aria-checked', 'true');
+    expect(screen.getAllByTestId('player')[0]).toHaveTextContent('S Setter x 8.5 m, y 3.5 m');
     expect(screen.getByTestId('formation-note')).toHaveTextContent(/Setter in 1/);
   });
 });
