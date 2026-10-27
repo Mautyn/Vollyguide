@@ -23,6 +23,12 @@ export const strings = {
       `Zone ${front} must be closer to the net than zone ${back}.`,
     leftRight: (left: number, right: number) => `Zone ${left} must be left of zone ${right}.`,
     zone: (zone: number) => `zone ${zone}`,
+    phaseGroup: 'Phase',
+    phases: {
+      base: 'Base',
+      receive: 'Receive',
+    },
+    phaseHint: 'Receive shows where players stand when the opponent serves.',
     rotationGroup: 'Rotation',
     rotation: (rotation: number) => `Rotation ${rotation}`,
     previousRotation: 'Previous rotation',

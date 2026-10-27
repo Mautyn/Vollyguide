@@ -1,4 +1,6 @@
+import { FormationNote } from '../components/FormationNote';
 import { OverlapStatus } from '../components/OverlapStatus';
+import { PhasePicker } from '../components/PhasePicker';
 import { PlayerList } from '../components/PlayerList';
 import { RotationPicker } from '../components/RotationPicker';
 import { CourtStage } from '../court/CourtStage';
@@ -18,6 +20,8 @@ export function CourtPage() {
         <h1>{strings.court.title}</h1>
         <p>{strings.court.hint}</p>
         <RotationPicker />
+        <PhasePicker />
+        <FormationNote />
         {lineup && <OverlapStatus lineup={lineup} />}
         <button type="button" onClick={reset}>
           {strings.court.reset}
