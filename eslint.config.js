@@ -30,7 +30,10 @@ export default tseslint.config(
         'error',
         {
           patterns: [
-            { group: ['react', 'react-*', 'konva', 'zustand'], message: 'src/domain must stay pure.' },
+            {
+              group: ['react', 'react-*', 'konva', 'zustand'],
+              message: 'src/domain must stay pure.',
+            },
           ],
         },
       ],
