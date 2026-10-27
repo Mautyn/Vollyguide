@@ -16,6 +16,7 @@ export const courtColors = {
   net: '#0f172a',
   netTape: '#f8fafc',
   zoneLabel: 'rgba(255, 255, 255, 0.45)',
+  distanceLabel: 'rgba(255, 255, 255, 0.6)',
   highlight: '#facc15',
   correct: '#22c55e',
   ball: '#fde047',

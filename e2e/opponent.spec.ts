@@ -23,8 +23,8 @@ test('in receive, Show opponent draws and lists the six opponent players', async
 
   const opponents = page.getByTestId('opponent-player');
   await expect(opponents).toHaveCount(6);
-  // Shared court frame: their server stands behind their end line, on our left.
-  await expect(opponents.first()).toHaveText('S Setter x 1.5 m, y 19.0 m');
+  // Their own frame: the server stands 1 m behind their end line, in their zone 1 (right).
+  await expect(opponents.first()).toHaveText('S Setter 7.5 m from left · 10.0 m from net');
 
   await expect.poll(() => nodes(page, 'opponent')).toEqual(Array(6).fill(false));
   await expect.poll(() => nodes(page, 'player')).toEqual(Array(6).fill(true));

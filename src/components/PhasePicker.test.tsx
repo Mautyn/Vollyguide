@@ -39,7 +39,9 @@ describe('PhasePicker', () => {
     render(<Harness />);
     await userEvent.click(screen.getByRole('radio', { name: 'Receive' }));
     expect(screen.getByRole('radio', { name: 'Receive' })).toHaveAttribute('aria-checked', 'true');
-    expect(screen.getAllByTestId('player')[0]).toHaveTextContent('S Setter x 8.5 m, y 3.5 m');
+    expect(screen.getAllByTestId('player')[0]).toHaveTextContent(
+      'S Setter 8.5 m from left · 5.5 m from net',
+    );
     expect(screen.getByTestId('formation-note')).toHaveTextContent(/Setter in 1/);
   });
 });

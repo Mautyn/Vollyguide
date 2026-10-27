@@ -19,7 +19,7 @@ test('court page loads and shows 6 players', async ({ page }) => {
 test('dragging a player updates its position in meters', async ({ page }) => {
   await page.goto('court');
   const setter = page.getByTestId('player').first();
-  await expect(setter).toHaveText('S Setter x 7.5 m, y 3.0 m');
+  await expect(setter).toHaveText('S Setter 7.5 m from left · 6.0 m from net');
 
   const box = await page.getByTestId('court-stage').locator('canvas').first().boundingBox();
   if (!box) throw new Error('canvas not visible');
@@ -31,7 +31,7 @@ test('dragging a player updates its position in meters', async ({ page }) => {
   await page.mouse.move(start.x - pxPerMeter, start.y - pxPerMeter, { steps: 5 });
   await page.mouse.up();
 
-  await expect(setter).toHaveText('S Setter x 6.5 m, y 4.0 m');
+  await expect(setter).toHaveText('S Setter 6.5 m from left · 5.0 m from net');
 });
 
 test('picking a rotation moves the players to its base positions', async ({ page }) => {
@@ -42,7 +42,9 @@ test('picking a rotation moves the players to its base positions', async ({ page
     'aria-checked',
     'true',
   );
-  await expect(page.getByTestId('player').first()).toHaveText('S Setter x 1.5 m, y 7.5 m');
+  await expect(page.getByTestId('player').first()).toHaveText(
+    'S Setter 1.5 m from left · 1.5 m from net',
+  );
   await expect(page.getByRole('status')).toHaveText(/legal/);
 });
 
@@ -57,12 +59,12 @@ test('switching to Receive in rotation 1 shows the legal serve-receive formation
     'true',
   );
   await expect(page.getByTestId('player')).toHaveText([
-    'S Setter x 8.5 m, y 3.5 m',
-    'OH1 Outside hitter x 7.5 m, y 4.0 m',
-    'MB2 Middle blocker x 4.5 m, y 8.5 m',
-    'OPP Opposite x 1.0 m, y 8.5 m',
-    'OH2 Outside hitter x 1.5 m, y 4.0 m',
-    'MB1 Middle blocker x 4.5 m, y 4.0 m',
+    'S Setter 8.5 m from left · 5.5 m from net',
+    'OH1 Outside hitter 7.5 m from left · 5.0 m from net',
+    'MB2 Middle blocker 4.5 m from left · 0.5 m from net',
+    'OPP Opposite 1.0 m from left · 0.5 m from net',
+    'OH2 Outside hitter 1.5 m from left · 5.0 m from net',
+    'MB1 Middle blocker 4.5 m from left · 5.0 m from net',
   ]);
   await expect(page.getByRole('status')).toHaveText(/legal/);
   await expect(page.getByTestId('formation-note')).toContainText('Setter in 1');
@@ -90,3 +92,21 @@ async function expectedSetterPixels(page: import('@playwright/test').Page) {
   const pxPerMeter = box.width / 15;
   return [Math.round((8.5 + 3) * pxPerMeter), Math.round((18 + 3 - 3.5) * pxPerMeter)];
 }
+
+test('the court shows distances from the net on both halves', async ({ page }) => {
+  await page.goto('court');
+  await expect(page.getByTestId('player')).toHaveCount(6);
+  const labels = await page.evaluate(() => {
+    const konva = (
+      window as unknown as {
+        Konva?: { stages: { find(s: string): { text(): string; y(): number }[] }[] };
+      }
+    ).Konva;
+    return (konva?.stages[0]?.find('.distance-marker') ?? [])
+      .map((n) => [n.y(), n.text()] as const)
+      .sort((a, b) => a[0] - b[0])
+      .map(([, text]) => text);
+  });
+  // Top to bottom: opponent end line, ..., net, ..., our end line.
+  expect(labels).toEqual(['9 m', '6 m', '3 m', '0 m', '3 m', '6 m', '9 m']);
+});
