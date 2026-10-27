@@ -18,7 +18,10 @@ function Harness() {
 const setterText = () => screen.getAllByTestId('player')[0]?.textContent;
 
 describe('RotationPicker', () => {
-  beforeEach(() => useCourtStore.getState().setRotation(1));
+  beforeEach(() => {
+    useCourtStore.getState().setPhase('base');
+    useCourtStore.getState().setRotation(1);
+  });
 
   it('lists the rotations in playing order and marks the active one', () => {
     render(<RotationPicker />);
