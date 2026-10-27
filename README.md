@@ -4,8 +4,6 @@ A read-only, static web app that teaches professional volleyball positioning wit
 
 **Live site:** https://mautyn.github.io/Vollyguide/
 
-**Live site:** https://mautyn.github.io/Vollyguide/
-
 ## Run locally
 
 Requires Node 22 (see `.nvmrc`).
