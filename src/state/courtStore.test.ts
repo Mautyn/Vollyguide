@@ -3,7 +3,7 @@ import { FREE_ZONE } from '../domain/court';
 import { lineupFromState, useCourtStore } from './courtStore';
 
 describe('courtStore', () => {
-  beforeEach(() => useCourtStore.getState().reset());
+  beforeEach(() => useCourtStore.getState().setRotation(1));
 
   it('starts with six players of our team', () => {
     const { players } = useCourtStore.getState();
@@ -23,6 +23,29 @@ describe('courtStore', () => {
     expect(setter?.position).toEqual({ x: 9 + FREE_ZONE, y: -FREE_ZONE });
   });
 
+  it('starts in rotation 1', () => {
+    expect(useCourtStore.getState().rotation).toBe(1);
+  });
+
+  it('changes rotation, loading its base positions and discarding drags', () => {
+    useCourtStore.getState().movePlayer('opp', { x: 0, y: 0 });
+    useCourtStore.getState().setRotation(4);
+    const { rotation, players, serveZones } = useCourtStore.getState();
+    expect(rotation).toBe(4);
+    expect(serveZones[4]).toBe('s');
+    expect(players.find((p) => p.id === 's')?.position).toEqual({ x: 1.5, y: 7.5 });
+    expect(players.find((p) => p.id === 'opp')?.position).toEqual({ x: 7.5, y: 3 });
+  });
+
+  it('reset keeps the selected rotation', () => {
+    useCourtStore.getState().setRotation(5);
+    useCourtStore.getState().movePlayer('s', { x: 0, y: 0 });
+    useCourtStore.getState().reset();
+    const { rotation, players } = useCourtStore.getState();
+    expect(rotation).toBe(5);
+    expect(players.find((p) => p.id === 's')?.position).toEqual({ x: 1.5, y: 3 });
+  });
+
   it('resets to the base formation', () => {
     useCourtStore.getState().movePlayer('s', { x: 0, y: 0 });
     useCourtStore.getState().reset();
@@ -32,7 +55,7 @@ describe('courtStore', () => {
 });
 
 describe('lineupFromState', () => {
-  beforeEach(() => useCourtStore.getState().reset());
+  beforeEach(() => useCourtStore.getState().setRotation(1));
 
   it('maps zones to the positions of the players standing there', () => {
     const { players, serveZones } = useCourtStore.getState();

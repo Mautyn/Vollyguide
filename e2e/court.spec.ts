@@ -33,3 +33,15 @@ test('dragging a player updates its position in meters', async ({ page }) => {
 
   await expect(setter).toHaveText('S Setter: x 6.5 m, y 4.0 m');
 });
+
+test('picking a rotation moves the players to its base positions', async ({ page }) => {
+  await page.goto('court');
+  await page.getByRole('button', { name: 'Rotation 4' }).click();
+
+  await expect(page.getByRole('button', { name: 'Rotation 4' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(page.getByTestId('player').first()).toHaveText('S Setter: x 1.5 m, y 7.5 m');
+  await expect(page.getByRole('status')).toHaveText(/legal/);
+});

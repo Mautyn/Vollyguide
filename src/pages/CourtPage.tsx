@@ -1,5 +1,6 @@
 import { OverlapStatus } from '../components/OverlapStatus';
 import { PlayerList } from '../components/PlayerList';
+import { RotationPicker } from '../components/RotationPicker';
 import { CourtStage } from '../court/CourtStage';
 import { lineupFromState, useCourtStore } from '../state/courtStore';
 import { strings } from '../strings';
@@ -16,6 +17,7 @@ export function CourtPage() {
       <aside className="court-panel">
         <h1>{strings.court.title}</h1>
         <p>{strings.court.hint}</p>
+        <RotationPicker />
         {lineup && <OverlapStatus lineup={lineup} />}
         <button type="button" onClick={reset}>
           {strings.court.reset}

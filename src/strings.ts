@@ -23,6 +23,12 @@ export const strings = {
       `Zone ${front} must be closer to the net than zone ${back}.`,
     leftRight: (left: number, right: number) => `Zone ${left} must be left of zone ${right}.`,
     zone: (zone: number) => `zone ${zone}`,
+    rotationGroup: 'Rotation',
+    rotation: (rotation: number) => `Rotation ${rotation}`,
+    previousRotation: 'Previous rotation',
+    nextRotation: 'Next rotation',
+    rotationHint:
+      'Rotation number = the zone the setter stands in. Played in the order 1, 6, 5, 4, 3, 2.',
   },
   roles: {
     S: 'Setter',
