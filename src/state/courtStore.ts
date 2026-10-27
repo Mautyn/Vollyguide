@@ -1,10 +1,12 @@
 import { create } from 'zustand';
 import { formationToPlayers, formationToZones, type Formation } from '../content/formations';
 import { findFormation, type FormationPhase } from '../content/catalog';
+import { withLibero } from '../content/libero';
 import { clampToPlayableArea } from '../domain/court';
 import { ZONES } from '../domain/zones';
 import type { Transition } from '../domain/interpolate';
 import type { Player, Point, Rotation, ZoneMap } from '../domain/types';
+import { usePreferences } from './preferences';
 
 /** Phases the Court page can show. */
 export type CourtPhase = FormationPhase;
@@ -16,6 +18,8 @@ interface CourtState {
   players: Player[];
   /** Which player id stands in each zone at the moment of serve. */
   serveZones: ZoneMap<string>;
+  /** Players off court, e.g. the middle blocker the libero replaced. */
+  benchIds: string[];
   transition: Transition;
   movePlayer: (id: string, position: Point) => void;
   /** Loads a rotation in the current phase, discarding any drags. */
@@ -35,12 +39,17 @@ export function positionsById(players: readonly Player[]): Record<string, Point>
 }
 
 function formationState(rotation: Rotation, phase: CourtPhase) {
-  const formation = formationFor(rotation, phase);
+  const base = formationFor(rotation, phase);
+  const { formation, benched } = usePreferences.getState().useLibero
+    ? withLibero(base)
+    : { formation: base, benched: null };
+  const bench: Player[] = benched ? [{ ...benched, team: 'us' }] : [];
   return {
     rotation,
     phase,
-    players: formationToPlayers(formation),
+    players: [...formationToPlayers(formation), ...bench],
     serveZones: formationToZones(formation),
+    benchIds: bench.map((p) => p.id),
   };
 }
 
@@ -64,6 +73,11 @@ export const useCourtStore = create<CourtState>()((set, get) => {
     setPhase: (phase) => load(get().rotation, phase),
     reset: () => load(get().rotation, get().phase),
   };
+});
+
+// Switching the libero on or off changes who is on court: reload the formation.
+usePreferences.subscribe((prefs, previous) => {
+  if (prefs.useLibero !== previous.useLibero) useCourtStore.getState().reset();
 });
 
 /** Positions of the players standing in each zone, or null if a zone is unassigned. */
