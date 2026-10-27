@@ -18,6 +18,10 @@ export function CourtPage() {
   const reset = useCourtStore((s) => s.reset);
   const movePlayer = useCourtStore((s) => s.movePlayer);
   const transition = useCourtStore((s) => s.transition);
+  const rotation = useCourtStore((s) => s.rotation);
+  const setRotation = useCourtStore((s) => s.setRotation);
+  const phase = useCourtStore((s) => s.phase);
+  const setPhase = useCourtStore((s) => s.setPhase);
   const lineup = lineupFromState(players, serveZones);
 
   return (
@@ -47,8 +51,8 @@ export function CourtPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
-            <RotationPicker />
-            <PhasePicker />
+            <RotationPicker value={rotation} onChange={setRotation} />
+            <PhasePicker value={phase} onChange={setPhase} />
             <FormationNote />
           </CardContent>
         </Card>
