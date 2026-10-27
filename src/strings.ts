@@ -6,6 +6,7 @@ export const strings = {
     court: 'Court',
     lessons: 'Lessons',
     practice: 'Practice',
+    tactics: 'Tactics',
   },
   home: {
     eyebrow: 'Interactive volleyball positioning',
@@ -93,6 +94,25 @@ export const strings = {
     correct: 'on the spot',
     off: (meters: number) => `${meters.toFixed(1)} m off`,
     tolerance: (meters: number) => `A player counts as correct within ${meters} m of their spot.`,
+  },
+  tactics: {
+    title: 'Tactics',
+    intro:
+      'Game situations played out step by step: where every player stands, what they do, and why.',
+    topicsNav: 'Topics',
+    situationsNav: 'Situations',
+    moment: (moment: number, count: number) => `Moment ${moment} of ${count}`,
+    progress: 'Progress',
+    play: 'Play',
+    pause: 'Pause',
+    restart: 'Restart',
+    previous: 'Previous moment',
+    next: 'Next moment',
+    speed: 'Speed',
+    speedOption: (speed: number) => `${speed}×`,
+    positioning: 'Positioning',
+    execution: 'Execution',
+    principles: 'Key principles',
   },
   roles: {
     S: 'Setter',
