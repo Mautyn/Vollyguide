@@ -3,3 +3,4 @@ export * from './court';
 export * from './zones';
 export * from './overlap';
 export * from './rotation';
+export * from './interpolate';
