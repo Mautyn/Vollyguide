@@ -33,6 +33,7 @@ export function PlayerToken({
   mark,
 }: PlayerTokenProps) {
   const pixel = scale.toPixels(player.position);
+  const isOpponent = player.team === 'them';
   const radius = Math.max(MIN_RADIUS_PX, scale.lengthToPixels(RADIUS_M));
 
   const handleDrag = (event: KonvaEventObject<DragEvent>) => {
@@ -42,7 +43,7 @@ export function PlayerToken({
 
   return (
     <Group
-      name="player"
+      name={isOpponent ? 'opponent' : 'player'}
       x={pixel.x}
       y={pixel.y}
       draggable={draggable}
@@ -80,7 +81,7 @@ export function PlayerToken({
       )}
       <Circle
         radius={radius}
-        fill={courtColors.roles[player.role]}
+        fill={isOpponent ? courtColors.opponent : courtColors.roles[player.role]}
         stroke={courtColors.line}
         strokeWidth={2}
         shadowColor={courtColors.playerShadow}

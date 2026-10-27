@@ -1,6 +1,8 @@
 import { MousePointer2, RotateCcw } from 'lucide-react';
+import { useMemo } from 'react';
 import { FormationNote } from '../components/FormationNote';
 import { LiberoToggle } from '../components/LiberoToggle';
+import { OpponentToggle } from '../components/OpponentToggle';
 import { OverlapStatus } from '../components/OverlapStatus';
 import { PhasePicker } from '../components/PhasePicker';
 import { PlayerList } from '../components/PlayerList';
@@ -10,13 +12,22 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
 import { CourtStage } from '../court/CourtStage';
+import { opponentPlayers } from '../content/opponent';
 import { lineupFromState, useCourtStore } from '../state/courtStore';
 import { strings } from '../strings';
+
+/** The opponent never moves, so build it once. */
+const OPPONENT = opponentPlayers();
 
 export function CourtPage() {
   const players = useCourtStore((s) => s.players);
   const serveZones = useCourtStore((s) => s.serveZones);
   const benchIds = useCourtStore((s) => s.benchIds);
+  const opponentVisible = useCourtStore((s) => s.showOpponent && s.phase === 'receive');
+  const onCourt = useMemo(
+    () => (opponentVisible ? [...players, ...OPPONENT] : players),
+    [players, opponentVisible],
+  );
   const reset = useCourtStore((s) => s.reset);
   const movePlayer = useCourtStore((s) => s.movePlayer);
   const transition = useCourtStore((s) => s.transition);
@@ -30,7 +41,7 @@ export function CourtPage() {
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
       <Card className="gap-4 overflow-hidden py-4">
         <CardContent className="px-4">
-          <CourtStage players={players} transition={transition} onMove={movePlayer} showZones />
+          <CourtStage players={onCourt} transition={transition} onMove={movePlayer} showZones />
         </CardContent>
         <CardContent className="px-4">
           <RoleLegend roles={players.map((p) => p.role)} />
@@ -56,6 +67,7 @@ export function CourtPage() {
             <RotationPicker value={rotation} onChange={setRotation} />
             <PhasePicker value={phase} onChange={setPhase} />
             <LiberoToggle />
+            <OpponentToggle />
             <FormationNote />
           </CardContent>
         </Card>
@@ -75,6 +87,16 @@ export function CourtPage() {
           <Separator />
           <CardContent>
             <PlayerList players={players} benchIds={benchIds} />
+            {opponentVisible && (
+              <div className="mt-4 space-y-1">
+                <h3 className="text-sm font-semibold">{strings.court.opponentHeading}</h3>
+                <PlayerList
+                  players={OPPONENT}
+                  label={strings.court.opponentHeading}
+                  itemTestId="opponent-player"
+                />
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>

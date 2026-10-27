@@ -53,6 +53,11 @@ export const strings = {
     useLibero: 'Use libero',
     liberoHint: 'The libero replaces the back-row middle blocker and never plays in the front row.',
     bench: 'Bench',
+    showOpponent: 'Show opponent',
+    opponentHint:
+      'Shows the opponent’s serving lineup (a 5-1 in rotation 1) on the far side of the net.',
+    opponentOnlyInReceive: 'Available in the receive phase.',
+    opponentHeading: 'Opponent',
     rotationGroup: 'Rotation',
     rotation: (rotation: number) => `Rotation ${rotation}`,
     previousRotation: 'Previous rotation',
