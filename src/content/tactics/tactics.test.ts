@@ -56,30 +56,38 @@ describe.each(situations)('$topic / $id', ({ situation }) => {
     expect(situation.principles.length).toBeLessThanOrEqual(4);
   });
 
-  it('only marks players of our team as blocking', () => {
-    const ours = new Set(scene.players.filter((p) => p.team === 'us').map((p) => p.id));
+  it('only marks players of this scene as blocking', () => {
     for (const keyframe of scene.keyframes) {
-      for (const id of keyframe.blocking ?? []) expect(ours.has(id)).toBe(true);
+      for (const id of keyframe.blocking ?? []) expect(ids).toContain(id);
     }
   });
 
-  it('has a seamless block at the key moment, within 1 m of the net on our side', () => {
-    const moment = scene.keyframes[keyMoment]!;
-    const blockers = moment.blocking ?? [];
-    expect(blockers.length).toBeGreaterThanOrEqual(2);
-
-    const spots = blockers.map((id) => moment.positions[id]!);
-    for (const spot of spots) {
-      expect(spot.y).toBeLessThan(NET_Y);
-      expect(NET_Y - spot.y).toBeLessThanOrEqual(1);
-    }
-    const xs = spots.map((s) => s.x).sort((a, b) => a - b);
-    for (let i = 1; i < xs.length; i++) expect(xs[i]! - xs[i - 1]!).toBeLessThanOrEqual(1);
+  it('keeps the key moment within the scene', () => {
+    expect(scene.keyframes[keyMoment]).toBeDefined();
   });
 });
 
 describe('blocking situations', () => {
   const blocking = findTopic('blocking')!;
+
+  it.each(blocking.situations.map((s) => [s.id, s] as const))(
+    '%s has a seamless block by our team at the key moment, within 1 m of the net',
+    (_, situation) => {
+      const moment = situation.scene.keyframes[situation.keyMoment]!;
+      const ours = new Set(situation.scene.players.filter((p) => p.team === 'us').map((p) => p.id));
+      const blockers = moment.blocking ?? [];
+      expect(blockers.length).toBeGreaterThanOrEqual(2);
+      for (const id of blockers) expect(ours.has(id)).toBe(true);
+
+      const spots = blockers.map((id) => moment.positions[id]!);
+      for (const spot of spots) {
+        expect(spot.y).toBeLessThan(NET_Y);
+        expect(NET_Y - spot.y).toBeLessThanOrEqual(1);
+      }
+      const xs = spots.map((p) => p.x).sort((a, b) => a - b);
+      for (let i = 1; i < xs.length; i++) expect(xs[i]! - xs[i - 1]!).toBeLessThanOrEqual(1);
+    },
+  );
   const blockSize = (id: string) => {
     const s = findSituation(blocking, id)!;
     return s.scene.keyframes[s.keyMoment]!.blocking!.length;

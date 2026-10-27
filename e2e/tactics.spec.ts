@@ -64,3 +64,18 @@ test('the Tactics page fits a 375 px phone screen', async ({ page }) => {
   );
   expect(overflow).toBeLessThanOrEqual(0);
 });
+
+test('coverage: the outside hitter attack plays to the end', async ({ page }) => {
+  await page.goto('tactics');
+  await page
+    .getByRole('navigation', { name: 'Topics' })
+    .getByRole('link', { name: 'Coverage' })
+    .click();
+  await page.getByRole('link', { name: 'Outside hitter attacks from zone 4' }).click();
+  await expect(page).toHaveURL(/\/tactics\/coverage\/outside-hitter-attacks-zone-4$/);
+
+  await expect(page.getByTestId('moment-counter')).toHaveText('Moment 4 of 4', { timeout: 6000 });
+  await expect(page.getByTestId('scene-caption')).toHaveText(
+    'The block sends the ball straight back. It drops into the cup, where the setter is already low to dig it.',
+  );
+});
