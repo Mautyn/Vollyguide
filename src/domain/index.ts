@@ -7,3 +7,4 @@ export * from './interpolate';
 export * from './grading';
 export * from './libero';
 export * from './opponent';
+export * from './netRelative';

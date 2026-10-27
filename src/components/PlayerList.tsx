@@ -1,9 +1,13 @@
 import { courtColors, roleColors } from '../court/colors';
+import { toNetRelative } from '../domain/netRelative';
 import type { Player } from '../domain/types';
 import { strings } from '../strings';
 import { Badge } from './ui/badge';
 
-const formatMeters = (value: number) => `${value.toFixed(1)} m`;
+function formatPosition(player: Player): string {
+  const { fromLeft, fromNet } = toNetRelative(player.position, player.team);
+  return strings.court.position(fromLeft, fromNet);
+}
 
 interface PlayerListProps {
   players: readonly Player[];
@@ -38,15 +42,20 @@ export function PlayerList({
           >
             {player.label}
           </Badge>{' '}
-          <span className="font-medium">{strings.roles[player.role]}</span>{' '}
-          {benchIds.includes(player.id) && (
-            <>
-              <Badge variant="outline">{strings.court.bench}</Badge>{' '}
-            </>
-          )}
-          <span className="ml-auto whitespace-nowrap text-muted-foreground tabular-nums">
-            x {formatMeters(player.position.x)}, y {formatMeters(player.position.y)}
-          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2">
+              <span className="font-medium">{strings.roles[player.role]}</span>
+              {benchIds.includes(player.id) && (
+                <>
+                  {' '}
+                  <Badge variant="outline">{strings.court.bench}</Badge>
+                </>
+              )}
+            </div>{' '}
+            <div className="text-xs text-muted-foreground tabular-nums">
+              {formatPosition(player)}
+            </div>
+          </div>
         </li>
       ))}
     </ul>
