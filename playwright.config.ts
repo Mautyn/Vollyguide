@@ -7,13 +7,14 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
   use: {
-    baseURL: 'http://localhost:4173',
+    // The production build is served under the GitHub Pages base path (see vite.config.ts).
+    baseURL: 'http://localhost:4173/Vollyguide/',
     trace: 'on-first-retry',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
     command: 'npm run build && npm run preview -- --port 4173 --strictPort',
-    url: 'http://localhost:4173',
+    url: 'http://localhost:4173/Vollyguide/',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },
