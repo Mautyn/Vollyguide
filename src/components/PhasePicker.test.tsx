@@ -6,11 +6,17 @@ import { FormationNote } from './FormationNote';
 import { PhasePicker } from './PhasePicker';
 import { PlayerList } from './PlayerList';
 
+function ConnectedPhasePicker() {
+  const value = useCourtStore((s) => s.phase);
+  const onChange = useCourtStore((s) => s.setPhase);
+  return <PhasePicker value={value} onChange={onChange} />;
+}
+
 function Harness() {
   const players = useCourtStore((s) => s.players);
   return (
     <>
-      <PhasePicker />
+      <ConnectedPhasePicker />
       <FormationNote />
       <PlayerList players={players} />
     </>

@@ -5,11 +5,17 @@ import { useCourtStore } from '../state/courtStore';
 import { PlayerList } from './PlayerList';
 import { RotationPicker } from './RotationPicker';
 
+function ConnectedRotationPicker() {
+  const value = useCourtStore((s) => s.rotation);
+  const onChange = useCourtStore((s) => s.setRotation);
+  return <RotationPicker value={value} onChange={onChange} />;
+}
+
 function Harness() {
   const players = useCourtStore((s) => s.players);
   return (
     <>
-      <RotationPicker />
+      <ConnectedRotationPicker />
       <PlayerList players={players} />
     </>
   );
@@ -24,7 +30,7 @@ describe('RotationPicker', () => {
   });
 
   it('lists the rotations in playing order and marks the active one', () => {
-    render(<RotationPicker />);
+    render(<ConnectedRotationPicker />);
     const buttons = screen.getAllByRole('radio', { name: /^Rotation \d$/ });
     expect(buttons.map((b) => b.textContent)).toEqual(['1', '6', '5', '4', '3', '2']);
     expect(screen.getByRole('radio', { name: 'Rotation 1' })).toHaveAttribute(

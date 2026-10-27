@@ -1,19 +1,23 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useId } from 'react';
 import { nextRotation, previousRotation, ROTATION_ORDER } from '../content/rotations';
 import type { Rotation } from '../domain/types';
-import { useCourtStore } from '../state/courtStore';
 import { strings } from '../strings';
 import { Button } from './ui/button';
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
 
-export function RotationPicker() {
-  const rotation = useCourtStore((s) => s.rotation);
-  const setRotation = useCourtStore((s) => s.setRotation);
+interface RotationPickerProps {
+  value: Rotation;
+  onChange: (rotation: Rotation) => void;
+}
+
+export function RotationPicker({ value: rotation, onChange: setRotation }: RotationPickerProps) {
+  const labelId = useId();
 
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <span id="rotation-label" className="text-sm font-medium">
+        <span id={labelId} className="text-sm font-medium">
           {strings.court.rotationGroup}
         </span>
         <div className="flex gap-1">
@@ -41,7 +45,7 @@ export function RotationPicker() {
         type="single"
         variant="outline"
         className="w-full"
-        aria-labelledby="rotation-label"
+        aria-labelledby={labelId}
         value={String(rotation)}
         onValueChange={(value) => value && setRotation(Number(value) as Rotation)}
       >

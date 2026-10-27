@@ -5,6 +5,7 @@ export const strings = {
     home: 'Home',
     court: 'Court',
     lessons: 'Lessons',
+    practice: 'Practice',
   },
   home: {
     eyebrow: 'Interactive volleyball positioning',
@@ -68,6 +69,22 @@ export const strings = {
     finish: 'Back to lessons',
     stepsNav: 'Lesson steps',
     goToStep: (step: number) => `Go to step ${step}`,
+  },
+  practice: {
+    title: 'Practice',
+    hint: 'Pick a task, drag the players from the bench to where they should stand at the moment of serve, then check.',
+    taskHeading: 'Task',
+    task: (rotation: number, phase: string) => `Rotation ${rotation}, ${phase.toLowerCase()}`,
+    randomTask: 'Random task',
+    check: 'Check',
+    showAnswer: 'Show answer',
+    tryAgain: 'Try again',
+    resultHeading: 'Result',
+    result: (correct: number, total: number, legal: boolean) =>
+      `${correct} of ${total} correct, lineup ${legal ? 'legal' : 'illegal'}`,
+    correct: 'on the spot',
+    off: (meters: number) => `${meters.toFixed(1)} m off`,
+    tolerance: (meters: number) => `A player counts as correct within ${meters} m of their spot.`,
   },
   roles: {
     S: 'Setter',
