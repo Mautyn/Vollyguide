@@ -1,5 +1,6 @@
 import { useCourtStore, type CourtPhase } from '../state/courtStore';
 import { strings } from '../strings';
+import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
 
 const PHASES: readonly CourtPhase[] = ['base', 'receive'];
 
@@ -8,16 +9,25 @@ export function PhasePicker() {
   const setPhase = useCourtStore((s) => s.setPhase);
 
   return (
-    <fieldset className="toggle-group">
-      <legend>{strings.court.phaseGroup}</legend>
-      <div className="toggle-group__buttons">
+    <div className="space-y-2">
+      <span id="phase-label" className="text-sm font-medium">
+        {strings.court.phaseGroup}
+      </span>
+      <ToggleGroup
+        type="single"
+        variant="outline"
+        className="w-full"
+        aria-labelledby="phase-label"
+        value={phase}
+        onValueChange={(value) => value && setPhase(value as CourtPhase)}
+      >
         {PHASES.map((p) => (
-          <button key={p} type="button" aria-pressed={p === phase} onClick={() => setPhase(p)}>
+          <ToggleGroupItem key={p} value={p}>
             {strings.court.phases[p]}
-          </button>
+          </ToggleGroupItem>
         ))}
-      </div>
-      <p className="toggle-group__hint">{strings.court.phaseHint}</p>
-    </fieldset>
+      </ToggleGroup>
+      <p className="text-xs text-muted-foreground">{strings.court.phaseHint}</p>
+    </div>
   );
 }

@@ -8,6 +8,6 @@ describe('PlayerList', () => {
     render(<PlayerList players={formationToPlayers(BASE_5_1_ROTATION_1)} />);
     const items = screen.getAllByTestId('player');
     expect(items).toHaveLength(6);
-    expect(items[0]).toHaveTextContent('S Setter: x 7.5 m, y 3.0 m');
+    expect(items[0]).toHaveTextContent('S Setter x 7.5 m, y 3.0 m');
   });
 });

@@ -24,6 +24,11 @@ export default tseslint.config(
     },
   },
   {
+    // shadcn/ui components export their variant helpers next to the component.
+    files: ['src/components/ui/**/*.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+  {
     files: ['src/domain/**/*.ts'],
     rules: {
       'no-restricted-imports': [

@@ -3,6 +3,7 @@ import { copyFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 /** The site is served from https://mautyn.github.io/Vollyguide/. */
 export const PAGES_BASE = '/Vollyguide/';
@@ -25,7 +26,7 @@ function spaFallback(): Plugin {
 export default defineConfig(({ command, isPreview }) => ({
   // `vite preview` runs with command 'serve' but must serve the build under the same base.
   base: command === 'build' || isPreview ? PAGES_BASE : '/',
-  plugins: [react(), spaFallback()],
+  plugins: [react(), tailwindcss(), spaFallback()],
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],

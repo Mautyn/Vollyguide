@@ -1,14 +1,21 @@
+import type { Role } from '../domain/types';
+
+/** Role colours shared by the court and the player list (Tailwind 600 shades). */
+export const roleColors: Readonly<Record<Role, string>> = {
+  S: '#7c3aed',
+  OH: '#2563eb',
+  OPP: '#059669',
+  MB: '#e11d48',
+  L: '#d97706',
+};
+
 export const courtColors = {
-  freeZone: '#2f6f8f',
-  court: '#e8a05c',
+  freeZone: '#1f5f8b',
+  court: '#ee8a4f',
   line: '#ffffff',
-  net: '#1b1b1b',
-  roles: {
-    S: '#7b2cbf',
-    OH: '#1d4ed8',
-    OPP: '#047857',
-    MB: '#b91c1c',
-    L: '#ca8a04',
-  },
+  net: '#0f172a',
+  netTape: '#f8fafc',
+  roles: roleColors,
   playerText: '#ffffff',
+  playerShadow: '#0f172a',
 } as const;
