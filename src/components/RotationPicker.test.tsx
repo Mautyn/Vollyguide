@@ -46,7 +46,7 @@ describe('RotationPicker', () => {
   it('picking rotation 4 puts the setter in zone 4', async () => {
     render(<Harness />);
     await userEvent.click(screen.getByRole('radio', { name: 'Rotation 4' }));
-    expect(setterText()).toBe('S Setter x 1.5 m, y 7.5 m');
+    expect(setterText()).toBe('S Setter 1.5 m from left · 1.5 m from net');
     expect(screen.getByRole('radio', { name: 'Rotation 4' })).toHaveAttribute(
       'aria-checked',
       'true',
@@ -57,7 +57,7 @@ describe('RotationPicker', () => {
     render(<Harness />);
     await userEvent.click(screen.getByRole('button', { name: 'Next rotation' }));
     expect(useCourtStore.getState().rotation).toBe(6);
-    expect(setterText()).toBe('S Setter x 4.5 m, y 3.0 m');
+    expect(setterText()).toBe('S Setter 4.5 m from left · 6.0 m from net');
     await userEvent.click(screen.getByRole('button', { name: 'Previous rotation' }));
     await userEvent.click(screen.getByRole('button', { name: 'Previous rotation' }));
     expect(useCourtStore.getState().rotation).toBe(2);
