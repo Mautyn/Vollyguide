@@ -41,7 +41,7 @@ const RECEIVE_5_1: Record<Rotation, ReceiveData> = {
   },
   // Front: MB1 4, OH2 3, OPP 2. Back: S 5, OH1 6, MB2 1.
   5: {
-    note: 'Setter in 5 stays behind the left-front middle and left of the middle passer, then runs along the net.',
+    note: 'Setter in 5 must stay farther from the net than the left-front middle and left of the middle passer, then runs along the net.',
     positions: {
       mb1: { x: 0.8, y: 8.6 },
       oh2: { x: 1.5, y: 4.5 },
