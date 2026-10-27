@@ -10,9 +10,11 @@ test('switching on the libero replaces the back-row middle blocker', async ({ pa
 
   // Rotation 1: MB1 is the back-row middle at (4.5, 3); L takes that spot, MB1 goes to the bench.
   const players = page.getByTestId('player');
-  await expect(players.filter({ hasText: 'Libero' })).toHaveText('L Libero x 4.5 m, y 3.0 m');
+  await expect(players.filter({ hasText: 'Libero' })).toHaveText(
+    'L Libero 4.5 m from left · 6.0 m from net',
+  );
   await expect(players.filter({ hasText: 'MB1' })).toHaveText(
-    'MB1 Middle blocker Bench x -1.5 m, y 3.0 m',
+    'MB1 Middle blocker Bench -1.5 m from left · 6.0 m from net',
   );
   await expect(page.getByRole('status')).toHaveText(/legal/);
 
