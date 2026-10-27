@@ -9,6 +9,8 @@ export interface Situation {
   scene: Scene;
   /** Index of the keyframe at the decisive moment (e.g. the block), used by content checks. */
   keyMoment: number;
+  /** Id of our player who attacks, for coverage situations. */
+  attacker?: string;
   /** Where each player stands and why. */
   positioning: string[];
   /** What happens, step by step. */
