@@ -34,6 +34,7 @@ export const strings = {
     formationHeading: 'Formation',
     legendHeading: 'Roles',
     canvasLabel: 'Volleyball court, 9 by 18 meters, with draggable players',
+    canvasLabelReadOnly: 'Volleyball court, 9 by 18 meters, showing player positions',
     lineupLegal: 'Lineup is legal at the moment of serve.',
     lineupIllegal: 'Overlap fault at the moment of serve:',
     frontBack: (front: number, back: number) =>

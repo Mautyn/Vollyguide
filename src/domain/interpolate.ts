@@ -27,3 +27,12 @@ export function easeInOut(t: number): number {
   const c = Math.min(1, Math.max(0, t));
   return c < 0.5 ? 4 * c * c * c : 1 - (-2 * c + 2) ** 3 / 2;
 }
+
+/**
+ * A change of formation to animate. `from` holds positions (by player id) before the
+ * change; `version` increases with every change. Drags are not transitions.
+ */
+export interface Transition {
+  version: number;
+  from: Record<string, Point>;
+}

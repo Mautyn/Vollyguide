@@ -15,6 +15,8 @@ export const courtColors = {
   line: '#ffffff',
   net: '#0f172a',
   netTape: '#f8fafc',
+  zoneLabel: 'rgba(255, 255, 255, 0.45)',
+  highlight: '#facc15',
   roles: roleColors,
   playerText: '#ffffff',
   playerShadow: '#0f172a',
