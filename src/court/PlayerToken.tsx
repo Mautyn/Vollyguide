@@ -6,6 +6,8 @@ import { courtColors } from './colors';
 import type { CourtScale } from './scale';
 
 const RADIUS_M = 0.4;
+/** Keeps tokens readable and easy to grab on small screens. */
+const MIN_RADIUS_PX = 12;
 
 interface PlayerTokenProps {
   player: Player;
@@ -15,7 +17,7 @@ interface PlayerTokenProps {
 
 export function PlayerToken({ player, scale, onMove }: PlayerTokenProps) {
   const pixel = scale.toPixels(player.position);
-  const radius = scale.lengthToPixels(RADIUS_M);
+  const radius = Math.max(MIN_RADIUS_PX, scale.lengthToPixels(RADIUS_M));
 
   const handleDrag = (event: KonvaEventObject<DragEvent>) => {
     onMove(player.id, scale.toMeters(event.target.position()));
@@ -44,10 +46,15 @@ export function PlayerToken({ player, scale, onMove }: PlayerTokenProps) {
         fill={courtColors.roles[player.role]}
         stroke={courtColors.line}
         strokeWidth={2}
+        shadowColor={courtColors.playerShadow}
+        shadowBlur={6}
+        shadowOpacity={0.35}
+        shadowOffsetY={2}
       />
       <Text
         text={player.label}
         fill={courtColors.playerText}
+        fontFamily="Inter Variable, system-ui, sans-serif"
         fontStyle="bold"
         fontSize={radius * 0.75}
         width={radius * 2}

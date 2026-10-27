@@ -49,7 +49,8 @@ export function CourtLines({ scale }: { scale: CourtScale }) {
       />
       {horizontal(OUR_ATTACK_LINE_Y)}
       {horizontal(THEIR_ATTACK_LINE_Y)}
-      {horizontal(NET_Y, lineWidth * 3, courtColors.net)}
+      {horizontal(NET_Y, lineWidth * 4, courtColors.net)}
+      {horizontal(NET_Y, lineWidth, courtColors.netTape)}
     </>
   );
 }
