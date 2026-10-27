@@ -5,6 +5,7 @@ import type { Player, Point } from '../domain/types';
 import { strings } from '../strings';
 import { CourtLines } from './CourtLines';
 import { PlayerToken, type Mark } from './PlayerToken';
+import { Ball, BlockBars, type BallState } from './SceneOverlay';
 import { fitCourtScale } from './scale';
 import { useAnimatedPositions } from './useAnimatedPositions';
 import { useElementSize } from './useElementSize';
@@ -41,6 +42,10 @@ interface CourtStageProps {
   showZones?: boolean;
   /** Practice feedback per player id. */
   marks?: Readonly<Record<string, Mark>>;
+  /** The ball, for animated situations. */
+  ball?: BallState | null;
+  /** Ids of players drawn with a block bar at the net. */
+  blocking?: readonly string[];
 }
 
 export function CourtStage({
@@ -50,6 +55,8 @@ export function CourtStage({
   highlight = [],
   showZones = false,
   marks,
+  ball,
+  blocking = [],
 }: CourtStageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width } = useElementSize(containerRef);
@@ -100,6 +107,14 @@ export function CourtStage({
               }
             />
           ))}
+        </Layer>
+        <Layer listening={false}>
+          <BlockBars
+            scale={scale}
+            players={players.map((p) => ({ ...p, position: shown[p.id] ?? p.position }))}
+            blocking={blocking}
+          />
+          {ball && <Ball scale={scale} ball={ball} />}
         </Layer>
       </Stage>
     </div>

@@ -18,6 +18,7 @@ export const courtColors = {
   zoneLabel: 'rgba(255, 255, 255, 0.45)',
   highlight: '#facc15',
   correct: '#22c55e',
+  ball: '#fde047',
   opponent: '#64748b',
   wrong: '#ef4444',
   roles: roleColors,
