@@ -2,6 +2,10 @@
 
 A read-only, static web app that teaches professional volleyball positioning with an interactive court. There is no backend, no accounts and no tracking; everything runs in the browser.
 
+**Live site:** https://mautyn.github.io/Vollyguide/
+
+**Live site:** https://mautyn.github.io/Vollyguide/
+
 ## Run locally
 
 Requires Node 22 (see `.nvmrc`).
@@ -36,5 +40,13 @@ For E2E tests, install the Playwright browser once: `npx playwright install chro
 - `src/court/` – Konva court components (the only place that converts meters to pixels)
 - `src/pages/`, `src/components/`, `src/state/` – React UI and Zustand store
 - `e2e/` – Playwright tests
+
+## Deployment
+
+Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/deploy.yml`). The production build is served from `/Vollyguide/`; `dist/404.html` is a copy of `index.html` so deep links such as `/Vollyguide/court` work.
+
+## Deployment
+
+Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/deploy.yml`). The production build is served from `/Vollyguide/`; `dist/404.html` is a copy of `index.html` so deep links such as `/Vollyguide/court` work.
 
 See `CLAUDE.md` for the court coordinate system and contribution rules.

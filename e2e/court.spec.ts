@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
 
 test('court page loads and shows 6 players', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await page.getByRole('link', { name: 'Open the court' }).click();
 
-  await expect(page).toHaveURL(/\/court$/);
+  await expect(page).toHaveURL(/\/Vollyguide\/court$/);
   await expect(page.getByTestId('court-stage').locator('canvas').first()).toBeVisible();
   await expect(page.getByTestId('player')).toHaveCount(6);
 
@@ -17,7 +17,7 @@ test('court page loads and shows 6 players', async ({ page }) => {
 });
 
 test('dragging a player updates its position in meters', async ({ page }) => {
-  await page.goto('/court');
+  await page.goto('court');
   const setter = page.getByTestId('player').first();
   await expect(setter).toHaveText('S Setter: x 7.5 m, y 3.0 m');
 
