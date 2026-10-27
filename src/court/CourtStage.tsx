@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { Layer, Stage } from 'react-konva';
 import { useCourtStore } from '../state/courtStore';
 import { strings } from '../strings';
 import { CourtLines } from './CourtLines';
 import { PlayerToken } from './PlayerToken';
 import { fitCourtScale } from './scale';
+import { useAnimatedPositions } from './useAnimatedPositions';
 import { useElementSize } from './useElementSize';
 
 /** Upper bound for the court height so the page stays usable on large screens. */
@@ -15,6 +16,12 @@ export function CourtStage() {
   const { width } = useElementSize(containerRef);
   const players = useCourtStore((s) => s.players);
   const movePlayer = useCourtStore((s) => s.movePlayer);
+  const transition = useCourtStore((s) => s.transition);
+  const target = useMemo(
+    () => Object.fromEntries(players.map((p) => [p.id, p.position])),
+    [players],
+  );
+  const shown = useAnimatedPositions(target, transition);
 
   const maxHeight = Math.min(MAX_STAGE_HEIGHT, Math.max(400, window.innerHeight - 160));
   const scale = fitCourtScale(width || 360, maxHeight);
@@ -33,7 +40,12 @@ export function CourtStage() {
         </Layer>
         <Layer>
           {players.map((player) => (
-            <PlayerToken key={player.id} player={player} scale={scale} onMove={movePlayer} />
+            <PlayerToken
+              key={player.id}
+              player={{ ...player, position: shown[player.id] ?? player.position }}
+              scale={scale}
+              onMove={movePlayer}
+            />
           ))}
         </Layer>
       </Stage>

@@ -45,3 +45,48 @@ test('picking a rotation moves the players to its base positions', async ({ page
   await expect(page.getByTestId('player').first()).toHaveText('S Setter: x 1.5 m, y 7.5 m');
   await expect(page.getByRole('status')).toHaveText(/legal/);
 });
+
+test('switching to Receive in rotation 1 shows the legal serve-receive formation', async ({
+  page,
+}) => {
+  await page.goto('court');
+  await page.getByRole('button', { name: 'Receive' }).click();
+
+  await expect(page.getByRole('button', { name: 'Receive' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(page.getByTestId('player')).toHaveText([
+    'S Setter: x 8.5 m, y 3.5 m',
+    'OH1 Outside hitter: x 7.5 m, y 4.0 m',
+    'MB2 Middle blocker: x 4.5 m, y 8.5 m',
+    'OPP Opposite: x 1.0 m, y 8.5 m',
+    'OH2 Outside hitter: x 1.5 m, y 4.0 m',
+    'MB1 Middle blocker: x 4.5 m, y 4.0 m',
+  ]);
+  await expect(page.getByRole('status')).toHaveText(/legal/);
+  await expect(page.getByTestId('formation-note')).toContainText('Setter in 1');
+
+  // After the animation the setter is drawn at its receive spot.
+  await expect
+    .poll(() =>
+      page.evaluate(() => {
+        const konva = (
+          window as unknown as {
+            Konva?: { stages: { find(s: string): { x(): number; y(): number }[] }[] };
+          }
+        ).Konva;
+        const setter = konva?.stages[0]?.find('.player')[0];
+        return setter ? [Math.round(setter.x()), Math.round(setter.y())] : null;
+      }),
+    )
+    .toEqual(await expectedSetterPixels(page));
+});
+
+/** Pixel position of (8.5 m, 3.5 m) on the stage: 3 m free zone, our end line at the bottom. */
+async function expectedSetterPixels(page: import('@playwright/test').Page) {
+  const box = await page.getByTestId('court-stage').locator('canvas').first().boundingBox();
+  if (!box) throw new Error('canvas not visible');
+  const pxPerMeter = box.width / 15;
+  return [Math.round((8.5 + 3) * pxPerMeter), Math.round((18 + 3 - 3.5) * pxPerMeter)];
+}

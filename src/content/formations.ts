@@ -1,4 +1,4 @@
-import type { Player, Point, Role, Rotation, System, Zone, ZoneMap } from '../domain/types';
+import type { Phase, Player, Point, Role, Rotation, System, Zone, ZoneMap } from '../domain/types';
 
 export interface FormationPlayer {
   id: string;
@@ -12,6 +12,9 @@ export interface Formation {
   id: string;
   system: System;
   rotation: Rotation;
+  phase: Phase;
+  /** One sentence explaining the key idea of this formation. */
+  note?: string;
   /** Players at the moment of serve, one per zone. */
   players: FormationPlayer[];
 }
@@ -31,6 +34,7 @@ export const BASE_5_1_ROTATION_1: Formation = {
   id: '5-1-r1-base',
   system: '5-1',
   rotation: 1,
+  phase: 'base',
   players: [
     { id: 's', role: 'S', label: 'S', zone: 1, position: BASE_SPOTS[1] },
     { id: 'oh1', role: 'OH', label: 'OH1', zone: 2, position: BASE_SPOTS[2] },

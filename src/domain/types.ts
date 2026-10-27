@@ -13,7 +13,8 @@ export type Zone = 1 | 2 | 3 | 4 | 5 | 6;
 /** Rotation number: the zone the setter occupies at the moment of serve in a 5-1. */
 export type Rotation = 1 | 2 | 3 | 4 | 5 | 6;
 
-export type Phase = 'serve' | 'receive' | 'attack' | 'defense' | 'transition';
+/** `base` is where players stand by default in a rotation; the others are phases of a rally. */
+export type Phase = 'base' | 'serve' | 'receive' | 'attack' | 'defense' | 'transition';
 
 export type System = '5-1' | '4-2' | '6-2';
 

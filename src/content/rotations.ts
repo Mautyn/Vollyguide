@@ -42,7 +42,7 @@ function buildBaseRotation(rotation: Rotation): Formation {
     (a, b) => start.findIndex((p) => p.id === a.id) - start.findIndex((p) => p.id === b.id),
   );
 
-  return { id: `5-1-r${rotation}-base`, system: '5-1', rotation, players };
+  return { id: `5-1-r${rotation}-base`, system: '5-1', rotation, phase: 'base', players };
 }
 
 export const BASE_5_1_ROTATIONS: Readonly<Record<Rotation, Formation>> = {

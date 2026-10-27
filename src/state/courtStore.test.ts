@@ -3,7 +3,10 @@ import { FREE_ZONE } from '../domain/court';
 import { lineupFromState, useCourtStore } from './courtStore';
 
 describe('courtStore', () => {
-  beforeEach(() => useCourtStore.getState().setRotation(1));
+  beforeEach(() => {
+    useCourtStore.getState().setPhase('base');
+    useCourtStore.getState().setRotation(1);
+  });
 
   it('starts with six players of our team', () => {
     const { players } = useCourtStore.getState();
@@ -46,6 +49,33 @@ describe('courtStore', () => {
     expect(players.find((p) => p.id === 's')?.position).toEqual({ x: 1.5, y: 3 });
   });
 
+  it('starts in the base phase and switches to serve receive', () => {
+    expect(useCourtStore.getState().phase).toBe('base');
+    useCourtStore.getState().setPhase('receive');
+    const { phase, players } = useCourtStore.getState();
+    expect(phase).toBe('receive');
+    expect(players.find((p) => p.id === 's')?.position).toEqual({ x: 8.5, y: 3.5 });
+  });
+
+  it('keeps the phase when the rotation changes', () => {
+    useCourtStore.getState().setPhase('receive');
+    useCourtStore.getState().setRotation(2);
+    const { phase, players } = useCourtStore.getState();
+    expect(phase).toBe('receive');
+    expect(players.find((p) => p.id === 's')?.position).toEqual({ x: 6, y: 8.6 });
+  });
+
+  it('records where players stood before a formation change, but not for drags', () => {
+    const before = useCourtStore.getState().transition.version;
+    useCourtStore.getState().movePlayer('s', { x: 8, y: 2 });
+    expect(useCourtStore.getState().transition.version).toBe(before);
+
+    useCourtStore.getState().setPhase('receive');
+    const { transition } = useCourtStore.getState();
+    expect(transition.version).toBe(before + 1);
+    expect(transition.from.s).toEqual({ x: 8, y: 2 });
+  });
+
   it('resets to the base formation', () => {
     useCourtStore.getState().movePlayer('s', { x: 0, y: 0 });
     useCourtStore.getState().reset();
@@ -55,7 +85,10 @@ describe('courtStore', () => {
 });
 
 describe('lineupFromState', () => {
-  beforeEach(() => useCourtStore.getState().setRotation(1));
+  beforeEach(() => {
+    useCourtStore.getState().setPhase('base');
+    useCourtStore.getState().setRotation(1);
+  });
 
   it('maps zones to the positions of the players standing there', () => {
     const { players, serveZones } = useCourtStore.getState();

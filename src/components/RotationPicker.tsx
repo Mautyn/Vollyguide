@@ -7,9 +7,9 @@ export function RotationPicker() {
   const setRotation = useCourtStore((s) => s.setRotation);
 
   return (
-    <fieldset className="rotation-picker">
+    <fieldset className="toggle-group">
       <legend>{strings.court.rotationGroup}</legend>
-      <div className="rotation-picker__buttons">
+      <div className="toggle-group__buttons">
         {ROTATION_ORDER.map((r) => (
           <button
             key={r}
@@ -22,7 +22,7 @@ export function RotationPicker() {
           </button>
         ))}
       </div>
-      <div className="rotation-picker__step">
+      <div className="toggle-group__step">
         <button type="button" onClick={() => setRotation(previousRotation(rotation))}>
           {strings.court.previousRotation}
         </button>
@@ -30,7 +30,7 @@ export function RotationPicker() {
           {strings.court.nextRotation}
         </button>
       </div>
-      <p className="rotation-picker__hint">{strings.court.rotationHint}</p>
+      <p className="toggle-group__hint">{strings.court.rotationHint}</p>
     </fieldset>
   );
 }
