@@ -1,31 +1,42 @@
 import { create } from 'zustand';
-import { BASE_5_1_ROTATION_1, formationToPlayers, formationToZones } from '../content/formations';
+import { formationToPlayers, formationToZones } from '../content/formations';
+import { BASE_5_1_ROTATIONS } from '../content/rotations';
 import { clampToPlayableArea } from '../domain/court';
 import { ZONES } from '../domain/zones';
-import type { Player, Point, ZoneMap } from '../domain/types';
+import type { Player, Point, Rotation, ZoneMap } from '../domain/types';
 
 interface CourtState {
+  rotation: Rotation;
   /** Positions are in meters. */
   players: Player[];
   /** Which player id stands in each zone at the moment of serve. */
   serveZones: ZoneMap<string>;
   movePlayer: (id: string, position: Point) => void;
+  /** Loads a rotation's base positions, discarding any drags. */
+  setRotation: (rotation: Rotation) => void;
+  /** Restores the current rotation's base positions. */
   reset: () => void;
 }
 
-const initialPlayers = () => formationToPlayers(BASE_5_1_ROTATION_1);
-const initialZones = () => formationToZones(BASE_5_1_ROTATION_1);
+function rotationState(rotation: Rotation) {
+  const formation = BASE_5_1_ROTATIONS[rotation];
+  return {
+    rotation,
+    players: formationToPlayers(formation),
+    serveZones: formationToZones(formation),
+  };
+}
 
-export const useCourtStore = create<CourtState>()((set) => ({
-  players: initialPlayers(),
-  serveZones: initialZones(),
+export const useCourtStore = create<CourtState>()((set, get) => ({
+  ...rotationState(1),
   movePlayer: (id, position) =>
     set((state) => ({
       players: state.players.map((p) =>
         p.id === id ? { ...p, position: clampToPlayableArea(position) } : p,
       ),
     })),
-  reset: () => set({ players: initialPlayers(), serveZones: initialZones() }),
+  setRotation: (rotation) => set(rotationState(rotation)),
+  reset: () => set(rotationState(get().rotation)),
 }));
 
 /** Positions of the players standing in each zone, or null if a zone is unassigned. */
