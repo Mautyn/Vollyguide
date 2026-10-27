@@ -14,6 +14,7 @@ Vite, React, TypeScript (strict), konva/react-konva, Zustand, React Router, Vite
 ## Court and domain rules
 - Court 9 m wide x 18 m long. Coordinates in meters: x = 0..9 left to right as seen from behind our own end line; y = 0 at our end line, net at y = 9, opponent end line at y = 18. Our attack line y = 6, opponent attack line y = 12.
 - Store every position in meters. Convert to pixels only in src/court/.
+- Show positions to users as distance from the net (0 m at the net for both teams) and from the team's own left sideline (`toNetRelative`); stored coordinates stay as defined above.
 - Roles: S (setter), OH (outside hitter), OPP (opposite), MB (middle blocker), L (libero).
 - Zones: 1 right back, 2 right front, 3 middle front, 4 left front, 5 left back, 6 middle back.
 - Overlap rule at the moment of serve (judged by feet position):

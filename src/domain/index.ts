@@ -8,3 +8,4 @@ export * from './grading';
 export * from './libero';
 export * from './opponent';
 export * from './scene';
+export * from './netRelative';

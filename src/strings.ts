@@ -32,7 +32,10 @@ export const strings = {
   },
   court: {
     title: 'Court',
-    hint: 'Drag the players. Positions are shown in meters from the left sideline (x) and our end line (y).',
+    hint: 'Drag the players. Positions are measured from the team’s own left sideline and from the net: 0 m at the net, 3 m at the attack line, 9 m at the end line.',
+    /** How every position is shown to users (see toNetRelative). */
+    position: (fromLeft: number, fromNet: number) =>
+      `${fromLeft.toFixed(1)} m from left · ${fromNet.toFixed(1)} m from net`,
     reset: 'Reset positions',
     playersHeading: 'Players',
     formationHeading: 'Formation',

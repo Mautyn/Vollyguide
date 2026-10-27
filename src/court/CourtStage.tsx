@@ -4,6 +4,7 @@ import type { Transition } from '../domain/interpolate';
 import type { Player, Point } from '../domain/types';
 import { strings } from '../strings';
 import { CourtLines } from './CourtLines';
+import { DistanceMarkers } from './DistanceMarkers';
 import { PlayerToken, type Mark } from './PlayerToken';
 import { Ball, BlockBars, type BallState } from './SceneOverlay';
 import { fitCourtScale } from './scale';
@@ -89,6 +90,7 @@ export function CourtStage({
         {/* Remount once fonts load: Konva measures text when it is created. */}
         <Layer key={fontsReady ? 'fonts' : 'fallback'}>
           {showZones && <ZoneLabels scale={scale} />}
+          <DistanceMarkers scale={scale} />
           {players.map((player) => (
             <PlayerToken
               key={player.id}
