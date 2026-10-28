@@ -2,6 +2,8 @@ import type { KonvaEventObject } from 'konva/lib/Node';
 import { Circle, Group, Text } from 'react-konva';
 import { clampToPlayableArea } from '../domain/court';
 import type { Player, Point } from '../domain/types';
+import { localizeLabel } from '../i18n/labels';
+import { useLocale } from '../state/localeStore';
 import { courtColors } from './colors';
 import type { CourtScale } from './scale';
 
@@ -34,6 +36,7 @@ export function PlayerToken({
 }: PlayerTokenProps) {
   const pixel = scale.toPixels(player.position);
   const isOpponent = player.team === 'them';
+  const locale = useLocale();
   const radius = Math.max(MIN_RADIUS_PX, scale.lengthToPixels(RADIUS_M));
 
   const handleDrag = (event: KonvaEventObject<DragEvent>) => {
@@ -90,7 +93,7 @@ export function PlayerToken({
         shadowOffsetY={2}
       />
       <Text
-        text={player.label}
+        text={localizeLabel(player.label, player.role, locale)}
         fill={courtColors.playerText}
         fontFamily="Inter Variable, system-ui, sans-serif"
         fontStyle="bold"

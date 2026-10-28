@@ -1,7 +1,9 @@
 import { Navigate, NavLink, useParams } from 'react-router';
 import { ScenePlayer } from '../components/tactics/ScenePlayer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { localizeTopic } from '../content/i18n/localize';
 import { findSituation, findTopic, TACTICS, type Situation } from '../content/tactics';
+import { useLocale } from '../state/localeStore';
 import { cn } from '../lib/utils';
 import { strings } from '../strings';
 import { NotFoundPage } from './NotFoundPage';
@@ -23,14 +25,16 @@ const pillClass = ({ isActive }: { isActive: boolean }) =>
   );
 
 export function TacticsPage() {
+  const locale = useLocale();
   const { topicId, situationId } = useParams();
   const first = TACTICS[0]!;
 
   if (!topicId) {
     return <Navigate replace to={`/tactics/${first.id}/${first.situations[0]!.id}`} />;
   }
-  const topic = findTopic(topicId);
-  if (!topic) return <NotFoundPage />;
+  const found = findTopic(topicId);
+  if (!found) return <NotFoundPage />;
+  const topic = localizeTopic(found, locale);
   if (!situationId) {
     return <Navigate replace to={`/tactics/${topic.id}/${topic.situations[0]!.id}`} />;
   }
@@ -48,7 +52,7 @@ export function TacticsPage() {
         aria-label={strings.tactics.topicsNav}
         className="inline-flex flex-wrap gap-1 rounded-lg bg-muted p-1"
       >
-        {TACTICS.map((t) => (
+        {TACTICS.map((t) => localizeTopic(t, locale)).map((t) => (
           <NavLink key={t.id} to={`/tactics/${t.id}`} className={tabClass}>
             {t.title}
           </NavLink>
