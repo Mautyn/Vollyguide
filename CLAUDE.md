@@ -34,7 +34,7 @@ Vite, React, TypeScript (strict), konva/react-konva, Zustand, React Router, Vite
 - For GitHub issues and PRs use the built-in GitHub tools or `gh api` (REST). `gh pr` and `gh issue` do not work in cloud sessions.
 - If an issue is ambiguous, comment a question on the issue and stop instead of guessing.
 - Don't add a dependency without stating why in the PR.
-- Keep UI text in one strings module (Polish translation planned).
+- Keep UI text in src/strings.ts, in English (`en`) and Polish (`pl`). Content translations live in src/content/i18n/; every new text needs both languages (tests check this).
 
 ## Future (do not build until an issue asks)
 - services/video/: Python pipeline for match video analysis.
