@@ -8,6 +8,7 @@ import { PhasePicker } from '../components/PhasePicker';
 import { PlayerList } from '../components/PlayerList';
 import { RoleLegend } from '../components/RoleLegend';
 import { RotationPicker } from '../components/RotationPicker';
+import { SystemPicker } from '../components/SystemPicker';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
@@ -31,6 +32,8 @@ export function CourtPage() {
   const reset = useCourtStore((s) => s.reset);
   const movePlayer = useCourtStore((s) => s.movePlayer);
   const transition = useCourtStore((s) => s.transition);
+  const system = useCourtStore((s) => s.system);
+  const setSystem = useCourtStore((s) => s.setSystem);
   const rotation = useCourtStore((s) => s.rotation);
   const setRotation = useCourtStore((s) => s.setRotation);
   const phase = useCourtStore((s) => s.phase);
@@ -64,6 +67,7 @@ export function CourtPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
+            <SystemPicker value={system} onChange={setSystem} />
             <RotationPicker value={rotation} onChange={setRotation} />
             <PhasePicker value={phase} onChange={setPhase} />
             <LiberoToggle />

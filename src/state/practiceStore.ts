@@ -4,7 +4,7 @@ import { formationToPlayers, formationToZones, type Formation } from '../content
 import { clampToPlayableArea } from '../domain/court';
 import { gradePlacement, type PlacementGrade, type TargetSpot } from '../domain/grading';
 import type { Transition } from '../domain/interpolate';
-import type { Player, Point, Rotation, ZoneMap } from '../domain/types';
+import type { Player, Point, Rotation, System, ZoneMap } from '../domain/types';
 import { withLibero } from '../content/libero';
 import { positionsById } from './courtStore';
 import { usePreferences } from './preferences';
@@ -18,8 +18,12 @@ const ROTATIONS: readonly Rotation[] = [1, 2, 3, 4, 5, 6];
 const PHASES: readonly FormationPhase[] = ['base', 'receive'];
 
 /** The task's target formation; with the libero switch on, L replaces the back-row MB. */
-export function practiceFormation(rotation: Rotation, phase: FormationPhase): Formation {
-  const formation = findFormation('5-1', rotation, phase)!;
+export function practiceFormation(
+  system: System,
+  rotation: Rotation,
+  phase: FormationPhase,
+): Formation {
+  const formation = findFormation(system, rotation, phase)!;
   return usePreferences.getState().useLibero ? withLibero(formation).formation : formation;
 }
 
@@ -47,6 +51,7 @@ export function pickRandomTask(
 }
 
 interface PracticeState {
+  system: System;
   rotation: Rotation;
   phase: FormationPhase;
   /** Positions in meters, as placed by the learner. */
@@ -55,6 +60,8 @@ interface PracticeState {
   /** Result of the last check; cleared when a player moves. */
   grade: PlacementGrade | null;
   transition: Transition;
+  /** Changes the system and restarts the current rotation and phase. */
+  setSystem: (system: System) => void;
   setTask: (rotation: Rotation, phase: FormationPhase) => void;
   randomTask: (random?: () => number) => void;
   movePlayer: (id: string, position: Point) => void;
@@ -63,9 +70,10 @@ interface PracticeState {
   tryAgain: () => void;
 }
 
-function taskState(rotation: Rotation, phase: FormationPhase) {
-  const formation = practiceFormation(rotation, phase);
+function taskState(system: System, rotation: Rotation, phase: FormationPhase) {
+  const formation = practiceFormation(system, rotation, phase);
   return {
+    system,
     rotation,
     phase,
     players: benchPlayers(formation),
@@ -81,10 +89,18 @@ export const usePracticeStore = create<PracticeState>()((set, get) => {
   });
 
   return {
-    ...taskState(1, 'base'),
+    ...taskState('5-1', 1, 'base'),
     transition: { version: 0, from: {} },
+    setSystem: (system) =>
+      set((state) => ({
+        ...taskState(system, state.rotation, state.phase),
+        transition: nextTransition(state),
+      })),
     setTask: (rotation, phase) =>
-      set((state) => ({ ...taskState(rotation, phase), transition: nextTransition(state) })),
+      set((state) => ({
+        ...taskState(state.system, rotation, phase),
+        transition: nextTransition(state),
+      })),
     randomTask: (random) => {
       const { rotation, phase } = pickRandomTask(get(), random);
       get().setTask(rotation, phase);
@@ -99,20 +115,20 @@ export const usePracticeStore = create<PracticeState>()((set, get) => {
     check: () =>
       set((state) => ({
         grade: gradePlacement(
-          targetSpots(practiceFormation(state.rotation, state.phase)),
+          targetSpots(practiceFormation(state.system, state.rotation, state.phase)),
           positionsById(state.players),
         ),
       })),
     showAnswer: () =>
       set((state) => ({
         grade: null,
-        players: formationToPlayers(practiceFormation(state.rotation, state.phase)),
+        players: formationToPlayers(practiceFormation(state.system, state.rotation, state.phase)),
         transition: nextTransition(state),
       })),
     tryAgain: () =>
       set((state) => ({
         grade: null,
-        players: benchPlayers(practiceFormation(state.rotation, state.phase)),
+        players: benchPlayers(practiceFormation(state.system, state.rotation, state.phase)),
         transition: nextTransition(state),
       })),
   };

@@ -17,7 +17,7 @@ function markNames(page: Page) {
 test('Show answer then Check scores 6 of 6 in rotation 1 base', async ({ page }) => {
   await page.goto('./');
   await page.getByRole('navigation').getByRole('link', { name: 'Practice' }).click();
-  await expect(page.getByTestId('practice-task')).toHaveText('Rotation 1, base');
+  await expect(page.getByTestId('practice-task')).toHaveText('5-1, rotation 1, base');
 
   await page.getByRole('button', { name: 'Show answer' }).click();
   await page.getByRole('button', { name: 'Check' }).click();
