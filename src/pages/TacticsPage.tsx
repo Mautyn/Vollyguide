@@ -81,6 +81,9 @@ function SituationText({ situation }: { situation: Situation }) {
     { title: strings.tactics.positioning, items: situation.positioning },
     { title: strings.tactics.execution, items: situation.execution },
     { title: strings.tactics.principles, items: situation.principles },
+    ...(situation.whoIsAttacking
+      ? [{ title: strings.tactics.whoIsAttacking, items: situation.whoIsAttacking }]
+      : []),
   ];
   return (
     <Card>

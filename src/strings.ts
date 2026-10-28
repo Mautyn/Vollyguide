@@ -125,6 +125,7 @@ export const strings = {
     positioning: 'Positioning',
     execution: 'Execution',
     principles: 'Key principles',
+    whoIsAttacking: 'Who is attacking?',
   },
   roles: {
     S: 'Setter',
