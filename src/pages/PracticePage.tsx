@@ -13,6 +13,8 @@ import { roleColors } from '../court/colors';
 import type { Mark } from '../court/PlayerToken';
 import { DEFAULT_TOLERANCE_M } from '../domain/grading';
 import { lineupFromState } from '../state/courtStore';
+import { localizeLabel } from '../i18n/labels';
+import { useLocale } from '../state/localeStore';
 import { usePracticeStore } from '../state/practiceStore';
 import { strings } from '../strings';
 import { cn } from '../lib/utils';
@@ -34,6 +36,7 @@ export function PracticePage() {
     showAnswer,
     tryAgain,
   } = usePracticeStore();
+  const locale = useLocale();
 
   const marks: Record<string, Mark> | undefined = grade
     ? Object.fromEntries(
@@ -134,7 +137,7 @@ export function PracticePage() {
                         className="w-11 border-transparent text-white"
                         style={{ backgroundColor: roleColors[player.role] }}
                       >
-                        {player.label}
+                        {localizeLabel(player.label, player.role, locale)}
                       </Badge>{' '}
                       <span className="font-medium">{strings.roles[player.role]}</span>{' '}
                       <span

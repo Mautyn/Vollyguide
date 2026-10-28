@@ -1,5 +1,7 @@
 import { courtColors, roleColors } from '../court/colors';
 import { toNetRelative } from '../domain/netRelative';
+import { localizeLabel } from '../i18n/labels';
+import { useLocale } from '../state/localeStore';
 import type { Player } from '../domain/types';
 import { strings } from '../strings';
 import { Badge } from './ui/badge';
@@ -25,6 +27,7 @@ export function PlayerList({
   label = strings.court.playersHeading,
   itemTestId = 'player',
 }: PlayerListProps) {
+  const locale = useLocale();
   return (
     <ul className="divide-y" aria-label={label}>
       {players.map((player) => (
@@ -40,7 +43,7 @@ export function PlayerList({
                 player.team === 'them' ? courtColors.opponent : roleColors[player.role],
             }}
           >
-            {player.label}
+            {localizeLabel(player.label, player.role, locale)}
           </Badge>{' '}
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
