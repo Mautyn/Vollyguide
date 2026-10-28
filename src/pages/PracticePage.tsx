@@ -4,6 +4,7 @@ import { OverlapStatus } from '../components/OverlapStatus';
 import { PhasePicker } from '../components/PhasePicker';
 import { RoleLegend } from '../components/RoleLegend';
 import { RotationPicker } from '../components/RotationPicker';
+import { SystemPicker } from '../components/SystemPicker';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -18,6 +19,8 @@ import { cn } from '../lib/utils';
 
 export function PracticePage() {
   const {
+    system,
+    setSystem,
     rotation,
     phase,
     players,
@@ -74,11 +77,12 @@ export function PracticePage() {
             </Button>
           </CardHeader>
           <CardContent className="space-y-5">
+            <SystemPicker value={system} onChange={setSystem} />
             <RotationPicker value={rotation} onChange={(r) => setTask(r, phase)} />
             <PhasePicker value={phase} onChange={(p) => setTask(rotation, p)} />
             <LiberoToggle />
             <p className="text-sm font-medium" data-testid="practice-task">
-              {strings.practice.task(rotation, strings.court.phases[phase])}
+              {strings.practice.task(system, rotation, strings.court.phases[phase])}
             </p>
             <div className="flex flex-wrap gap-2">
               <Button onClick={check}>

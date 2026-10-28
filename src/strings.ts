@@ -62,12 +62,20 @@ export const strings = {
       'Shows the opponent’s serving lineup (a 5-1 in rotation 1) on the far side of the net.',
     opponentOnlyInReceive: 'Available in the receive phase.',
     opponentHeading: 'Opponent',
+    systemGroup: 'System',
+    systemHints: {
+      '5-1': 'One setter sets in all six rotations; the opposite plays opposite them.',
+      '6-2':
+        'Two setters: the one in the back row sets, the one in the front row attacks on the right. Rotations 4–6 repeat 1–3 with the setters swapped.',
+      '4-2':
+        'Two setters: the one in the front row sets from zone 3, so only two front-row players attack. Rotations 4–6 repeat 1–3 with the setters swapped.',
+    },
     rotationGroup: 'Rotation',
     rotation: (rotation: number) => `Rotation ${rotation}`,
     previousRotation: 'Previous rotation',
     nextRotation: 'Next rotation',
     rotationHint:
-      'Rotation number = the zone the setter stands in. Played in the order 1, 6, 5, 4, 3, 2.',
+      'Rotation number = the zone the setter (S1 with two setters) stands in. Played in the order 1, 6, 5, 4, 3, 2.',
   },
   lessons: {
     title: 'Lessons',
@@ -86,7 +94,8 @@ export const strings = {
     title: 'Practice',
     hint: 'Pick a task, drag the players from the bench to where they should stand at the moment of serve, then check.',
     taskHeading: 'Task',
-    task: (rotation: number, phase: string) => `Rotation ${rotation}, ${phase.toLowerCase()}`,
+    task: (system: string, rotation: number, phase: string) =>
+      `${system}, rotation ${rotation}, ${phase.toLowerCase()}`,
     randomTask: 'Random task',
     check: 'Check',
     showAnswer: 'Show answer',

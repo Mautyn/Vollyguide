@@ -47,9 +47,9 @@ describe('PracticePage', () => {
     render(<PracticePage />);
     await userEvent.click(screen.getByRole('radio', { name: 'Rotation 4' }));
     await userEvent.click(screen.getByRole('radio', { name: 'Receive' }));
-    expect(screen.getByTestId('practice-task')).toHaveTextContent('Rotation 4, receive');
+    expect(screen.getByTestId('practice-task')).toHaveTextContent('5-1, rotation 4, receive');
 
     await userEvent.click(screen.getByRole('button', { name: 'Random task' }));
-    expect(screen.getByTestId('practice-task')).not.toHaveTextContent('Rotation 4, receive');
+    expect(screen.getByTestId('practice-task')).not.toHaveTextContent('5-1, rotation 4, receive');
   });
 });
