@@ -3,9 +3,10 @@ import { formationFor, useCourtStore } from '../state/courtStore';
 
 /** The key idea of the formation on court, written in src/content/. */
 export function FormationNote() {
+  const system = useCourtStore((s) => s.system);
   const rotation = useCourtStore((s) => s.rotation);
   const phase = useCourtStore((s) => s.phase);
-  const note = formationFor(rotation, phase).note;
+  const note = formationFor(system, rotation, phase).note;
 
   if (!note) return null;
   return (
