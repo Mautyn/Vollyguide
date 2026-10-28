@@ -1,12 +1,15 @@
 import { Lightbulb } from 'lucide-react';
+import { localizeNote } from '../content/i18n/localize';
 import { formationFor, useCourtStore } from '../state/courtStore';
+import { useLocale } from '../state/localeStore';
 
 /** The key idea of the formation on court, written in src/content/. */
 export function FormationNote() {
   const system = useCourtStore((s) => s.system);
   const rotation = useCourtStore((s) => s.rotation);
   const phase = useCourtStore((s) => s.phase);
-  const note = formationFor(system, rotation, phase).note;
+  const locale = useLocale();
+  const note = localizeNote(formationFor(system, rotation, phase), locale);
 
   if (!note) return null;
   return (

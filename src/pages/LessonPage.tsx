@@ -5,7 +5,9 @@ import { OverlapStatus } from '../components/OverlapStatus';
 import { RoleLegend } from '../components/RoleLegend';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
+import { localizeLesson } from '../content/i18n/localize';
 import { findLesson, resolveCourt, type Lesson } from '../content/lessons';
+import { useLocale } from '../state/localeStore';
 import { CourtStage } from '../court/CourtStage';
 import type { Transition } from '../domain/interpolate';
 import { lineupFromState, positionsById } from '../state/courtStore';
@@ -16,8 +18,10 @@ import { NotFoundPage } from './NotFoundPage';
 
 export function LessonPage() {
   const { lessonId } = useParams();
-  const lesson = findLesson(lessonId);
-  if (!lesson) return <NotFoundPage />;
+  const locale = useLocale();
+  const found = findLesson(lessonId);
+  if (!found) return <NotFoundPage />;
+  const lesson = localizeLesson(found, locale);
   // Fresh state per lesson, so animations never run between lessons.
   return <LessonView key={lesson.id} lesson={lesson} />;
 }

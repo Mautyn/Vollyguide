@@ -2,10 +2,13 @@ import { ArrowRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router';
 import { Badge } from '../components/ui/badge';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
+import { localizeLesson } from '../content/i18n/localize';
 import { LESSONS } from '../content/lessons';
+import { useLocale } from '../state/localeStore';
 import { strings } from '../strings';
 
 export function LessonsPage() {
+  const locale = useLocale();
   return (
     <div className="space-y-6">
       <div className="space-y-1.5">
@@ -13,7 +16,7 @@ export function LessonsPage() {
         <p className="text-muted-foreground">{strings.lessons.intro}</p>
       </div>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {LESSONS.map((lesson, i) => (
+        {LESSONS.map((l) => localizeLesson(l, locale)).map((lesson, i) => (
           <li key={lesson.id}>
             <Link
               to={`/lessons/${lesson.id}`}
