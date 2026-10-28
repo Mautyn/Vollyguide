@@ -79,3 +79,29 @@ test('coverage: the outside hitter attack plays to the end', async ({ page }) =>
     'The block sends the ball straight back. It drops into the cup, where the setter is already low to dig it.',
   );
 });
+
+test('defense: every situation plays to its final caption', async ({ page }) => {
+  const situations = [
+    ['Attack from the opponent’s left side', 'the cross-court defender digs it.'],
+    ['Attack from the opponent’s right side', 'as cross-court defender, digs it.'],
+    ['Attack from the middle', 'the middle-back digs it deep in the middle.'],
+    ['Tip over the block', 'calls “Mine!” and digs it'],
+  ] as const;
+
+  await page.goto('tactics');
+  await page
+    .getByRole('navigation', { name: 'Topics' })
+    .getByRole('link', { name: 'Defense' })
+    .click();
+  await expect(page.getByRole('heading', { name: 'Who is attacking?' })).toBeVisible();
+
+  for (const [title, ending] of situations) {
+    await page
+      .getByRole('navigation', { name: 'Situations' })
+      .getByRole('link', { name: title })
+      .click();
+    await expect(page.getByRole('heading', { name: title, level: 2 })).toBeVisible();
+    await expect(page.getByTestId('moment-counter')).toHaveText('Moment 4 of 4', { timeout: 6000 });
+    await expect(page.getByTestId('scene-caption')).toContainText(ending);
+  }
+});
