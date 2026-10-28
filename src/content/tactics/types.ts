@@ -17,6 +17,8 @@ export interface Situation {
   execution: string[];
   /** 2–4 short principles. */
   principles: string[];
+  /** "Who is attacking?": what changes with the attacker's role (defense situations). */
+  whoIsAttacking?: string[];
 }
 
 export interface TacticsTopic {

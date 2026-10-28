@@ -1,11 +1,12 @@
 import { BLOCKING } from './blocking';
 import { COVERAGE } from './coverage';
+import { DEFENSE } from './defense';
 import type { Situation, TacticsTopic } from './types';
 
 export type { Situation, TacticsTopic } from './types';
 
-/** Topics in tab order. Defense follows in its own issue. */
-export const TACTICS: readonly TacticsTopic[] = [BLOCKING, COVERAGE];
+/** Topics in tab order. */
+export const TACTICS: readonly TacticsTopic[] = [BLOCKING, DEFENSE, COVERAGE];
 
 export function findTopic(id: string | undefined): TacticsTopic | undefined {
   return TACTICS.find((topic) => topic.id === id);
