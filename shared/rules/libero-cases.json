@@ -1,0 +1,186 @@
+{
+  "description": "Libero rules at the moment of serve: never in the front row, at most one on court. Zones map zone -> player id; roles map player id -> role. Violations are listed in the order findLiberoViolations returns them. Run by Vitest (src/domain) and pytest (services/video).",
+  "cases": [
+    {
+      "name": "no libero",
+      "zones": {
+        "1": "s",
+        "2": "oh1",
+        "3": "mb2",
+        "4": "opp",
+        "5": "oh2",
+        "6": "mb1"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": []
+    },
+    {
+      "name": "libero in the back row",
+      "zones": {
+        "1": "s",
+        "2": "oh1",
+        "3": "mb2",
+        "4": "opp",
+        "5": "oh2",
+        "6": "l"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": []
+    },
+    {
+      "name": "libero serving from zone 1 (USAV/NCAA)",
+      "zones": {
+        "1": "l",
+        "2": "oh1",
+        "3": "mb2",
+        "4": "opp",
+        "5": "oh2",
+        "6": "s"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": []
+    },
+    {
+      "name": "libero in zone 4",
+      "zones": {
+        "1": "s",
+        "2": "oh1",
+        "3": "mb2",
+        "4": "l",
+        "5": "oh2",
+        "6": "mb1"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": [
+        {
+          "kind": "front-row",
+          "zone": 4,
+          "id": "l"
+        }
+      ]
+    },
+    {
+      "name": "libero in zone 2",
+      "zones": {
+        "1": "s",
+        "2": "l",
+        "3": "mb2",
+        "4": "opp",
+        "5": "oh2",
+        "6": "mb1"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": [
+        {
+          "kind": "front-row",
+          "zone": 2,
+          "id": "l"
+        }
+      ]
+    },
+    {
+      "name": "two liberos in the back row",
+      "zones": {
+        "1": "s",
+        "2": "oh1",
+        "3": "mb2",
+        "4": "opp",
+        "5": "l",
+        "6": "l2"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": [
+        {
+          "kind": "too-many",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "two liberos, one in the front row",
+      "zones": {
+        "1": "s",
+        "2": "oh1",
+        "3": "l",
+        "4": "opp",
+        "5": "oh2",
+        "6": "l2"
+      },
+      "roles": {
+        "s": "S",
+        "oh1": "OH",
+        "mb2": "MB",
+        "opp": "OPP",
+        "oh2": "OH",
+        "mb1": "MB",
+        "l": "L",
+        "l2": "L"
+      },
+      "violations": [
+        {
+          "kind": "front-row",
+          "zone": 3,
+          "id": "l"
+        },
+        {
+          "kind": "too-many",
+          "count": 2
+        }
+      ]
+    }
+  ]
+}

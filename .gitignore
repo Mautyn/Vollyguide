@@ -7,3 +7,14 @@ blob-report
 *.local
 .env*
 .DS_Store
+
+# Video analysis (services/video/): videos and results stay on the user's computer.
+*.mp4
+*.mov
+*.mkv
+services/video/output/
+services/video/.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/

@@ -5,3 +5,4 @@ test-results
 package-lock.json
 CLAUDE.md
 .claude/settings.json
+services/video/data/formations.json
