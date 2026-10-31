@@ -3,7 +3,7 @@ import type { Formation } from './formations';
 import { systemFormation } from './systems';
 
 /** Phases that have formations in the content. */
-export type FormationPhase = Extract<Phase, 'base' | 'receive'>;
+export type FormationPhase = Extract<Phase, 'base' | 'serve' | 'receive'>;
 
 /** Looks up a formation, or undefined if the content has none for it. */
 export function findFormation(

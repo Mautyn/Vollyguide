@@ -9,19 +9,22 @@ import { withLibero } from '../content/libero';
 import { positionsById } from './courtStore';
 import { usePreferences } from './preferences';
 
+/** Practice covers the base and receive phases (the serve phase is Court-only for now). */
+export type PracticePhase = Extract<FormationPhase, 'base' | 'receive'>;
+
 /** Players wait on the bench left of the court before the learner places them. */
 export const BENCH_X = -1.5;
 const BENCH_FIRST_Y = 0.75;
 const BENCH_STEP_Y = 1.5;
 
 const ROTATIONS: readonly Rotation[] = [1, 2, 3, 4, 5, 6];
-const PHASES: readonly FormationPhase[] = ['base', 'receive'];
+const PHASES: readonly PracticePhase[] = ['base', 'receive'];
 
 /** The task's target formation; with the libero switch on, L replaces the back-row MB. */
 export function practiceFormation(
   system: System,
   rotation: Rotation,
-  phase: FormationPhase,
+  phase: PracticePhase,
 ): Formation {
   const formation = findFormation(system, rotation, phase)!;
   return usePreferences.getState().useLibero ? withLibero(formation).formation : formation;
@@ -41,9 +44,9 @@ export function targetSpots(formation: Formation): TargetSpot[] {
 
 /** A random task different from the current one. `random` returns a number in [0, 1). */
 export function pickRandomTask(
-  current: { rotation: Rotation; phase: FormationPhase },
+  current: { rotation: Rotation; phase: PracticePhase },
   random: () => number = Math.random,
-): { rotation: Rotation; phase: FormationPhase } {
+): { rotation: Rotation; phase: PracticePhase } {
   const tasks = ROTATIONS.flatMap((rotation) =>
     PHASES.map((phase) => ({ rotation, phase })),
   ).filter((t) => t.rotation !== current.rotation || t.phase !== current.phase);
@@ -53,7 +56,7 @@ export function pickRandomTask(
 interface PracticeState {
   system: System;
   rotation: Rotation;
-  phase: FormationPhase;
+  phase: PracticePhase;
   /** Positions in meters, as placed by the learner. */
   players: Player[];
   zones: ZoneMap<string>;
@@ -62,7 +65,7 @@ interface PracticeState {
   transition: Transition;
   /** Changes the system and restarts the current rotation and phase. */
   setSystem: (system: System) => void;
-  setTask: (rotation: Rotation, phase: FormationPhase) => void;
+  setTask: (rotation: Rotation, phase: PracticePhase) => void;
   randomTask: (random?: () => number) => void;
   movePlayer: (id: string, position: Point) => void;
   check: () => void;
@@ -70,7 +73,7 @@ interface PracticeState {
   tryAgain: () => void;
 }
 
-function taskState(system: System, rotation: Rotation, phase: FormationPhase) {
+function taskState(system: System, rotation: Rotation, phase: PracticePhase) {
   const formation = practiceFormation(system, rotation, phase);
   return {
     system,

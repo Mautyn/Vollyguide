@@ -3,6 +3,7 @@ import type { Point, Rotation, System, ZoneMap } from '../domain/types';
 import { isFrontRow, ZONES } from '../domain/zones';
 import { BASE_SPOTS, type Formation, type FormationPlayer } from './formations';
 import { RECEIVE_5_1_ROTATIONS } from './receive';
+import { serveFormation } from './serve';
 import { BASE_5_1_ROTATIONS, ROTATION_ORDER } from './rotations';
 
 export const SYSTEMS: readonly System[] = ['5-1', '6-2', '4-2'];
@@ -186,12 +187,21 @@ const RECEIVES: Record<System, Record<Rotation, Formation>> = {
   '4-2': Object.fromEntries(ROTATIONS.map((r) => [r, receive42(r)])) as Record<Rotation, Formation>,
 };
 
+const SERVES: Record<System, Record<Rotation, Formation>> = Object.fromEntries(
+  SYSTEMS.map((system) => [
+    system,
+    Object.fromEntries(ROTATIONS.map((r) => [r, serveFormation(BASES[system][r])])),
+  ]),
+) as Record<System, Record<Rotation, Formation>>;
+
+const BY_PHASE = { base: BASES, serve: SERVES, receive: RECEIVES } as const;
+
 export function systemFormation(
   system: System,
   rotation: Rotation,
-  phase: 'base' | 'receive',
+  phase: 'base' | 'serve' | 'receive',
 ): Formation {
-  return (phase === 'receive' ? RECEIVES : BASES)[system][rotation];
+  return BY_PHASE[phase][system][rotation];
 }
 
 /**
