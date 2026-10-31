@@ -1,0 +1,409 @@
+{
+  "description": "Overlap rule at the moment of serve. Lineups map zone -> feet position in meters (y = 0 our end line, net at y = 9). Violations are listed in the order findOverlapViolations returns them. Run by Vitest (src/domain) and pytest (services/video).",
+  "cases": [
+    {
+      "name": "base spots are legal",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": []
+    },
+    {
+      "name": "5-1 rotation 1 receive (setter hides behind zone 2)",
+      "lineup": {
+        "1": {
+          "x": 8.5,
+          "y": 3.5
+        },
+        "2": {
+          "x": 7.5,
+          "y": 5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": []
+    },
+    {
+      "name": "zone 4 level with zone 5 (equal y is a fault)",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 3
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "front-back",
+          "front": 4,
+          "back": 5
+        }
+      ]
+    },
+    {
+      "name": "zone 3 behind zone 6",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 2.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "front-back",
+          "front": 3,
+          "back": 6
+        }
+      ]
+    },
+    {
+      "name": "zone 2 behind zone 1",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 8
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "front-back",
+          "front": 2,
+          "back": 1
+        }
+      ]
+    },
+    {
+      "name": "zone 4 right of zone 3",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "left-right",
+          "left": 4,
+          "right": 3
+        }
+      ]
+    },
+    {
+      "name": "zone 3 level with zone 2 (equal x is a fault)",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 7.5,
+          "y": 7
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "left-right",
+          "left": 3,
+          "right": 2
+        }
+      ]
+    },
+    {
+      "name": "zone 5 right of zone 6",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "left-right",
+          "left": 5,
+          "right": 6
+        }
+      ]
+    },
+    {
+      "name": "zone 6 right of zone 1",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 4.5,
+          "y": 7.5
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 8,
+          "y": 2
+        }
+      },
+      "violations": [
+        {
+          "kind": "left-right",
+          "left": 6,
+          "right": 1
+        }
+      ]
+    },
+    {
+      "name": "front and back rows swapped: three front-back faults",
+      "lineup": {
+        "1": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "2": {
+          "x": 7.5,
+          "y": 3
+        },
+        "3": {
+          "x": 4.5,
+          "y": 3
+        },
+        "4": {
+          "x": 1.5,
+          "y": 3
+        },
+        "5": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "6": {
+          "x": 4.5,
+          "y": 7.5
+        }
+      },
+      "violations": [
+        {
+          "kind": "front-back",
+          "front": 4,
+          "back": 5
+        },
+        {
+          "kind": "front-back",
+          "front": 3,
+          "back": 6
+        },
+        {
+          "kind": "front-back",
+          "front": 2,
+          "back": 1
+        }
+      ]
+    },
+    {
+      "name": "faults of both kinds are listed front-back first, then front row, then back row",
+      "lineup": {
+        "1": {
+          "x": 4,
+          "y": 3
+        },
+        "2": {
+          "x": 7.5,
+          "y": 7.5
+        },
+        "3": {
+          "x": 1,
+          "y": 2
+        },
+        "4": {
+          "x": 1.5,
+          "y": 7.5
+        },
+        "5": {
+          "x": 1.5,
+          "y": 3
+        },
+        "6": {
+          "x": 4.5,
+          "y": 3
+        }
+      },
+      "violations": [
+        {
+          "kind": "front-back",
+          "front": 3,
+          "back": 6
+        },
+        {
+          "kind": "left-right",
+          "left": 4,
+          "right": 3
+        },
+        {
+          "kind": "left-right",
+          "left": 6,
+          "right": 1
+        }
+      ]
+    }
+  ]
+}
