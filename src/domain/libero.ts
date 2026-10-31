@@ -14,8 +14,8 @@ export type LiberoViolation =
  * back row in every rotation. Returns the new zone assignment and the id of the MB who
  * goes to the bench, or `replaced: null` (zones unchanged) if no MB is in the back row.
  *
- * Not modelled yet: when we serve, the MB in zone 1 serves and the libero comes back in
- * afterwards (FIVB rules do not let the libero serve). This app has no serve phase yet.
+ * At our serve, see `applyLiberoAtServe` in serve.ts: this app follows the USAV/NCAA rule
+ * (the libero may serve in one rotation per set); FIVB does not let the libero serve.
  */
 export function applyLibero(
   zones: ZoneMap<string>,
