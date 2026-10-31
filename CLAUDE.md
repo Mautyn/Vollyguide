@@ -6,7 +6,7 @@ Read-only static web app that teaches professional volleyball positioning throug
 - Static site only: no backend, database, auth, accounts, analytics, tracking or cookies. Never add these unless an issue explicitly asks.
 - No user data leaves the browser. localStorage only for UI preferences.
 - All content (lessons, formations, rotations) lives in the repo as typed data in src/content/.
-- Do not add Co-Authored-By or Claude-Session trailers to commits or PR descriptions.
+- No AI attribution anywhere on GitHub: no `Co-Authored-By` trailers, no `Claude-Session` trailers or links, and no "Generated with/by Claude Code" lines or footers. This applies to commits, PR titles and descriptions, issue titles and descriptions, and issue, PR and review comments. If a tool adds such a line automatically, edit the text afterwards to remove it.
 
 ## Stack
 Vite, React, TypeScript (strict), konva/react-konva, Zustand, React Router, Vitest + Testing Library, Playwright (chromium), ESLint, Prettier. Node 22.
