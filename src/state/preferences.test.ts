@@ -11,11 +11,15 @@ describe('preferences', () => {
     vi.restoreAllMocks();
   });
 
-  it('has the libero off by default', async () => {
-    expect((await freshPreferences()).getState().useLibero).toBe(false);
+  it('has the libero on by default', async () => {
+    expect((await freshPreferences()).getState().useLibero).toBe(true);
   });
 
   it('remembers the libero switch in localStorage', async () => {
+    (await freshPreferences()).getState().setUseLibero(false);
+    expect(window.localStorage.getItem('volleyguide:useLibero')).toBe('false');
+    expect((await freshPreferences()).getState().useLibero).toBe(false);
+
     (await freshPreferences()).getState().setUseLibero(true);
     expect(window.localStorage.getItem('volleyguide:useLibero')).toBe('true');
     expect((await freshPreferences()).getState().useLibero).toBe(true);
@@ -29,8 +33,8 @@ describe('preferences', () => {
       throw new Error('blocked');
     });
     const prefs = await freshPreferences();
-    expect(prefs.getState().useLibero).toBe(false);
-    prefs.getState().setUseLibero(true);
     expect(prefs.getState().useLibero).toBe(true);
+    prefs.getState().setUseLibero(false);
+    expect(prefs.getState().useLibero).toBe(false);
   });
 });
