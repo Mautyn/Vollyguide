@@ -3,14 +3,20 @@ import type { FormationPhase } from '../content/catalog';
 import { strings } from '../strings';
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
 
-const PHASES: readonly FormationPhase[] = ['base', 'receive'];
+const DEFAULT_PHASES = ['base', 'receive'] as const;
 
-interface PhasePickerProps {
-  value: FormationPhase;
-  onChange: (phase: FormationPhase) => void;
+interface PhasePickerProps<P extends FormationPhase> {
+  value: P;
+  onChange: (phase: P) => void;
+  /** The phases to offer, in order. Defaults to base and receive. */
+  phases?: readonly P[];
 }
 
-export function PhasePicker({ value: phase, onChange: setPhase }: PhasePickerProps) {
+export function PhasePicker<P extends FormationPhase>({
+  value: phase,
+  onChange: setPhase,
+  phases = DEFAULT_PHASES as unknown as readonly P[],
+}: PhasePickerProps<P>) {
   const labelId = useId();
 
   return (
@@ -24,9 +30,9 @@ export function PhasePicker({ value: phase, onChange: setPhase }: PhasePickerPro
         className="w-full"
         aria-labelledby={labelId}
         value={phase}
-        onValueChange={(value) => value && setPhase(value as FormationPhase)}
+        onValueChange={(value) => value && setPhase(value as P)}
       >
-        {PHASES.map((p) => (
+        {phases.map((p) => (
           <ToggleGroupItem key={p} value={p}>
             {strings.court.phases[p]}
           </ToggleGroupItem>

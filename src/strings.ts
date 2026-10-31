@@ -54,9 +54,16 @@ const en = {
     phaseGroup: 'Phase',
     phases: {
       base: 'Base',
+      serve: 'Serve',
       receive: 'Receive',
     },
-    phaseHint: 'Receive shows where players stand when the opponent serves.',
+    phaseHint:
+      'Serve shows where players stand when we serve. Receive shows where they stand when the opponent serves.',
+    switchToDefense: 'Switch',
+    backToServe: 'Back to serve',
+    switchHint: 'Switch shows where players move right after our serve, ready for defense.',
+    afterServe:
+      'After the serve, players may switch freely: the overlap rule applies only at the moment of serve.',
     useLibero: 'Use libero',
     liberoHint: 'The libero replaces the back-row middle blocker and never plays in the front row.',
     bench: 'Bench',
@@ -200,9 +207,17 @@ const pl: Strings = {
     phaseGroup: 'Faza',
     phases: {
       base: 'Wyjściowe',
+      serve: 'Zagrywka',
       receive: 'Przyjęcie',
     },
-    phaseHint: 'Przyjęcie pokazuje, gdzie stoją zawodnicy, gdy zagrywa przeciwnik.',
+    phaseHint:
+      'Zagrywka pokazuje, gdzie stoją zawodnicy, gdy zagrywamy my. Przyjęcie pokazuje, gdzie stoją, gdy zagrywa przeciwnik.',
+    switchToDefense: 'Przejście',
+    backToServe: 'Wróć do zagrywki',
+    switchHint:
+      'Przejście pokazuje, dokąd zawodnicy przechodzą zaraz po naszej zagrywce, gotowi do obrony.',
+    afterServe:
+      'Po zagrywce zawodnicy mogą swobodnie zmieniać miejsca: błąd ustawienia ocenia się tylko w momencie zagrywki.',
     useLibero: 'Gra z libero',
     liberoHint: 'Libero zastępuje środkowego z drugiej linii i nigdy nie gra w pierwszej linii.',
     bench: 'Ławka',
