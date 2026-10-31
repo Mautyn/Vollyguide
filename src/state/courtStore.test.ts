@@ -1,9 +1,12 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { FREE_ZONE } from '../domain/court';
 import { lineupFromState, useCourtStore } from './courtStore';
+import { usePreferences } from './preferences';
 
 describe('courtStore', () => {
+  // These tests cover the six-player lineup; the libero has its own tests.
   beforeEach(() => {
+    usePreferences.getState().setUseLibero(false);
     useCourtStore.getState().setPhase('base');
     useCourtStore.getState().setRotation(1);
   });

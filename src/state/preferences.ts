@@ -27,7 +27,7 @@ interface PreferencesState {
 }
 
 export const usePreferences = create<PreferencesState>()((set) => ({
-  useLibero: readBoolean(USE_LIBERO_KEY, false),
+  useLibero: readBoolean(USE_LIBERO_KEY, true),
   setUseLibero: (useLibero) => {
     writeBoolean(USE_LIBERO_KEY, useLibero);
     set({ useLibero });

@@ -1,4 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
+import { withoutLibero } from './helpers';
+
+test.beforeEach(({ page }) => withoutLibero(page));
 
 /** Konva nodes by name, with whether each can be dragged. */
 function nodes(page: Page, name: string) {

@@ -1,4 +1,7 @@
 import { expect, test } from '@playwright/test';
+import { withoutLibero } from './helpers';
+
+test.beforeEach(({ page }) => withoutLibero(page));
 
 test('court page loads and shows 6 players', async ({ page }) => {
   await page.goto('./');

@@ -3,7 +3,8 @@ import { expect, test } from '@playwright/test';
 test('the court page fits a 375 px phone screen without horizontal scrolling', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 800 });
   await page.goto('court');
-  await expect(page.getByTestId('player')).toHaveCount(6);
+  // Six players on court plus the middle blocker the libero replaced (libero on by default).
+  await expect(page.getByTestId('player')).toHaveCount(7);
   await expect(page.getByTestId('court-stage').locator('canvas').first()).toBeVisible();
 
   const overflow = await page.evaluate(
@@ -39,7 +40,7 @@ test('loads nothing from third-party hosts', async ({ page, baseURL }) => {
 
   await page.goto('./');
   await page.getByRole('link', { name: 'Open the court' }).click();
-  await expect(page.getByTestId('player')).toHaveCount(6);
+  await expect(page.getByTestId('player')).toHaveCount(7);
   await page.waitForLoadState('networkidle');
 
   expect(foreign).toEqual([]);

@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { usePracticeStore } from '../state/practiceStore';
+import { usePreferences } from '../state/preferences';
 import { PracticePage } from './PracticePage';
 
 // Konva needs a real canvas; the court itself is covered by E2E tests.
@@ -12,7 +13,11 @@ vi.mock('../court/CourtStage', () => ({
 }));
 
 describe('PracticePage', () => {
-  beforeEach(() => usePracticeStore.getState().setTask(1, 'base'));
+  // These tests cover the six-player lineup; the libero has its own tests.
+  beforeEach(() => {
+    usePreferences.getState().setUseLibero(false);
+    usePracticeStore.getState().setTask(1, 'base');
+  });
 
   it('shows no result before checking', () => {
     render(<PracticePage />);
