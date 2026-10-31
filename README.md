@@ -43,8 +43,8 @@ For E2E tests, install the Playwright browser once: `npx playwright install chro
 
 Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/deploy.yml`). The production build is served from `/Vollyguide/`; `dist/404.html` is a copy of `index.html` so deep links such as `/Vollyguide/court` work.
 
-## Deployment
-
-Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/deploy.yml`). The production build is served from `/Vollyguide/`; `dist/404.html` is a copy of `index.html` so deep links such as `/Vollyguide/court` work.
-
 See `CLAUDE.md` for the court coordinate system and contribution rules.
+
+## Project summary
+
+[`docs/PROJECT_SUMMARY.md`](docs/PROJECT_SUMMARY.md) describes what the site does, the architecture, the key decisions and the open items (a snapshot from 31 October 2026).
