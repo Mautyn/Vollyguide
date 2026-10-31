@@ -1,0 +1,3746 @@
+{
+  "generatedBy": "npm run export:formations (from src/content). Do not edit by hand.",
+  "coordinates": "Meters. x = 0..9 from the left sideline as seen from behind our end line; y = 0 at our end line, net at y = 9.",
+  "constants": {
+    "baseSpots": {
+      "1": {
+        "x": 7.5,
+        "y": 3
+      },
+      "2": {
+        "x": 7.5,
+        "y": 7.5
+      },
+      "3": {
+        "x": 4.5,
+        "y": 7.5
+      },
+      "4": {
+        "x": 1.5,
+        "y": 7.5
+      },
+      "5": {
+        "x": 1.5,
+        "y": 3
+      },
+      "6": {
+        "x": 4.5,
+        "y": 3
+      }
+    },
+    "serverSpot": {
+      "x": 7.5,
+      "y": -1
+    },
+    "defenseSpots": {
+      "1": {
+        "x": 8,
+        "y": 3
+      },
+      "2": {
+        "x": 7.5,
+        "y": 8.4
+      },
+      "3": {
+        "x": 4.5,
+        "y": 8.4
+      },
+      "4": {
+        "x": 1.5,
+        "y": 8.4
+      },
+      "5": {
+        "x": 1.2,
+        "y": 3
+      },
+      "6": {
+        "x": 4.8,
+        "y": 1.2
+      }
+    },
+    "liberoReplacementSpot": {
+      "x": -1.5,
+      "y": 3
+    },
+    "libero": {
+      "id": "l",
+      "role": "L",
+      "label": "L"
+    },
+    "liberoServesFor": "mb1"
+  },
+  "formations": [
+    {
+      "id": "5-1-r1-base",
+      "system": "5-1",
+      "rotation": 1,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r1-serve",
+      "system": "5-1",
+      "rotation": 1,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r1-receive",
+      "system": "5-1",
+      "rotation": 1,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 1,
+          "position": {
+            "x": 8.5,
+            "y": 3.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 4,
+          "position": {
+            "x": 1,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r2-base",
+      "system": "5-1",
+      "rotation": 2,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r2-serve",
+      "system": "5-1",
+      "rotation": 2,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r2-receive",
+      "system": "5-1",
+      "rotation": 2,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 2,
+          "position": {
+            "x": 6,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 0.8,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 5,
+          "position": {
+            "x": 2.2,
+            "y": 7.8
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r3-base",
+      "system": "5-1",
+      "rotation": 3,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r3-serve",
+      "system": "5-1",
+      "rotation": 3,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r3-receive",
+      "system": "5-1",
+      "rotation": 3,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 3,
+          "position": {
+            "x": 6,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 6,
+          "position": {
+            "x": 6,
+            "y": 7.8
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 8.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r4-base",
+      "system": "5-1",
+      "rotation": 4,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r4-serve",
+      "system": "5-1",
+      "rotation": 4,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r4-receive",
+      "system": "5-1",
+      "rotation": 4,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 4,
+          "position": {
+            "x": 5.5,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 1,
+          "position": {
+            "x": 8.7,
+            "y": 2
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.3,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 6.4,
+            "y": 8.7
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r5-base",
+      "system": "5-1",
+      "rotation": 5,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r5-serve",
+      "system": "5-1",
+      "rotation": 5,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r5-receive",
+      "system": "5-1",
+      "rotation": 5,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 5,
+          "position": {
+            "x": 4,
+            "y": 8.1
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 0.8,
+            "y": 8.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r6-base",
+      "system": "5-1",
+      "rotation": 6,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r6-serve",
+      "system": "5-1",
+      "rotation": 6,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "5-1-r6-receive",
+      "system": "5-1",
+      "rotation": 6,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s",
+          "role": "S",
+          "label": "S",
+          "zone": 6,
+          "position": {
+            "x": 6,
+            "y": 8
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "opp",
+          "role": "OPP",
+          "label": "OPP",
+          "zone": 3,
+          "position": {
+            "x": 5.5,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r1-base",
+      "system": "6-2",
+      "rotation": 1,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r1-serve",
+      "system": "6-2",
+      "rotation": 1,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r1-receive",
+      "system": "6-2",
+      "rotation": 1,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 1,
+          "position": {
+            "x": 8.5,
+            "y": 3.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 4,
+          "position": {
+            "x": 1,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r2-base",
+      "system": "6-2",
+      "rotation": 2,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r2-serve",
+      "system": "6-2",
+      "rotation": 2,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r2-receive",
+      "system": "6-2",
+      "rotation": 2,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 0.8,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 5,
+          "position": {
+            "x": 4,
+            "y": 8.1
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r3-base",
+      "system": "6-2",
+      "rotation": 3,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r3-serve",
+      "system": "6-2",
+      "rotation": 3,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r3-receive",
+      "system": "6-2",
+      "rotation": 3,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 3,
+          "position": {
+            "x": 5.5,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 6,
+          "position": {
+            "x": 6,
+            "y": 8
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r4-base",
+      "system": "6-2",
+      "rotation": 4,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r4-serve",
+      "system": "6-2",
+      "rotation": 4,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r4-receive",
+      "system": "6-2",
+      "rotation": 4,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 4,
+          "position": {
+            "x": 1,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 1,
+          "position": {
+            "x": 8.5,
+            "y": 3.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 8.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r5-base",
+      "system": "6-2",
+      "rotation": 5,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r5-serve",
+      "system": "6-2",
+      "rotation": 5,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r5-receive",
+      "system": "6-2",
+      "rotation": 5,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 5,
+          "position": {
+            "x": 4,
+            "y": 8.1
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 0.8,
+            "y": 8.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r6-base",
+      "system": "6-2",
+      "rotation": 6,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r6-serve",
+      "system": "6-2",
+      "rotation": 6,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "6-2-r6-receive",
+      "system": "6-2",
+      "rotation": 6,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 6,
+          "position": {
+            "x": 6,
+            "y": 8
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 3,
+          "position": {
+            "x": 5.5,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r1-base",
+      "system": "4-2",
+      "rotation": 1,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r1-serve",
+      "system": "4-2",
+      "rotation": 1,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r1-receive",
+      "system": "4-2",
+      "rotation": 1,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 1,
+          "position": {
+            "x": 8.6,
+            "y": 1.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 3,
+          "position": {
+            "x": 5.2,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 4,
+          "position": {
+            "x": 3.6,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r2-base",
+      "system": "4-2",
+      "rotation": 2,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r2-serve",
+      "system": "4-2",
+      "rotation": 2,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r2-receive",
+      "system": "4-2",
+      "rotation": 2,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 2,
+          "position": {
+            "x": 5,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 3,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 4,
+          "position": {
+            "x": 0.8,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 5,
+          "position": {
+            "x": 2,
+            "y": 8
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r3-base",
+      "system": "4-2",
+      "rotation": 3,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r3-serve",
+      "system": "4-2",
+      "rotation": 3,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r3-receive",
+      "system": "4-2",
+      "rotation": 3,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 5,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 6,
+          "position": {
+            "x": 6,
+            "y": 1.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r4-base",
+      "system": "4-2",
+      "rotation": 4,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r4-serve",
+      "system": "4-2",
+      "rotation": 4,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r4-receive",
+      "system": "4-2",
+      "rotation": 4,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 4,
+          "position": {
+            "x": 3.6,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 1,
+          "position": {
+            "x": 8.6,
+            "y": 1.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 3,
+          "position": {
+            "x": 5.2,
+            "y": 8.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r5-base",
+      "system": "4-2",
+      "rotation": 5,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r5-serve",
+      "system": "4-2",
+      "rotation": 5,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r5-receive",
+      "system": "4-2",
+      "rotation": 5,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 5,
+          "position": {
+            "x": 2,
+            "y": 8
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 2,
+          "position": {
+            "x": 5,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 3,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 4,
+          "position": {
+            "x": 0.8,
+            "y": 8.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r6-base",
+      "system": "4-2",
+      "rotation": 6,
+      "phase": "base",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r6-serve",
+      "system": "4-2",
+      "rotation": 6,
+      "phase": "serve",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 6,
+          "position": {
+            "x": 4.5,
+            "y": 3
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": -1
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 7.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 7.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 1.5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "4-2-r6-receive",
+      "system": "4-2",
+      "rotation": 6,
+      "phase": "receive",
+      "players": [
+        {
+          "id": "s1",
+          "role": "S",
+          "label": "S1",
+          "zone": 6,
+          "position": {
+            "x": 6,
+            "y": 1.5
+          }
+        },
+        {
+          "id": "oh1",
+          "role": "OH",
+          "label": "OH1",
+          "zone": 1,
+          "position": {
+            "x": 7.5,
+            "y": 4
+          }
+        },
+        {
+          "id": "mb2",
+          "role": "MB",
+          "label": "MB2",
+          "zone": 2,
+          "position": {
+            "x": 8,
+            "y": 8.5
+          }
+        },
+        {
+          "id": "s2",
+          "role": "S",
+          "label": "S2",
+          "zone": 3,
+          "position": {
+            "x": 4.5,
+            "y": 8.6
+          }
+        },
+        {
+          "id": "oh2",
+          "role": "OH",
+          "label": "OH2",
+          "zone": 4,
+          "position": {
+            "x": 1.5,
+            "y": 4.5
+          }
+        },
+        {
+          "id": "mb1",
+          "role": "MB",
+          "label": "MB1",
+          "zone": 5,
+          "position": {
+            "x": 4.5,
+            "y": 4
+          }
+        }
+      ]
+    }
+  ]
+}
