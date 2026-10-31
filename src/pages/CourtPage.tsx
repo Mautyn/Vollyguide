@@ -8,17 +8,25 @@ import { PhasePicker } from '../components/PhasePicker';
 import { PlayerList } from '../components/PlayerList';
 import { RoleLegend } from '../components/RoleLegend';
 import { RotationPicker } from '../components/RotationPicker';
+import { ServeSwitch } from '../components/ServeSwitch';
 import { SystemPicker } from '../components/SystemPicker';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
 import { CourtStage } from '../court/CourtStage';
+import { BASE_SPOTS } from '../content/formations';
 import { opponentPlayers } from '../content/opponent';
-import { lineupFromState, useCourtStore } from '../state/courtStore';
+import { serverId, SERVING_ZONE, withServerExempt } from '../domain/serve';
+import { lineupFromState, useCourtStore, type CourtPhase } from '../state/courtStore';
 import { strings } from '../strings';
 
 /** The opponent never moves, so build it once. */
 const OPPONENT = opponentPlayers();
+
+const COURT_PHASES: readonly CourtPhase[] = ['base', 'serve', 'receive'];
+
+/** The ball is drawn just right of the server's feet. */
+const BALL_OFFSET_X = 0.45;
 
 export function CourtPage() {
   const players = useCourtStore((s) => s.players);
@@ -38,13 +46,30 @@ export function CourtPage() {
   const setRotation = useCourtStore((s) => s.setRotation);
   const phase = useCourtStore((s) => s.phase);
   const setPhase = useCourtStore((s) => s.setPhase);
-  const lineup = lineupFromState(players, serveZones);
+  const switched = useCourtStore((s) => s.switched);
+  const fullLineup = lineupFromState(players, serveZones);
+  // The server is exempt from the overlap rule; the zone-1 base spot stands in for them.
+  const lineup =
+    fullLineup && phase === 'serve'
+      ? withServerExempt(fullLineup, BASE_SPOTS[SERVING_ZONE])
+      : fullLineup;
+  const server =
+    phase === 'serve' && !switched ? players.find((p) => p.id === serverId(serveZones)) : undefined;
+  const ball = server
+    ? { position: { x: server.position.x + BALL_OFFSET_X, y: server.position.y }, height: 0 }
+    : null;
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
       <Card className="gap-4 overflow-hidden py-4">
         <CardContent className="px-4">
-          <CourtStage players={onCourt} transition={transition} onMove={movePlayer} showZones />
+          <CourtStage
+            players={onCourt}
+            transition={transition}
+            onMove={movePlayer}
+            showZones
+            ball={ball}
+          />
         </CardContent>
         <CardContent className="px-4">
           <RoleLegend roles={players.map((p) => p.role)} />
@@ -69,14 +94,21 @@ export function CourtPage() {
           <CardContent className="space-y-5">
             <SystemPicker value={system} onChange={setSystem} />
             <RotationPicker value={rotation} onChange={setRotation} />
-            <PhasePicker value={phase} onChange={setPhase} />
+            <PhasePicker value={phase} onChange={setPhase} phases={COURT_PHASES} />
+            <ServeSwitch />
             <LiberoToggle />
             <OpponentToggle />
             <FormationNote />
           </CardContent>
         </Card>
 
-        {lineup && <OverlapStatus lineup={lineup} />}
+        {switched ? (
+          <p className="text-sm text-muted-foreground" data-testid="after-serve">
+            {strings.court.afterServe}
+          </p>
+        ) : (
+          lineup && <OverlapStatus lineup={lineup} />
+        )}
 
         <Card>
           <CardHeader className="flex items-center justify-between">

@@ -17,14 +17,14 @@ Volleyguide is a read-only, static web app that teaches professional volleyball 
 
 ### What the site does
 
-| Page                                       | What you can do                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Home**                                   | Hero section, links to the Court and Lessons, three feature cards.                                                                                                                                                                                                                                                                           |
-| **Court** (`/court`)                       | Pick a system (5-1, 6-2 or 4-2), one of 6 rotations, and the base or receive phase. Drag players. Live overlap-rule check, libero switch, "Show opponent" switch (receive phase only), formation notes, player list with positions.                                                                                                          |
-| **Lessons** (`/lessons`)                   | 3 step-by-step lessons on a read-only court: court and zones (6 steps), the overlap rule (6 steps, including 2 illegal examples), 5-1 serve receive (7 steps). Each step has its own shareable URL (`?step=`).                                                                                                                               |
-| **Practice** (`/practice`)                 | Pick a system, rotation and phase (or "Random task"), drag players from the bench, then Check (1 m tolerance), Show answer or Try again. Works with the libero. Nothing is saved.                                                                                                                                                            |
-| **Tactics** (`/tactics/:topic/:situation`) | Auto-playing animations with Play/Pause, previous/next moment, Restart, 0.5×/1× speed and a scrubbable progress bar, plus a ball and block bars. Three tabs: **Blocking** (4 situations), **Defense** (4, perimeter system, with "Who is attacking?" notes), **Coverage** (4). Each situation has Positioning, Execution and Key principles. |
-| **Everywhere**                             | EN/PL switch in the header, light and dark mode that follow the system setting, phone layout (375 px), a phone header that shows only the logo icon.                                                                                                                                                                                         |
+| Page                                       | What you can do                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Home**                                   | Hero section, links to the Court and Lessons, three feature cards.                                                                                                                                                                                                                                                                                      |
+| **Court** (`/court`)                       | Pick a system (5-1, 6-2 or 4-2), one of 6 rotations, and the base, serve or receive phase. Serve shows our server behind the end line with the ball; Switch animates everyone to their defensive spots. Drag players. Live overlap-rule check, libero switch, "Show opponent" switch (receive phase only), formation notes, player list with positions. |
+| **Lessons** (`/lessons`)                   | 3 step-by-step lessons on a read-only court: court and zones (6 steps), the overlap rule (6 steps, including 2 illegal examples), 5-1 serve receive (7 steps). Each step has its own shareable URL (`?step=`).                                                                                                                                          |
+| **Practice** (`/practice`)                 | Pick a system, rotation and phase (or "Random task"), drag players from the bench, then Check (1 m tolerance), Show answer or Try again. Works with the libero. Nothing is saved.                                                                                                                                                                       |
+| **Tactics** (`/tactics/:topic/:situation`) | Auto-playing animations with Play/Pause, previous/next moment, Restart, 0.5×/1× speed and a scrubbable progress bar, plus a ball and block bars. Three tabs: **Blocking** (4 situations), **Defense** (4, perimeter system, with "Who is attacking?" notes), **Coverage** (4). Each situation has Positioning, Execution and Key principles.            |
+| **Everywhere**                             | EN/PL switch in the header, light and dark mode that follow the system setting, phone layout (375 px), a phone header that shows only the logo icon.                                                                                                                                                                                                    |
 
 ### Work history (issue → PR, all merged)
 
@@ -85,6 +85,12 @@ Volleyguide is a read-only, static web app that teaches professional volleyball 
 - **6-2:** the back-row setter always sets, so 6-2 reuses the tested 5-1 receive positions of rotations 1, 6 and 5. Rotations 4, 3 and 2 are the same with S1↔S2, OH1↔OH2 and MB1↔MB2 swapped.
 - **4-2:** the front-row setter sets **from zone 3** (your choice: the traditional 4-2). The positions are new and were hand-written.
 - **Libero:** replaces the back-row middle blocker in every system. The replaced middle waits in the libero replacement zone at (−1.5, 3). The switch is **on by default** to match professional play (#34; it was off at first, as #7 specified). A visitor's own choice is saved and wins.
+- **Our serve (#35):**
+  - the zone-1 player serves from (7.5, −1); the other five stand on their base spots; the server is exempt from the overlap check (the zone-1 base spot stands in);
+  - **libero: USAV/NCAA rule, by choice** (FIVB does not let the libero serve). The libero may serve in one rotation per set: it serves in MB1's zone-1 turn; in MB2's zone-1 turn MB2 serves and the libero waits on the bench. The formation notes mention the FIVB difference;
+  - switch to perimeter defense: back row libero (or MB) left, OH middle, setter or opposite right; front row OH left, MB middle, opposite (6-2: front-row setter) right; in 4-2 the front-row setter goes to the middle (sets from zone 3) and the MB to the right;
+  - spots after the switch: front row 0.6 m from the net at x = 1.5 / 4.5 / 7.5; back row (1.2, 3), (4.8, 1.2), (8, 3), as in the Tactics defense;
+  - Practice and Lessons do not have the serve phase yet.
 - **Opponent:** one generic 5-1 rotation 1 serving lineup, stored in the opponent's own frame. Their server is exempt from the overlap rule, so the check uses the zone-1 base spot instead.
 - **Practice:** a player is correct within 1.0 m of their spot. Players start in a fixed order on the bench at x = −1.5.
 - **Defense:** the perimeter system (your choice). **The block-shadow test from the original #21 was dropped** (your approval). From above, a real block's "shadow" covers almost the whole court width, so the test could never pass with the issue's own positions. Each defender is checked against depth and width ranges instead.
@@ -162,7 +168,7 @@ None at the moment.
 
 ### Known gaps (not built; candidates for new issues)
 
-1. **Our serve phase** is not modelled. That includes the rule that the middle blocker in zone 1 serves before the libero comes back in (noted in `src/domain/libero.ts`).
+1. **The serve phase is Court-only:** Practice and Lessons don't have it yet (out of scope for #35).
 2. **Opponent rotations and phases:** the opponent is always 5-1 rotation 1 serving.
 3. **Lessons and Tactics are 5-1 only.** There are no lessons for 6-2 or 4-2.
 4. **Practice progress and the system choice are not saved** (on purpose). The language is not in the URL.
@@ -186,7 +192,7 @@ Merged, but flagged as needing an expert eye:
 1. Housekeeping: delete merged branches and enable branch protection on `main`.
 2. Review the flagged content (section 6), especially the 4-2 positions and the Polish terms. Wording and position changes are one-line edits.
 3. Possible next issues, in rough order of value:
-   - **Our serve phase**, including the libero / middle blocker serving rule.
+   - **Serve phase in Practice and Lessons** (follow-up to #35).
    - **Lessons for 6-2 and 4-2**, using the existing lesson model and Polish overlays.
    - **Opponent rotations** in receive, or an opponent formation that follows a chosen system.
    - **Rotational defense**, compared with perimeter, as a Tactics situation.

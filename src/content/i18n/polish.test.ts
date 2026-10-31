@@ -67,7 +67,9 @@ describe('Polish tactics', () => {
 
 describe('Polish formation notes', () => {
   const notes = SYSTEMS.flatMap((system) =>
-    ([1, 2, 3, 4, 5, 6] as const).map((rotation) => systemFormation(system, rotation, 'receive')),
+    ([1, 2, 3, 4, 5, 6] as const).flatMap((rotation) =>
+      (['serve', 'receive'] as const).map((phase) => systemFormation(system, rotation, phase)),
+    ),
   );
 
   it.each(notes.map((f) => [f.id, f] as const))('translates %s', (id, formation) => {

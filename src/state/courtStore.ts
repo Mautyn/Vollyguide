@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { formationToPlayers, formationToZones, type Formation } from '../content/formations';
 import { findFormation, type FormationPhase } from '../content/catalog';
 import { withLibero } from '../content/libero';
+import { defensePositions } from '../content/serve';
 import { clampToPlayableArea } from '../domain/court';
 import { ZONES } from '../domain/zones';
 import type { Transition } from '../domain/interpolate';
@@ -21,6 +22,12 @@ interface CourtState {
   serveZones: ZoneMap<string>;
   /** Players off court, e.g. the middle blocker the libero replaced. */
   benchIds: string[];
+  /** Serve phase: where each on-court player goes right after the serve. Otherwise null. */
+  defense: Record<string, Point> | null;
+  /** Serve phase: whether the players have switched to their defensive spots. */
+  switched: boolean;
+  /** Serve phase: animates the players to their defensive spots. */
+  switchToDefense: () => void;
   /** Whether to draw the opponent's serving lineup (receive phase only). Not saved. */
   showOpponent: boolean;
   setShowOpponent: (show: boolean) => void;
@@ -32,7 +39,7 @@ interface CourtState {
   setRotation: (rotation: Rotation) => void;
   /** Loads a phase in the current rotation, discarding any drags. */
   setPhase: (phase: CourtPhase) => void;
-  /** Restores the current rotation and phase. */
+  /** Restores the current rotation and phase (in the serve phase: back to the moment of serve). */
   reset: () => void;
 }
 
@@ -57,6 +64,8 @@ function formationState(system: System, rotation: Rotation, phase: CourtPhase) {
     players: [...formationToPlayers(formation), ...bench],
     serveZones: formationToZones(formation),
     benchIds: bench.map((p) => p.id),
+    defense: phase === 'serve' ? defensePositions(formation) : null,
+    switched: false,
   };
 }
 
@@ -72,6 +81,18 @@ export const useCourtStore = create<CourtState>()((set, get) => {
     transition: { version: 0, from: {} },
     showOpponent: false,
     setShowOpponent: (showOpponent) => set({ showOpponent }),
+    switchToDefense: () =>
+      set((state) => {
+        if (!state.defense) return {};
+        const defense = state.defense;
+        return {
+          switched: true,
+          players: state.players.map((p) =>
+            defense[p.id] ? { ...p, position: { ...defense[p.id]! } } : p,
+          ),
+          transition: { version: state.transition.version + 1, from: positionsById(state.players) },
+        };
+      }),
     movePlayer: (id, position) =>
       set((state) => ({
         players: state.players.map((p) =>

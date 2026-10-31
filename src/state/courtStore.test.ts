@@ -104,4 +104,25 @@ describe('lineupFromState', () => {
     const { players, serveZones } = useCourtStore.getState();
     expect(lineupFromState(players, { ...serveZones, 3: 'nobody' })).toBeNull();
   });
+
+  it('Switch does nothing outside the serve phase', () => {
+    const before = useCourtStore.getState().players;
+    useCourtStore.getState().switchToDefense();
+    expect(useCourtStore.getState().players).toBe(before);
+    expect(useCourtStore.getState().switched).toBe(false);
+  });
+
+  it('Switch moves on-court players only and leaves the bench alone', () => {
+    usePreferences.getState().setUseLibero(true);
+    useCourtStore.getState().setPhase('serve');
+    const { benchIds } = useCourtStore.getState();
+    const benchBefore = useCourtStore.getState().players.filter((p) => benchIds.includes(p.id));
+    useCourtStore.getState().switchToDefense();
+    const after = useCourtStore.getState();
+    expect(after.switched).toBe(true);
+    expect(after.players.filter((p) => benchIds.includes(p.id))).toEqual(benchBefore);
+    // Loading anything resets the switch.
+    after.setRotation(6);
+    expect(useCourtStore.getState().switched).toBe(false);
+  });
 });

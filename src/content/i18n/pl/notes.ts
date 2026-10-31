@@ -1,3 +1,8 @@
+/** The same serve note for all six rotations of a system. */
+function serveNotes(system: string, note: string): Record<string, string> {
+  return Object.fromEntries([1, 2, 3, 4, 5, 6].map((r) => [`${system}-r${r}-serve`, note]));
+}
+
 /** Polish formation notes, keyed by formation id. */
 export const PL_NOTES: Readonly<Record<string, string>> = {
   '5-1-r1-receive':
@@ -36,4 +41,16 @@ export const PL_NOTES: Readonly<Record<string, string>> = {
     'R2 zaczyna w strefie 2, musi stać na prawo od środkowego przyjmującego, a potem przesuwa się w lewo do strefy 3.',
   '4-2-r6-receive':
     'R2 jest już w strefie 3 i wystawia z miejsca; R1 stoi głęboko, poza torami przyjęcia.',
+  ...serveNotes(
+    '5-1',
+    'Zagrywa zawodnik ze strefy 1 zza linii końcowej; z libero zagrywa libero w kolejce Ś1 (przepisy USAV/NCAA, nie FIVB). Po zagrywce pierwsza linia przechodzi: P na lewo, Ś na środek, A lub R na prawo; druga linia: libero lub Ś na lewo, P na środek, R lub A na prawo.',
+  ),
+  ...serveNotes(
+    '6-2',
+    'Zagrywa zawodnik ze strefy 1 zza linii końcowej; z libero zagrywa libero w kolejce Ś1 (przepisy USAV/NCAA, nie FIVB). Po zagrywce pierwsza linia przechodzi: P na lewo, Ś na środek, rozgrywający z pierwszej linii na prawo (atakuje jak atakujący); druga linia: libero lub Ś na lewo, P na środek, rozgrywający na prawo.',
+  ),
+  ...serveNotes(
+    '4-2',
+    'Zagrywa zawodnik ze strefy 1 zza linii końcowej; z libero zagrywa libero w kolejce Ś1 (przepisy USAV/NCAA, nie FIVB). Po zagrywce pierwsza linia przechodzi: P na lewo, rozgrywający z pierwszej linii na środek (wystawia ze strefy 3), Ś na prawo; druga linia: libero lub Ś na lewo, P na środek, rozgrywający na prawo.',
+  ),
 };
