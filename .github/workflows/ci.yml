@@ -51,6 +51,9 @@ jobs:
           cache: pip
           cache-dependency-path: services/video/pyproject.toml
 
+      # opencv-python needs libGL; install it rather than rely on the runner image.
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libgl1
+
       - run: pip install -e ".[dev]"
 
       - run: ruff check .
