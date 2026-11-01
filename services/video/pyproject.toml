@@ -12,6 +12,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<9", "ruff==0.16.*"]
+# Player detection and tracking on an NVIDIA GPU. Install PyTorch with CUDA first (see README).
+track = ["torch>=2.7", "ultralytics>=8.3", "lap>=0.5.12"]
 
 [project.scripts]
 volleyvideo = "volleyvideo.cli:main"
