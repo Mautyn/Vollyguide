@@ -1,17 +1,18 @@
 import type { ScenePlayer } from '../../domain/scene';
 
 /**
- * Our team in a 5-1 after the serve, once players have switched to their specialist
- * positions: outside hitter left front, middle blocker in the middle, opposite right front;
- * outside hitter left back, libero middle back, setter right back.
+ * Our team in a 6-2 after the serve, once players have switched to their specialist
+ * positions: outside hitter left front, middle blocker in the middle, the front-row setter
+ * S2 right front (it attacks and blocks like an opposite); outside hitter left back, libero
+ * middle back, the back-row setter S1 right back (it sets). Ids stay `s` and `opp`.
  */
 export const OUR_TEAM: readonly ScenePlayer[] = [
   { id: 'oh1', role: 'OH', label: 'OH1', team: 'us' },
   { id: 'mb', role: 'MB', label: 'MB', team: 'us' },
-  { id: 'opp', role: 'OPP', label: 'OPP', team: 'us' },
+  { id: 'opp', role: 'S', label: 'S2', team: 'us' },
   { id: 'oh2', role: 'OH', label: 'OH2', team: 'us' },
   { id: 'l', role: 'L', label: 'L', team: 'us' },
-  { id: 's', role: 'S', label: 'S', team: 'us' },
+  { id: 's', role: 'S', label: 'S1', team: 'us' },
 ];
 
 /** The opponent's setter and the player attacking in this situation. */

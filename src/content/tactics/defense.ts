@@ -7,7 +7,7 @@ import type { Situation, TacticsTopic } from './types';
 /** Contact moment against an attack from the opponent's left side (our right). */
 export const VS_LEFT_SIDE_AT_CONTACT = {
   opp: { x: 7.8, y: 8.5 }, // blocks: sets the block on the line
-  mb: { x: 6.9, y: 8.5 }, // blocks: closes next to the opposite
+  mb: { x: 6.9, y: 8.5 }, // blocks: closes next to S2
   oh1: { x: 1.5, y: 6 }, // off-blocker: 3 m from net, 1.5 m inside the left sideline
   s: { x: 8.3, y: 2.5 }, // line: 6.5 m from net, 0.7 m inside the right sideline
   l: { x: 5, y: 0.5 }, // middle-back: 8.5 m from net, toward the cross-court side
@@ -28,7 +28,7 @@ const vsLeftSide: Situation = {
   id: 'attack-from-left-side',
   title: 'Attack from the opponent’s left side',
   summary:
-    'The opponent’s outside hitter attacks from their left side, which is our right. Our opposite and middle blocker form a double block; everyone else takes their perimeter spot.',
+    'The opponent’s outside hitter attacks from their left side, which is our right. S2 (our front-row setter) and the middle blocker form a double block; everyone else takes their perimeter spot.',
   keyMoment: 2,
   scene: {
     id: 'attack-from-left-side',
@@ -81,7 +81,7 @@ const vsLeftSide: Situation = {
     ],
   },
   positioning: [
-    'Block: the opposite sets the block on the line, the middle blocker closes next to them.',
+    'Block: S2 sets the block on the line, the middle blocker closes next to them.',
     'Off-blocker (outside hitter, left front): drops to the attack line, about 3 m from the net near the left sideline, for the sharp cross-court angle and tips.',
     'Line defender (right back): about 6.5 m from the net, just inside the right sideline, for line shots and tips over the block.',
     'Middle-back: deep, about 8.5 m from the net, toward the cross-court side, for deep balls and balls off the block.',
@@ -147,7 +147,7 @@ const vsRightSide: Situation = {
         },
         ball: { position: { x: 1.8, y: 10.1 }, height: 'high' },
         caption:
-          'Back set to the right side. The block moves left; our opposite drops off the net and the back row mirrors the perimeter.',
+          'Back set to the right side. The block moves left; S2 drops off the net and the back row mirrors the perimeter.',
       },
       {
         time: 1.9,
@@ -159,7 +159,7 @@ const vsRightSide: Situation = {
         ball: { position: { x: 1, y: 10 }, height: 'high' },
         blocking: ['oh1', 'mb'],
         caption:
-          'Contact: double block on the left, our opposite on the attack line, line and cross-court defenders 6.5 m from the net, middle-back deep.',
+          'Contact: double block on the left, S2 on the attack line, line and cross-court defenders 6.5 m from the net, middle-back deep.',
       },
       {
         time: 2.7,
@@ -172,21 +172,21 @@ const vsRightSide: Situation = {
         },
         ball: { position: { x: 7.8, y: 2.8 }, height: 'low' },
         caption:
-          'A hard cross-court hit past the block: our setter, as cross-court defender, digs it.',
+          'A hard cross-court hit past the block: S1, our back-row setter, digs it as the cross-court defender.',
       },
     ],
   },
   positioning: [
     'Block: the outside hitter sets the block on the line, the middle blocker closes.',
-    'Off-blocker (opposite, right front): drops to the attack line, about 3 m from the net near the right sideline.',
+    'Off-blocker (S2, right front): drops to the attack line, about 3 m from the net near the right sideline.',
     'Line defender (left back): about 6.5 m from the net, just inside the left sideline.',
     'Middle-back: deep, about 8.5 m from the net, toward the cross-court side.',
-    'Cross-court defender (setter, right back): about 6.5 m from the net near the right sideline.',
+    'Cross-court defender (S1, right back): about 6.5 m from the net near the right sideline.',
   ],
   execution: [
     'A back set travels a short distance: the block and defenders must read the setter early.',
     'Defenders are stopped and low at contact, watching the attacker’s arm.',
-    'If the setter digs, someone else (usually the opposite) sets the second ball.',
+    'If S1 digs, S2 (the front-row setter) sets the second ball: one advantage of a 6-2.',
   ],
   principles: [
     'The same perimeter as against the left side, mirrored.',

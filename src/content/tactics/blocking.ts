@@ -72,7 +72,7 @@ const doubleBlockVsOutside: Situation = {
     ],
   },
   positioning: [
-    'Right-side blocker (opposite): about 1 m inside the right sideline, lined up with the attacker’s hitting shoulder so the line is closed.',
+    'Right-side blocker (S2, our front-row setter): about 1 m inside the right sideline, lined up with the attacker’s hitting shoulder so the line is closed.',
     'Middle blocker: starts in the middle of the net and closes to the right-side blocker, ending shoulder to shoulder with them.',
     'Off-blocker (outside hitter, left front): drops off the net to the attack line, 3 m from the net, for the sharp cross-court shot and tips.',
   ],
@@ -135,7 +135,7 @@ const doubleBlockVsRightSide: Situation = {
         ball: { position: { x: 1, y: 10 }, height: 'high' },
         blocking: ['oh1', 'mb'],
         caption:
-          'Joint jump: our outside hitter and middle blocker block together. Our opposite has dropped to the attack line for cross-court shots and tips.',
+          'Joint jump: our outside hitter and middle blocker block together. S2 has dropped to the attack line for cross-court shots and tips.',
       },
       {
         time: 2.7,
@@ -158,7 +158,7 @@ const doubleBlockVsRightSide: Situation = {
   positioning: [
     'Left-side blocker (outside hitter): about 1 m inside the left sideline, lined up with the attacker’s hitting shoulder.',
     'Middle blocker: closes from the middle to the left-side blocker.',
-    'Off-blocker (opposite, right front): drops to the attack line on the right for the cross-court angle and tips.',
+    'Off-blocker (S2, right front): drops to the attack line on the right for the cross-court angle and tips.',
   ],
   execution: [
     'A back set travels a short distance, so the middle blocker must read the setter’s body early.',

@@ -15,7 +15,7 @@ describe('coverage topic', () => {
   it('has the four attacks from the issue', () => {
     expect(coverage.situations.map((s) => s.title)).toEqual([
       'Outside hitter attacks from zone 4',
-      'Opposite attacks from zone 2',
+      'S2 attacks from zone 2',
       'Middle blocker attacks a quick in zone 3',
       'Back-row attack (pipe) from zone 6',
     ]);
@@ -80,4 +80,25 @@ describe.each(coverage.situations.map((s) => [s.id, s] as const))('%s', (_, situ
       }
     }
   });
+});
+
+describe('6-2 team (#59)', () => {
+  it('has two setters, S1 and S2, and no opposite', () => {
+    const ours = coverage.situations[0]!.scene.players.filter((p) => p.team === 'us');
+    expect(ours.find((p) => p.id === 's')).toMatchObject({ role: 'S', label: 'S1' });
+    expect(ours.find((p) => p.id === 'opp')).toMatchObject({ role: 'S', label: 'S2' });
+    expect(ours.some((p) => p.role === 'OPP')).toBe(false);
+  });
+
+  it.each(coverage.situations.map((s) => [s.id, s] as const))(
+    '%s: S1 comes forward from the back row and sets; S2 never sets',
+    (_, situation) => {
+      const [start, set] = situation.scene.keyframes;
+      // S1 starts away from the net: it comes forward from the back row to set.
+      expect(NET_Y - start!.positions.s!.y).toBeGreaterThanOrEqual(2);
+      const ball = set!.ball!.position;
+      expect(distanceBetween(set!.positions.s!, ball)).toBeLessThanOrEqual(0.7);
+      expect(distanceBetween(set!.positions.opp!, ball)).toBeGreaterThanOrEqual(1.5);
+    },
+  );
 });
