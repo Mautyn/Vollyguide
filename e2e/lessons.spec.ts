@@ -3,8 +3,8 @@ import { expect, test } from '@playwright/test';
 test('step through the overlap rule lesson and see the fault on the illegal example', async ({
   page,
 }) => {
-  await page.goto('./');
-  await page.getByRole('navigation').getByRole('link', { name: 'Lessons' }).click();
+  // Lessons are hidden from the navigation (#58), but their URLs still work.
+  await page.goto('lessons');
   await page.getByRole('link', { name: /The overlap rule/ }).click();
 
   await expect(page.getByTestId('step-counter')).toHaveText('Step 1 of 6');
