@@ -5,7 +5,7 @@ import type { Situation, TacticsTopic } from './types';
 // at y is (9 − y) m from the net. Blockers jump at y = 8.5 (0.5 m from the net).
 
 /** Contact moment against an attack from the opponent's left side (our right). */
-const VS_LEFT_SIDE_AT_CONTACT = {
+export const VS_LEFT_SIDE_AT_CONTACT = {
   opp: { x: 7.8, y: 8.5 }, // blocks: sets the block on the line
   mb: { x: 6.9, y: 8.5 }, // blocks: closes next to the opposite
   oh1: { x: 1.5, y: 6 }, // off-blocker: 3 m from net, 1.5 m inside the left sideline
@@ -105,7 +105,7 @@ const vsLeftSide: Situation = {
 };
 
 /** Contact moment against an attack from the opponent's right side (our left). */
-const VS_RIGHT_SIDE_AT_CONTACT = {
+export const VS_RIGHT_SIDE_AT_CONTACT = {
   oh1: { x: 1.2, y: 8.5 }, // blocks: sets the block on the line
   mb: { x: 2.1, y: 8.5 }, // blocks: closes next to the outside hitter
   opp: { x: 7.5, y: 6 }, // off-blocker: 3 m from net, 1.5 m inside the right sideline
@@ -201,7 +201,7 @@ const vsRightSide: Situation = {
 };
 
 /** Contact moment against a quick attack in the middle. */
-const VS_MIDDLE_AT_CONTACT = {
+export const VS_MIDDLE_AT_CONTACT = {
   mb: { x: 4.6, y: 8.5 }, // blocks alone: no time for a double block on a quick
   oh1: { x: 2, y: 6 }, // off-blocker: 3 m from net, left of the block
   opp: { x: 7, y: 6 }, // off-blocker: 3 m from net, right of the block
