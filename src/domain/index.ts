@@ -10,3 +10,4 @@ export * from './opponent';
 export * from './scene';
 export * from './netRelative';
 export * from './serve';
+export * from './match';
