@@ -35,6 +35,23 @@ describe('useSceneClock', () => {
     expect(result.current.playing).toBe(false);
   });
 
+  it('starts where it is told to', () => {
+    const { result } = renderHook(() => useSceneClock(3, { startAt: 2 }));
+    expect(result.current.time).toBe(2);
+    act(() => vi.advanceTimersByTime(500));
+    expect(result.current.time).toBeGreaterThan(2.4);
+  });
+
+  it('calls onEnd once when playback reaches the end, but not when seeking there', () => {
+    const onEnd = vi.fn();
+    const { result } = renderHook(() => useSceneClock(1, { onEnd }));
+    act(() => result.current.seek(1));
+    expect(onEnd).not.toHaveBeenCalled();
+    act(() => result.current.play()); // at the end: starts again from 0
+    act(() => vi.advanceTimersByTime(2000));
+    expect(onEnd).toHaveBeenCalledTimes(1);
+  });
+
   it('plays at half speed', () => {
     const { result } = renderHook(() => useSceneClock(3));
     act(() => result.current.setSpeed(0.5));
