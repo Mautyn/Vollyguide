@@ -8,7 +8,7 @@ import {
 } from '../../domain/match';
 import { toOpponentFrame } from '../../domain/opponent';
 import type { Keyframe, Scene, ScenePlayer } from '../../domain/scene';
-import type { Point, Role } from '../../domain/types';
+import type { Point, Role, System } from '../../domain/types';
 import { ZONES } from '../../domain/zones';
 import type { Locale } from '../../i18n/locale';
 import { localizeLabel } from '../../i18n/labels';
@@ -80,6 +80,20 @@ export function choicesFor(
   return afterEasyBall ? sides : [...sides, 'free-ball', 'down-ball'];
 }
 
+/** Who acts next in this rally, and with which choices. */
+export function nextActor(match: MatchState, steps: RallyStep[]): { side: Side; easy: boolean } {
+  const last = steps.at(-1);
+  const side: Side = last
+    ? last.by === 'us'
+      ? 'them'
+      : 'us'
+    : match.serving === 'us'
+      ? 'them'
+      : 'us';
+  const easy = last?.by === 'them' && last.attack.endsWith('-ball');
+  return { side, easy };
+}
+
 /** Throws if the steps cannot happen in this rally. */
 export function checkChoices(state: MatchState, choices: RallyChoices): void {
   let side: Side = OTHER[state.serving];
@@ -94,6 +108,17 @@ export function checkChoices(state: MatchState, choices: RallyChoices): void {
     }
     side = OTHER[side];
   });
+}
+
+/** A player as captions show them: the Polish abbreviation in Polish, "their …" for the opponent. */
+export function playerName(id: string, system: System, locale: Locale): string {
+  const roster = simulationPlayers(system);
+  const player = [...roster.us, ...roster.them].find((p) => p.id === id);
+  if (!player) return id;
+  return simCaptions(locale).who(
+    localizeLabel(player.label, player.role, locale),
+    !id.startsWith('them-'),
+  );
 }
 
 /** Builds the scene for one rally, plus the state after it and what changed. */
