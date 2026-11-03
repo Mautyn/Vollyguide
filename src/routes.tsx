@@ -28,6 +28,12 @@ export const routes: RouteObject[] = [
         // Shares the lazy-loaded court (Konva) with the Court page.
         lazy: async () => ({ Component: (await import('./pages/TacticsPage')).TacticsPage }),
       })),
+      {
+        path: 'simulation',
+        lazy: async () => ({
+          Component: (await import('./pages/SimulationPage')).SimulationPage,
+        }),
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

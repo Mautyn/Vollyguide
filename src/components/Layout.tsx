@@ -1,6 +1,6 @@
 import { Volleyball } from 'lucide-react';
-import { useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { useEffect, useRef } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router';
 import { useLocale } from '../state/localeStore';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { cn } from '../lib/utils';
@@ -8,15 +8,22 @@ import { strings } from '../strings';
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
-    'rounded-md px-2 py-1.5 text-sm font-medium transition-colors sm:px-3',
+    'shrink-0 rounded-md px-2 py-1.5 text-sm font-medium transition-colors sm:px-3',
     isActive ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground',
   );
 
 export function Layout() {
   const locale = useLocale();
+  const { pathname } = useLocation();
+  const navRef = useRef<HTMLElement>(null);
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
+  // On a narrow screen, scroll the current page's link into view.
+  useEffect(() => {
+    const active = navRef.current?.querySelector<HTMLElement>('a[aria-current="page"]');
+    active?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+  }, [pathname, locale]);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -27,8 +34,11 @@ export function Layout() {
             {/* Icon only on phones, so all nav links fit. */}
             <span className="sr-only sm:not-sr-only">{strings.appName}</span>
           </NavLink>
-          <nav className="flex items-center gap-0.5 sm:gap-1">
-            {/* On phones the logo links home, so five links still fit. */}
+          {/* On phones the logo links home, and the links scroll sideways if they don't fit. */}
+          <nav
+            ref={navRef}
+            className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto [scrollbar-width:none] sm:gap-1 [&::-webkit-scrollbar]:hidden"
+          >
             <NavLink
               to="/"
               end
@@ -48,8 +58,13 @@ export function Layout() {
             <NavLink to="/tactics" className={navLinkClass}>
               {strings.nav.tactics}
             </NavLink>
+            <NavLink to="/simulation" className={navLinkClass}>
+              {strings.nav.simulation}
+            </NavLink>
           </nav>
-          <LanguageSwitcher />
+          <div className="ml-auto shrink-0">
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
       {/* Re-mount the page when the language changes, so all text is read again. */}

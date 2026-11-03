@@ -20,15 +20,27 @@ export interface SceneClock {
   setSpeed: (speed: number) => void;
 }
 
+export interface SceneClockOptions {
+  /** Where playback starts, in seconds (default 0). */
+  startAt?: number;
+  /** Called when playback reaches the end by itself (not when seeking there). */
+  onEnd?: () => void;
+}
+
 /**
  * Playback time for an animated scene. Plays on mount unless the user prefers reduced
  * motion; stops at the end; Play at the end starts again from the beginning.
  */
-export function useSceneClock(duration: number): SceneClock {
-  const [time, setTime] = useState(0);
+export function useSceneClock(duration: number, options: SceneClockOptions = {}): SceneClock {
+  const start = Math.min(duration, Math.max(0, options.startAt ?? 0));
+  const [time, setTime] = useState(start);
   const [playing, setPlaying] = useState(() => !prefersReducedMotion());
   const [speed, setSpeed] = useState(1);
-  const timeRef = useRef(0);
+  const timeRef = useRef(start);
+  const onEndRef = useRef(options.onEnd);
+  useEffect(() => {
+    onEndRef.current = options.onEnd;
+  });
 
   useEffect(() => {
     if (!playing) return;
@@ -39,8 +51,10 @@ export function useSceneClock(duration: number): SceneClock {
       last = now;
       timeRef.current = next;
       setTime(next);
-      if (next >= duration) setPlaying(false);
-      else frame = requestAnimationFrame(step);
+      if (next >= duration) {
+        setPlaying(false);
+        onEndRef.current?.();
+      } else frame = requestAnimationFrame(step);
     };
     frame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frame);

@@ -14,9 +14,17 @@ const PREVIOUS_GRACE_S = 0.3;
 /** Constant: scene positions are computed here, so the court never animates on its own. */
 const NO_TRANSITION = { version: 0, from: {} };
 
-export function ScenePlayer({ scene }: { scene: Scene }) {
+interface ScenePlayerProps {
+  scene: Scene;
+  /** Start playback here instead of at the beginning (seconds). */
+  startAt?: number;
+  /** Called when playback reaches the end by itself. */
+  onEnd?: () => void;
+}
+
+export function ScenePlayer({ scene, startAt, onEnd }: ScenePlayerProps) {
   const duration = sceneDuration(scene);
-  const clock = useSceneClock(duration);
+  const clock = useSceneClock(duration, { startAt, onEnd });
   const state = useMemo(() => sceneStateAt(scene, clock.time), [scene, clock.time]);
   const index = keyframeIndexAt(scene, clock.time);
   const count = scene.keyframes.length;
