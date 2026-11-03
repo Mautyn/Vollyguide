@@ -18,7 +18,7 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     summary:
       'Przeciwnik atakuje ze swojej lewej strony. Nasz blokujący z prawej strony ustawia blok, a środkowy domyka go obok niego.',
     positioning: [
-      'Blokujący z prawej strony (atakujący): około 1 m od prawej linii bocznej, na wysokości barku atakującego ręką uderzającą, tak żeby zamknąć linię.',
+      'Blokujący z prawej strony (R2, nasz rozgrywający z pierwszej linii): około 1 m od prawej linii bocznej, na wysokości barku atakującego ręką uderzającą, tak żeby zamknąć linię.',
       'Środkowy: zaczyna na środku siatki i dochodzi do blokującego z prawej strony, kończąc ramię w ramię z nim.',
       'Zawodnik nieblokujący (przyjmujący z lewej strony pierwszej linii): odchodzi od siatki do linii ataku, 3 m od siatki, na ostry skos i kiwki.',
     ],
@@ -46,7 +46,7 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     positioning: [
       'Blokujący z lewej strony (przyjmujący): około 1 m od lewej linii bocznej, na wysokości barku atakującego ręką uderzającą.',
       'Środkowy: dochodzi ze środka do blokującego z lewej strony.',
-      'Zawodnik nieblokujący (atakujący z prawej strony pierwszej linii): schodzi do linii ataku po prawej stronie, na skos i kiwki.',
+      'Zawodnik nieblokujący (R2, prawa strona pierwszej linii): schodzi do linii ataku po prawej stronie, na skos i kiwki.',
     ],
     execution: [
       'Wystawa do tyłu leci krótko, więc środkowy musi wcześnie czytać ułożenie ciała rozgrywającego.',
@@ -61,7 +61,7 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     captions: [
       'Rozgrywający przeciwnika dostaje przyjęcie. Nasi blokujący czekają przy siatce w pozycjach wyjściowych.',
       'Rozgrywający wystawia do tyłu, na prawą stronę. Nasz blokujący z lewej strony ustawia blok na linii; środkowy go domyka.',
-      'Wspólny skok: nasz przyjmujący i środkowy blokują razem. Nasz atakujący zszedł do linii ataku na skosy i kiwki.',
+      'Wspólny skok: nasz przyjmujący i środkowy blokują razem. R2 zszedł do linii ataku na skosy i kiwki.',
       'Blok punktowy: piłka spada prosto na stronę przeciwnika.',
     ],
   },
@@ -123,9 +123,9 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
   'attack-from-left-side': {
     title: 'Atak z lewej strony przeciwnika',
     summary:
-      'Przyjmujący przeciwnika atakuje ze swojej lewej strony, czyli z naszej prawej. Nasz atakujący i środkowy stawiają blok podwójny, a reszta zajmuje miejsca w obronie obwodowej.',
+      'Przyjmujący przeciwnika atakuje ze swojej lewej strony, czyli z naszej prawej. R2 (nasz rozgrywający z pierwszej linii) i środkowy stawiają blok podwójny, a reszta zajmuje miejsca w obronie obwodowej.',
     positioning: [
-      'Blok: atakujący ustawia blok na linii, środkowy domyka go obok.',
+      'Blok: R2 ustawia blok na linii, środkowy domyka go obok.',
       'Zawodnik nieblokujący (przyjmujący z lewej strony pierwszej linii): schodzi do linii ataku, około 3 m od siatki przy lewej linii bocznej, na ostry skos i kiwki.',
       'Obrońca na linii (prawa strona drugiej linii): około 6,5 m od siatki, tuż przy prawej linii bocznej, na ataki po linii i kiwki za blok.',
       'Obrońca w szóstej strefie: głęboko, około 8,5 m od siatki, bliżej strony skosu, na głębokie piłki i piłki odbite od bloku.',
@@ -159,15 +159,15 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
       'Odbicie lustrzane: przeciwnik atakuje ze swojej prawej strony, zwykle atakującym. Nasz przyjmujący i środkowy blokują; reszta zajmuje lustrzane miejsca w obronie obwodowej.',
     positioning: [
       'Blok: przyjmujący ustawia blok na linii, środkowy go domyka.',
-      'Zawodnik nieblokujący (atakujący z prawej strony pierwszej linii): schodzi do linii ataku, około 3 m od siatki przy prawej linii bocznej.',
+      'Zawodnik nieblokujący (R2, prawa strona pierwszej linii): schodzi do linii ataku, około 3 m od siatki przy prawej linii bocznej.',
       'Obrońca na linii (lewa strona drugiej linii): około 6,5 m od siatki, tuż przy lewej linii bocznej.',
       'Obrońca w szóstej strefie: głęboko, około 8,5 m od siatki, bliżej strony skosu.',
-      'Obrońca na skosie (rozgrywający, prawa strona drugiej linii): około 6,5 m od siatki przy prawej linii bocznej.',
+      'Obrońca na skosie (R1, prawa strona drugiej linii): około 6,5 m od siatki przy prawej linii bocznej.',
     ],
     execution: [
       'Wystawa do tyłu leci krótko: blok i obrońcy muszą wcześnie czytać rozgrywającego.',
       'W chwili uderzenia obrońcy stoją nisko i patrzą na rękę atakującego.',
-      'Jeśli broni rozgrywający, drugą piłkę wystawia ktoś inny (zwykle atakujący).',
+      'Jeśli broni R1, drugą piłkę wystawia R2 (rozgrywający z pierwszej linii): to jedna z zalet systemu 6-2.',
     ],
     principles: [
       'Ta sama obrona obwodowa co przeciw lewej stronie, w odbiciu lustrzanym.',
@@ -181,9 +181,9 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     ],
     captions: [
       READY_CAPTION,
-      'Wystawa do tyłu, na prawą stronę. Blok przesuwa się w lewo, nasz atakujący odchodzi od siatki, a druga linia ustawia się lustrzanie.',
-      'Uderzenie: blok podwójny po lewej, nasz atakujący na linii ataku, obrońcy na linii i na skosie 6,5 m od siatki, obrońca w szóstej strefie głęboko.',
-      'Mocny atak po skosie obok bloku: broni nasz rozgrywający jako obrońca na skosie.',
+      'Wystawa do tyłu, na prawą stronę. Blok przesuwa się w lewo, R2 odchodzi od siatki, a druga linia ustawia się lustrzanie.',
+      'Uderzenie: blok podwójny po lewej, R2 na linii ataku, obrońcy na linii i na skosie 6,5 m od siatki, obrońca w szóstej strefie głęboko.',
+      'Mocny atak po skosie obok bloku: broni R1, nasz rozgrywający z drugiej linii, jako obrońca na skosie.',
     ],
   },
   'attack-from-middle': {
@@ -250,9 +250,9 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     summary:
       'Asekuracja 2-3: dwaj zawodnicy najbliżej atakującego asekurują blisko, pozostali trzej tworzą głęboką linię.',
     positioning: [
-      'Bliska para (rozgrywający i środkowy): około 1–2 m od atakującego, nisko, po obu stronach linii od atakującego do bloku.',
-      'Rozgrywający asekuruje za atakującym i na prawo od niego; środkowy ląduje po pozorowaniu i odwraca się do atakującego.',
-      'Głęboka linia (lewa strona, środek i prawa strona drugiej linii): około 4–5 m od siatki, rozstawiona w poprzek boiska na piłki odbite głęboko od bloku.',
+      'Bliska para (R1 i środkowy): około 1–2 m od atakującego, nisko, po obu stronach linii od atakującego do bloku.',
+      'R1 asekuruje za atakującym i na prawo od niego; środkowy ląduje po pozorowaniu i odwraca się do atakującego.',
+      'Głęboka linia (przyjmujący z drugiej linii, libero i R2, który po krótkim pozorowaniu po prawej schodzi od siatki): około 4–5 m od siatki, rozstawiona w poprzek boiska na piłki odbite głęboko od bloku.',
     ],
     execution: [
       'Ruszaj, gdy tylko wystawa jest w powietrzu, a nie gdy atakujący skacze.',
@@ -263,39 +263,39 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
       'Nisko i stój przed uderzeniem.',
       'Twarzą do bloku, nie do atakującego.',
       'Dwóch blisko, trzech głęboko.',
-      'Rozgrywający zawsze asekuruje po wystawie.',
+      'R1 zawsze asekuruje po wystawie.',
     ],
     captions: [
-      'Przyjęcie idzie do rozgrywającego. Nasz przyjmujący odchodzi na rozbieg; środkowy pozoruje krótką piłkę.',
-      'Rozgrywający wystawia wysoko na skrzydło. Gdy tylko piłka opuszcza jego ręce, wszyscy ruszają w stronę atakującego.',
-      'Uderzenie. Rozgrywający i środkowy są nisko i blisko atakującego, z oczami na bloku; trzej zawodnicy drugiej linii tworzą głęboką linię 4–5 m od siatki.',
-      'Blok odbija piłkę prosto z powrotem. Spada krótko, gdzie rozgrywający już nisko czeka, żeby ją obronić.',
+      'R1 wychodzi z drugiej linii do wystawy. Nasz przyjmujący odchodzi na rozbieg; środkowy (krótka piłka) i R2 (prawa strona) pozorują atak.',
+      'R1 wystawia wysoko na skrzydło. Gdy tylko piłka opuszcza jego ręce, wszyscy ruszają w stronę atakującego.',
+      'Uderzenie. R1 i środkowy są nisko i blisko atakującego, z oczami na bloku; przyjmujący z drugiej linii, libero i R2 tworzą głęboką linię 4–5 m od siatki.',
+      'Blok odbija piłkę prosto z powrotem. Spada krótko, gdzie R1 już nisko czeka, żeby ją obronić.',
     ],
   },
   'opposite-attacks-zone-2': {
-    title: 'Atakujący atakuje ze strefy 2',
+    title: 'R2 atakuje ze strefy 2',
     summary:
-      'Odbicie lustrzane po prawej stronie. Rozgrywający, który wyszedł z drugiej linii do wystawy, i środkowy asekurują blisko; przyjmujący i libero tworzą głęboką linię.',
+      'Odbicie lustrzane po prawej stronie: atakuje R2, rozgrywający z pierwszej linii. R1, który wyszedł z drugiej linii do wystawy, i środkowy asekurują blisko; przyjmujący i libero tworzą głęboką linię.',
     positioning: [
-      'Bliska para: rozgrywający za atakującym i na lewo od niego oraz środkowy od środka po pozorowaniu.',
-      'Tutaj rozgrywający to zawodnik z prawej strony drugiej linii, który wyszedł do wystawy, więc prawy koniec głębokiej linii, za atakującym, zajmuje libero.',
+      'Bliska para: R1 za atakującym i na lewo od niego oraz środkowy od środka po pozorowaniu.',
+      'R1 to zawodnik z prawej strony drugiej linii, który wyszedł do wystawy, więc prawy koniec głębokiej linii, za atakującym, zajmuje libero.',
       'Głęboka linia: przyjmujący z pierwszej linii (schodzi od siatki), przyjmujący z drugiej linii i libero, około 4–5 m od siatki.',
     ],
     execution: [
-      'Rozgrywający zaraz po wystawie odwraca się do atakującego i robi dwa kroki w jego stronę.',
+      'R1 zaraz po wystawie odwraca się do atakującego i robi dwa kroki w jego stronę.',
       'Libero przesuwa się ze środka drugiej linii w prawo, za atakującego, gdy tylko wystawa idzie w prawo.',
       'Wszyscy zatrzymują się nisko przed uderzeniem i patrzą na blok.',
     ],
     principles: [
       'Ten sam kształt co po lewej stronie, w odbiciu lustrzanym: dwóch blisko, trzech głęboko.',
-      'Rozgrywający zawsze asekuruje po wystawie.',
+      'R1 zawsze asekuruje po wystawie.',
       'Wołaj „Asekuracja!”, żeby atakujący wiedział, że może zagrać w blok.',
     ],
     captions: [
-      'Rozgrywający wychodzi z drugiej linii do wystawy. Atakujący odchodzi na rozbieg po prawej; środkowy pozoruje krótką piłkę.',
-      'Rozgrywający wystawia na prawą stronę. Wszyscy ruszają w stronę atakującego.',
-      'Uderzenie. Rozgrywający i środkowy asekurują blisko; obaj przyjmujący i libero tworzą głęboką linię.',
-      'Piłka wraca od bloku i spada krótko, tuż przed rozgrywającego.',
+      'R1 wychodzi z drugiej linii do wystawy. R2 odchodzi na rozbieg po prawej; środkowy pozoruje krótką piłkę.',
+      'R1 wystawia na prawą stronę. Wszyscy ruszają w stronę R2.',
+      'Uderzenie. R1 i środkowy asekurują blisko; obaj przyjmujący i libero tworzą głęboką linię.',
+      'Piłka wraca od bloku i spada krótko, tuż przed R1.',
     ],
   },
   'middle-quick-zone-3': {
@@ -303,8 +303,8 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     summary:
       'Krótka wystawa prawie nie daje czasu: dwaj zawodnicy, którzy już są blisko atakującego, asekurują blisko, pozostali tworzą głęboką linię.',
     positioning: [
-      'Bliska para: rozgrywający, tuż obok atakującego po krótkiej wystawie, oraz przyjmujący z lewej strony, który zaraz po pozorowanym rozbiegu odwraca się do środka.',
-      'Głęboka linia: zawodnik z lewej strony drugiej linii, libero i atakujący, który tylko krótko pozoruje po prawej i cofa się, około 4–5 m od siatki.',
+      'Bliska para: R1, tuż obok atakującego po krótkiej wystawie, oraz przyjmujący z lewej strony, który zaraz po pozorowanym rozbiegu odwraca się do środka.',
+      'Głęboka linia: zawodnik z lewej strony drugiej linii, libero i R2, który tylko krótko pozoruje po prawej i cofa się, około 4–5 m od siatki.',
     ],
     execution: [
       'Między wystawą a uderzeniem jest mniej niż sekunda: pozorujący kończą rozbieg i od razu się odwracają.',
@@ -313,22 +313,22 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     principles: [
       'Pozorujący są asekurującymi: skończ pozorowanie, odwróć się i asekuruj.',
       'Dwóch blisko i ciasno, trzech głęboko; szybkie nogi, niska pozycja.',
-      'Rozgrywający jest już blisko: jeden krok i nisko.',
+      'R1 jest już blisko: jeden krok i nisko.',
     ],
     captions: [
-      'Dobre przyjęcie. Środkowy już rozbiega się do krótkiej piłki; obaj skrzydłowi pozorują atak.',
+      'Dobre przyjęcie. Środkowy już rozbiega się do krótkiej piłki; P1 i R2 pozorują atak.',
       'Krótka wystawa prosto w rękę środkowego. Pozorujący odciągnęli skrzydłowych blokujących przeciwnika.',
-      'Uderzenie. Rozgrywający i pozorujący z lewej strony asekurują blisko; atakujący, libero i zawodnik z lewej strony drugiej linii tworzą głęboką linię.',
+      'Uderzenie. R1 i pozorujący z lewej strony asekurują blisko; R2, libero i zawodnik z lewej strony drugiej linii tworzą głęboką linię.',
       'Środkowy przeciwnika dotyka piłki w bloku; piłka spada krótko, do bliskiej pary.',
     ],
   },
   'pipe-from-zone-6': {
     title: 'Atak z drugiej linii (pipe) ze strefy 6',
     summary:
-      'Przyjmujący z drugiej linii atakuje zza linii ataku. Rozgrywający i środkowy asekurują blisko; pozostali trzej tworzą głęboką linię.',
+      'Przyjmujący z drugiej linii atakuje zza linii ataku. R1 i środkowy asekurują blisko; pozostali trzej tworzą głęboką linię.',
     positioning: [
-      'Bliska para (rozgrywający i środkowy): krótko obok atakującego, rozgrywający na prawo, środkowy na lewo po pozorowaniu, obaj poza torem ataku.',
-      'Głęboka linia (przyjmujący z pierwszej linii, libero, atakujący): przyjmujący i atakujący tylko krótko pozorują i cofają się; libero stoi głęboko za atakującym.',
+      'Bliska para (R1 i środkowy): krótko obok atakującego, R1 na prawo, środkowy na lewo po pozorowaniu, obaj poza torem ataku.',
+      'Głęboka linia (przyjmujący z pierwszej linii, libero, R2): przyjmujący i R2 tylko krótko pozorują i cofają się; libero stoi głęboko za atakującym.',
     ],
     execution: [
       'Pipe uderza się zza linii ataku, więc piłka odbita od bloku leci dalej: asekuruj trochę głębiej niż przy ataku z pierwszej linii.',
@@ -337,12 +337,12 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     principles: [
       'Najpierw zwolnij tor, potem asekuruj.',
       'Dwóch krótko obok atakującego, trzech głęboko za nim.',
-      'Rozgrywający zawsze asekuruje po wystawie.',
+      'R1 zawsze asekuruje po wystawie.',
     ],
     captions: [
-      'Rozgrywający wychodzi do wystawy. Wszyscy trzej zawodnicy pierwszej linii pozorują atak; przyjmujący z drugiej linii zaczyna rozbieg do pipe.',
-      'Rozgrywający wystawia za linię ataku. Pozorujący lądują i od razu schodzą z toru ataku.',
-      'Uderzenie 2,8 m od siatki. Rozgrywający i środkowy asekurują krótko obok atakującego; przyjmujący, libero i atakujący tworzą głęboką linię.',
+      'R1 wychodzi do wystawy. Wszyscy trzej zawodnicy pierwszej linii pozorują atak; przyjmujący z drugiej linii zaczyna rozbieg do pipe.',
+      'R1 wystawia za linię ataku. Pozorujący lądują i od razu schodzą z toru ataku.',
+      'Uderzenie 2,8 m od siatki. R1 i środkowy asekurują krótko obok atakującego; przyjmujący, libero i R2 tworzą głęboką linię.',
       'Blok potrójny odbija piłkę głęboko, za atakującego, gdzie czeka libero.',
     ],
   },

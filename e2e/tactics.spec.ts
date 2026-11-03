@@ -76,14 +76,14 @@ test('coverage: the outside hitter attack plays to the end', async ({ page }) =>
 
   await expect(page.getByTestId('moment-counter')).toHaveText('Moment 4 of 4', { timeout: 6000 });
   await expect(page.getByTestId('scene-caption')).toHaveText(
-    'The block sends the ball straight back. It drops short, where the setter is already low to dig it.',
+    'The block sends the ball straight back. It drops short, where S1 is already low to dig it.',
   );
 });
 
 test('defense: every situation plays to its final caption', async ({ page }) => {
   const situations = [
     ['Attack from the opponent’s left side', 'the cross-court defender digs it.'],
-    ['Attack from the opponent’s right side', 'as cross-court defender, digs it.'],
+    ['Attack from the opponent’s right side', 'digs it as the cross-court defender.'],
     ['Attack from the middle', 'the middle-back digs it deep in the middle.'],
     ['Tip over the block', 'calls “Mine!” and digs it'],
   ] as const;
