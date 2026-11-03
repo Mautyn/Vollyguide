@@ -95,7 +95,7 @@ Volleyguide is a read-only, static web app that teaches professional volleyball 
 - **Opponent:** one generic 5-1 rotation 1 serving lineup, stored in the opponent's own frame. Their server is exempt from the overlap rule, so the check uses the zone-1 base spot instead.
 - **Practice:** a player is correct within 1.0 m of their spot. Players start in a fixed order on the bench at x = −1.5.
 - **Defense:** the perimeter system (your choice). **The block-shadow test from the original #21 was dropped** (your approval). From above, a real block's "shadow" covers almost the whole court width, so the test could never pass with the issue's own positions. Each defender is checked against depth and width ranges instead.
-- **Coverage, situation 2:** when the opposite attacks from zone 2, the setter is the zone 1 player who came forward to set, so the **libero covers close behind the hitter**.
+- **Coverage system: 2-3** (#47, decided for the rally simulation #48): the two players nearest the hitter (normally including the setter) cover close, about 1–2 m away; the other three form a deep line 4–6 m from the net. It replaced the 3-2 coverage the tab taught at first (#22). When the opposite attacks from zone 2, the libero takes the right end of the deep line, behind the hitter.
 - **Display:** positions are shown relative to the net (#19). Stored coordinates did not change, so no rules had to change.
 
 ### Interface and language
@@ -184,7 +184,7 @@ Merged, but flagged as needing an expert eye:
 - 4-2 receive positions (`RECEIVE_4_2` in `src/content/systems.ts`).
 - 5-1 receive positions and notes (`src/content/receive.ts`): the setter's spot in rotation 1, and where the back-row opposite hides in rotations 2–4.
 - Tactics texts and positions (`src/content/tactics/blocking.ts`, `defense.ts`, `coverage.ts`).
-- Polish terminology (`src/strings.ts` `pl`, `src/content/i18n/pl/`): ustawienie, zawodnik nieblokujący, obrona obwodowa, asekuracja (bliski/dalszy krąg), pozorowanie, krótka piłka, jednonóż, and so on.
+- Polish terminology (`src/strings.ts` `pl`, `src/content/i18n/pl/`): ustawienie, zawodnik nieblokujący, obrona obwodowa, asekuracja 2-3 (bliska para / głęboka linia), pozorowanie, krótka piłka, jednonóż, and so on.
 
 ---
 
