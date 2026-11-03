@@ -15,7 +15,7 @@ const outsideHitterZone4: Situation = {
   id: 'outside-hitter-attacks-zone-4',
   title: 'Outside hitter attacks from zone 4',
   summary:
-    'Standard 3-2 coverage: three players form a close cup around the hitter, two fill the seams behind them.',
+    '2-3 coverage: the two players nearest the hitter cover close, the other three form a deep line.',
   keyMoment: 2,
   attacker: 'oh1',
   scene: {
@@ -66,42 +66,42 @@ const outsideHitterZone4: Situation = {
         time: 2,
         positions: {
           oh1: { x: 1.2, y: 8.3 }, // attacker
-          oh2: { x: 1.3, y: 6.6 }, // inner ring: close behind, 1.7 m from the hitter (2.4 m from net)
-          s: { x: 2.4, y: 7 }, // inner ring: behind and to the right, 1.8 m from the hitter
-          mb: { x: 3.1, y: 8 }, // inner ring: lands from the fake and turns, 1.9 m from the hitter
-          l: { x: 3.2, y: 4.6 }, // outer ring: 4.4 m from the net, middle seam
-          opp: { x: 6, y: 4.2 }, // outer ring: 4.8 m from the net, right seam
+          s: { x: 2.4, y: 7 }, // close: behind and to the right, 1.8 m from the hitter
+          mb: { x: 3.2, y: 7.9 }, // close: lands from the fake and turns, 2 m from the hitter
+          oh2: { x: 1.5, y: 4.6 }, // deep line: left, 4.4 m from the net
+          l: { x: 3.8, y: 4 }, // deep line: middle, 5 m from the net
+          opp: { x: 6.3, y: 4.4 }, // deep line: right, 4.6 m from the net
           'them-b1': { x: 1, y: 9.5 },
           'them-b2': { x: 1.9, y: 9.5 },
         },
         ball: { position: { x: 1.2, y: 8.6 }, height: 'high' },
         blocking: ['them-b1', 'them-b2'],
         caption:
-          'Contact. The inner ring of three is low and close around the hitter, eyes on the block; the outer ring of two fills the seams deeper.',
+          'Contact. The setter and the middle are low and close to the hitter, eyes on the block; the three back-row players form a deep line 4–5 m from the net.',
       },
       {
         time: 2.7,
         positions: {
           oh1: { x: 1.2, y: 8.1 },
-          oh2: { x: 1.3, y: 6.6 },
           s: { x: 2.4, y: 7 },
-          mb: { x: 3.1, y: 8 },
-          l: { x: 3.2, y: 4.6 },
-          opp: { x: 6, y: 4.2 },
+          mb: { x: 3.2, y: 7.9 },
+          oh2: { x: 1.5, y: 4.6 },
+          l: { x: 3.8, y: 4 },
+          opp: { x: 6.3, y: 4.4 },
           'them-b1': { x: 1, y: 9.5 },
           'them-b2': { x: 1.9, y: 9.5 },
         },
         ball: { position: { x: 2.2, y: 7.3 }, height: 'low' },
         blocking: ['them-b1', 'them-b2'],
         caption:
-          'The block sends the ball straight back. It drops into the cup, where the setter is already low to dig it.',
+          'The block sends the ball straight back. It drops short, where the setter is already low to dig it.',
       },
     ],
   },
   positioning: [
-    'Inner ring (setter, middle blocker, left-back): about 1–2 m from the hitter, low, forming a half-circle around them.',
-    'The setter covers behind and to the right of the hitter; the middle blocker lands from the fake and turns toward the hitter; the left-back comes up close behind.',
-    'Outer ring (middle-back and right-back): about 4–5 m from the net, in the seams between the inner-ring players.',
+    'Close pair (setter and middle blocker): about 1–2 m from the hitter, low, on both sides of the hitter’s line to the block.',
+    'The setter covers behind and to the right of the hitter; the middle blocker lands from the fake and turns toward the hitter.',
+    'Deep line (left-back, middle-back, right-back): about 4–5 m from the net, spread across the court for balls blocked back deep.',
   ],
   execution: [
     'Move as soon as the set is in the air, not when the hitter jumps.',
@@ -111,7 +111,7 @@ const outsideHitterZone4: Situation = {
   principles: [
     'Go low and stop before the contact.',
     'Face the block, not the hitter.',
-    'Inner ring close, outer ring fills the seams.',
+    'Two close, three deep.',
     'The setter always covers after setting.',
   ],
 };
@@ -120,7 +120,7 @@ const oppositeZone2: Situation = {
   id: 'opposite-attacks-zone-2',
   title: 'Opposite attacks from zone 2',
   summary:
-    'The mirror image on the right side. The setter, who came forward from the back row to set, covers on the hitter’s left.',
+    'The mirror image on the right side. The setter, who came forward from the back row to set, and the middle cover close; the outside hitters and the libero form the deep line.',
   keyMoment: 2,
   attacker: 'opp',
   scene: {
@@ -170,52 +170,51 @@ const oppositeZone2: Situation = {
         time: 2,
         positions: {
           opp: { x: 7.8, y: 8.3 }, // attacker
-          s: { x: 6.6, y: 7 }, // inner ring: behind and to the left, 1.8 m from the hitter
-          mb: { x: 5.9, y: 8.2 }, // inner ring: lands from the fake, 1.9 m from the hitter
-          l: { x: 7.7, y: 6.6 }, // inner ring: close behind, 1.7 m from the hitter
-          oh1: { x: 3.8, y: 5.2 }, // outer ring: 3.8 m from the net, left seam
-          oh2: { x: 6.2, y: 4 }, // outer ring: 5 m from the net, right seam
+          s: { x: 6.6, y: 7 }, // close: behind and to the left, 1.8 m from the hitter
+          mb: { x: 5.9, y: 7.8 }, // close: lands from the fake and turns, 2 m from the hitter
+          oh1: { x: 2.6, y: 4.8 }, // deep line: left, 4.2 m from the net
+          oh2: { x: 4.4, y: 3.9 }, // deep line: middle, 5.1 m from the net
+          l: { x: 7.4, y: 4.4 }, // deep line: right, behind the hitter, 4.6 m from the net
           'them-b1': { x: 8.2, y: 9.5 },
           'them-b2': { x: 7.3, y: 9.5 },
         },
         ball: { position: { x: 7.8, y: 8.6 }, height: 'high' },
         blocking: ['them-b1', 'them-b2'],
         caption:
-          'Contact. Setter, middle and libero form the inner ring; the outside hitters fill the seams behind them.',
+          'Contact. The setter and the middle cover close; both outside hitters and the libero form the deep line.',
       },
       {
         time: 2.7,
         positions: {
           opp: { x: 7.8, y: 8.1 },
           s: { x: 6.6, y: 7 },
-          mb: { x: 5.9, y: 8.2 },
-          l: { x: 7.7, y: 6.6 },
-          oh1: { x: 3.8, y: 5.2 },
-          oh2: { x: 6.2, y: 4 },
+          mb: { x: 5.9, y: 7.8 },
+          oh1: { x: 2.6, y: 4.8 },
+          oh2: { x: 4.4, y: 3.9 },
+          l: { x: 7.4, y: 4.4 },
           'them-b1': { x: 8.2, y: 9.5 },
           'them-b2': { x: 7.3, y: 9.5 },
         },
         ball: { position: { x: 6.9, y: 7.2 }, height: 'low' },
         blocking: ['them-b1', 'them-b2'],
-        caption:
-          'The ball comes back off the block, into the cup between the setter and the libero.',
+        caption: 'The ball comes back off the block and drops short, right in front of the setter.',
       },
     ],
   },
   positioning: [
-    'Inner ring: the setter behind and to the left of the hitter, the middle blocker inside after the fake, and the libero close behind.',
-    'Here the setter is the right-back player who came forward to set, so the libero (middle back) takes the close-behind spot.',
-    'Outer ring: both outside hitters, about 4–5 m from the net, filling the seams.',
+    'Close pair: the setter behind and to the left of the hitter, and the middle blocker inside after the fake.',
+    'Here the setter is the right-back player who came forward to set, so the libero takes the right end of the deep line, behind the hitter.',
+    'Deep line: the left-front outside hitter (dropping off the net), the back-row outside hitter and the libero, about 4–5 m from the net.',
   ],
   execution: [
     'The setter turns to the hitter right after setting and takes two steps toward them.',
-    'The libero moves up from the middle back as soon as the set goes right.',
+    'The libero slides from the middle back to the right, behind the hitter, as soon as the set goes right.',
     'Everyone stops low before the contact and watches the block.',
   ],
   principles: [
-    'Same shape as on the left side, mirrored.',
+    'Same shape as on the left side, mirrored: two close, three deep.',
     'The setter always covers after setting.',
-    'Call “cover!” so the hitter knows the cup is there and can play off the block.',
+    'Call “cover!” so the hitter knows the coverage is there and can play off the block.',
   ],
 };
 
@@ -223,7 +222,7 @@ const middleQuickZone3: Situation = {
   id: 'middle-quick-zone-3',
   title: 'Middle blocker attacks a quick in zone 3',
   summary:
-    'A quick set leaves almost no time, so the coverage is tighter and is made by the players already near the net.',
+    'A quick set leaves almost no time: the two players already near the hitter cover close, the others form the deep line.',
   keyMoment: 2,
   attacker: 'mb',
   scene: {
@@ -252,7 +251,7 @@ const middleQuickZone3: Situation = {
           s: { x: 5.8, y: 8.2 },
           mb: { x: 4.8, y: 7.6 },
           oh1: { x: 1.5, y: 7 }, // fakes the outside
-          opp: { x: 7.6, y: 7 }, // fakes the right side
+          opp: { x: 7.4, y: 6.4 }, // a short fake on the right, then drops back
           oh2: { x: 2, y: 4.2 },
           l: { x: 4.5, y: 4.4 },
           'them-b1': { x: 4.6, y: 9.5 },
@@ -265,17 +264,17 @@ const middleQuickZone3: Situation = {
         time: 1.3,
         positions: {
           mb: { x: 4.6, y: 8.4 }, // attacker
-          s: { x: 5.6, y: 7.3 }, // inner ring: 1.5 m from the hitter
-          oh1: { x: 3, y: 7.4 }, // inner ring: turns after the fake, 1.9 m from the hitter
-          opp: { x: 6.6, y: 7.6 }, // inner ring: turns after the fake, 2.2 m from the hitter
-          l: { x: 4.5, y: 4.8 }, // outer ring: 4.2 m from the net
-          oh2: { x: 2.2, y: 4.2 }, // outer ring: 4.8 m from the net
+          s: { x: 5.6, y: 7.3 }, // close: 1.5 m from the hitter
+          oh1: { x: 3, y: 7.4 }, // close: turns after the fake, 1.9 m from the hitter
+          oh2: { x: 2, y: 4.2 }, // deep line: left, 4.8 m from the net
+          l: { x: 4.5, y: 4.4 }, // deep line: middle, 4.6 m from the net
+          opp: { x: 7, y: 4.9 }, // deep line: right, 4.1 m from the net
           'them-b1': { x: 4.6, y: 9.5 },
         },
         ball: { position: { x: 4.6, y: 8.7 }, height: 'low' },
         blocking: ['them-b1'],
         caption:
-          'Contact. The setter and both decoys turn into a tight cup; the libero and left-back stay deeper.',
+          'Contact. The setter and the left-side decoy cover close; the opposite, the libero and the left-back form the deep line.',
       },
       {
         time: 2,
@@ -283,28 +282,29 @@ const middleQuickZone3: Situation = {
           mb: { x: 4.6, y: 8.2 },
           s: { x: 5.6, y: 7.3 },
           oh1: { x: 3, y: 7.4 },
-          opp: { x: 6.6, y: 7.6 },
-          l: { x: 4.5, y: 4.8 },
-          oh2: { x: 2.2, y: 4.2 },
+          oh2: { x: 2, y: 4.2 },
+          l: { x: 4.5, y: 4.4 },
+          opp: { x: 7, y: 4.9 },
           'them-b1': { x: 4.6, y: 9.5 },
         },
         ball: { position: { x: 4, y: 7.5 }, height: 'low' },
         blocking: ['them-b1'],
-        caption: 'The middle blocker on the other side gets a touch; the ball falls into the cup.',
+        caption:
+          'The middle blocker on the other side gets a touch; the ball drops short, to the close pair.',
       },
     ],
   },
   positioning: [
-    'Inner ring: the setter, right next to the hitter after a short set, and both outside hitters, who turn toward the middle right after their fake approaches.',
-    'Outer ring: the libero and the left-back, about 4–5 m from the net.',
+    'Close pair: the setter, right next to the hitter after a short set, and the left-side outside hitter, who turns toward the middle right after the fake approach.',
+    'Deep line: the left-back, the libero and the opposite, who makes only a short fake on the right and drops back, about 4–5 m from the net.',
   ],
   execution: [
     'There is less than a second between set and contact: decoys finish their fake and turn immediately.',
-    'The cup is tighter than on an outside attack because the block is right in front of the hitter.',
+    'The close pair stands tighter than on an outside attack because the block is right in front of the hitter.',
   ],
   principles: [
     'Decoys are coverers: finish the fake, then turn and cover.',
-    'Tight cup, quick feet, low position.',
+    'Two close and tight, three deep; quick feet, low position.',
     'The setter is already close: one step and down.',
   ],
 };
@@ -313,7 +313,7 @@ const pipeZone6: Situation = {
   id: 'pipe-from-zone-6',
   title: 'Back-row attack (pipe) from zone 6',
   summary:
-    'A back-row outside hitter attacks from behind the attack line. The front-row decoys turn and cover short; the others cover deep.',
+    'A back-row outside hitter attacks from behind the attack line. The setter and the middle cover short; the other three form the deep line.',
   keyMoment: 2,
   attacker: 'oh2',
   scene: {
@@ -351,8 +351,8 @@ const pipeZone6: Situation = {
           s: { x: 5.8, y: 8.2 },
           oh2: { x: 4.5, y: 4.6 },
           mb: { x: 4.8, y: 8.4 }, // fakes the quick
-          oh1: { x: 1.5, y: 7.6 }, // fakes the outside
-          opp: { x: 7.5, y: 7.6 }, // fakes the right side
+          oh1: { x: 1.6, y: 7 }, // a short fake on the outside, then drops back
+          opp: { x: 7.6, y: 6.4 }, // a short fake on the right, then drops back
           l: { x: 2.5, y: 4 },
           'them-b1': { x: 3.2, y: 9.5 },
           'them-b2': { x: 4.5, y: 9.5 },
@@ -366,11 +366,11 @@ const pipeZone6: Situation = {
         time: 2,
         positions: {
           oh2: { x: 4.5, y: 6.2 }, // attacker, took off behind the attack line
-          mb: { x: 6.3, y: 7.4 }, // inner ring, short: out of the lane, 2.2 m from the hitter
-          oh1: { x: 2.8, y: 7.2 }, // inner ring, short: 2 m from the hitter
-          s: { x: 5.6, y: 4.9 }, // inner ring: behind and to the right, 1.7 m from the hitter
-          opp: { x: 7.6, y: 5.4 }, // outer: 3.6 m from the net, right side
-          l: { x: 2.8, y: 3.2 }, // outer: deep, 5.8 m from the net
+          s: { x: 5.6, y: 7.4 }, // close: short and to the right, out of the lane, 1.6 m from the hitter
+          mb: { x: 3, y: 7.3 }, // close: short and to the left after the fake, 1.9 m from the hitter
+          oh1: { x: 1.8, y: 4.6 }, // deep line: left, 4.4 m from the net
+          l: { x: 3.6, y: 3.4 }, // deep line: middle, behind the hitter, 5.6 m from the net
+          opp: { x: 7, y: 4.4 }, // deep line: right, 4.6 m from the net
           'them-b1': { x: 3.6, y: 9.5 },
           'them-b2': { x: 4.5, y: 9.5 },
           'them-b3': { x: 5.4, y: 9.5 },
@@ -378,32 +378,31 @@ const pipeZone6: Situation = {
         ball: { position: { x: 4.5, y: 6.5 }, height: 'high' },
         blocking: ['them-b1', 'them-b2', 'them-b3'],
         caption:
-          'Contact 2.8 m from the net. The front-row decoys cover short beside the hitter, the setter covers behind, and the rest cover deep.',
+          'Contact 2.8 m from the net. The setter and the middle cover short beside the hitter; the outside hitter, the libero and the opposite form the deep line.',
       },
       {
         time: 2.8,
         positions: {
           oh2: { x: 4.5, y: 6.6 },
-          mb: { x: 6.3, y: 7.4 },
-          oh1: { x: 2.8, y: 7.2 },
-          s: { x: 5.6, y: 4.9 },
-          opp: { x: 7.6, y: 5.4 },
-          l: { x: 2.8, y: 3.2 },
+          s: { x: 5.6, y: 7.4 },
+          mb: { x: 3, y: 7.3 },
+          oh1: { x: 1.8, y: 4.6 },
+          l: { x: 3.6, y: 3.4 },
+          opp: { x: 7, y: 4.4 },
           'them-b1': { x: 3.6, y: 9.5 },
           'them-b2': { x: 4.5, y: 9.5 },
           'them-b3': { x: 5.4, y: 9.5 },
         },
-        ball: { position: { x: 5, y: 5.3 }, height: 'low' },
+        ball: { position: { x: 4, y: 4 }, height: 'low' },
         blocking: ['them-b1', 'them-b2', 'them-b3'],
         caption:
-          'A triple block sends the ball back deep, behind the hitter, where the setter is waiting.',
+          'A triple block sends the ball back deep, behind the hitter, where the libero is waiting.',
       },
     ],
   },
   positioning: [
-    'Front-row decoys (outside hitter and middle): land from their fakes and step sideways out of the hitting lane, staying short beside the hitter.',
-    'Setter: behind and to the right of the hitter, covering the ball blocked back deep.',
-    'Opposite and libero: the second layer, filling the right side and the deep left.',
+    'Close pair (setter and middle): short beside the hitter, the setter to the right and the middle to the left after the fake, both out of the hitting lane.',
+    'Deep line (left-front outside hitter, libero, opposite): the outside hitter and the opposite make only short fakes and drop back; the libero stands deep behind the hitter.',
   ],
   execution: [
     'The pipe is hit from behind the attack line, so balls blocked back travel further: cover a little deeper than for a front-row attack.',
@@ -411,7 +410,7 @@ const pipeZone6: Situation = {
   ],
   principles: [
     'Clear the lane, then cover.',
-    'Short cover beside the hitter, deep cover behind.',
+    'Two short beside the hitter, three deep behind.',
     'The setter always covers after setting.',
   ],
 };
