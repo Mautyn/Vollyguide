@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Button } from '../components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { strings } from '../strings';
+import { SHOW_LESSONS } from '../features';
 
 const featureIcons = [RotateCw, Users, ShieldCheck];
 
@@ -24,12 +25,14 @@ export function HomePage() {
               <ArrowRight aria-hidden />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link to="/lessons">
-              <BookOpen aria-hidden />
-              {strings.home.browseLessons}
-            </Link>
-          </Button>
+          {SHOW_LESSONS && (
+            <Button asChild size="lg" variant="outline">
+              <Link to="/lessons">
+                <BookOpen aria-hidden />
+                {strings.home.browseLessons}
+              </Link>
+            </Button>
+          )}
         </div>
       </section>
       <section className="grid gap-4 sm:grid-cols-3">

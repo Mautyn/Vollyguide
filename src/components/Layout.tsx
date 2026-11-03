@@ -2,6 +2,7 @@ import { Volleyball } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
 import { useLocale } from '../state/localeStore';
+import { SHOW_LESSONS } from '../features';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { cn } from '../lib/utils';
 import { strings } from '../strings';
@@ -49,9 +50,11 @@ export function Layout() {
             <NavLink to="/court" className={navLinkClass}>
               {strings.nav.court}
             </NavLink>
-            <NavLink to="/lessons" className={navLinkClass}>
-              {strings.nav.lessons}
-            </NavLink>
+            {SHOW_LESSONS && (
+              <NavLink to="/lessons" className={navLinkClass}>
+                {strings.nav.lessons}
+              </NavLink>
+            )}
             <NavLink to="/practice" className={navLinkClass}>
               {strings.nav.practice}
             </NavLink>

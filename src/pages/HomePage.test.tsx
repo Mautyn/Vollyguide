@@ -9,4 +9,17 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/positioning/i);
     expect(screen.getByRole('link', { name: 'Open the court' })).toHaveAttribute('href', '/court');
   });
+
+  it('does not link to the hidden Lessons section (#58)', () => {
+    render(<RouterProvider router={createMemoryRouter(routes)} />);
+    expect(screen.queryByRole('link', { name: 'Browse lessons' })).not.toBeInTheDocument();
+    expect(screen.getByRole('navigation')).not.toHaveTextContent('Lessons');
+  });
+
+  it('still opens a lesson by its URL', async () => {
+    render(
+      <RouterProvider router={createMemoryRouter(routes, { initialEntries: ['/lessons'] })} />,
+    );
+    expect(await screen.findByRole('heading', { name: 'Lessons', level: 1 })).toBeVisible();
+  });
 });
