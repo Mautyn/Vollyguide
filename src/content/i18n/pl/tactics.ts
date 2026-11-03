@@ -248,11 +248,11 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
   'outside-hitter-attacks-zone-4': {
     title: 'Przyjmujący atakuje ze strefy 4',
     summary:
-      'Standardowa asekuracja 3-2: trzech zawodników tworzy bliskie półkole wokół atakującego, dwóch wypełnia luki za nimi.',
+      'Asekuracja 2-3: dwaj zawodnicy najbliżej atakującego asekurują blisko, pozostali trzej tworzą głęboką linię.',
     positioning: [
-      'Bliski krąg (rozgrywający, środkowy, lewa strona drugiej linii): około 1–2 m od atakującego, nisko, w półkolu wokół niego.',
-      'Rozgrywający asekuruje za atakującym i na prawo od niego; środkowy ląduje po pozorowaniu i odwraca się do atakującego; zawodnik z lewej strony drugiej linii podchodzi tuż za niego.',
-      'Dalszy krąg (środek i prawa strona drugiej linii): około 4–5 m od siatki, w lukach między zawodnikami bliskiego kręgu.',
+      'Bliska para (rozgrywający i środkowy): około 1–2 m od atakującego, nisko, po obu stronach linii od atakującego do bloku.',
+      'Rozgrywający asekuruje za atakującym i na prawo od niego; środkowy ląduje po pozorowaniu i odwraca się do atakującego.',
+      'Głęboka linia (lewa strona, środek i prawa strona drugiej linii): około 4–5 m od siatki, rozstawiona w poprzek boiska na piłki odbite głęboko od bloku.',
     ],
     execution: [
       'Ruszaj, gdy tylko wystawa jest w powietrzu, a nie gdy atakujący skacze.',
@@ -262,74 +262,73 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     principles: [
       'Nisko i stój przed uderzeniem.',
       'Twarzą do bloku, nie do atakującego.',
-      'Bliski krąg ciasno, dalszy krąg wypełnia luki.',
+      'Dwóch blisko, trzech głęboko.',
       'Rozgrywający zawsze asekuruje po wystawie.',
     ],
     captions: [
       'Przyjęcie idzie do rozgrywającego. Nasz przyjmujący odchodzi na rozbieg; środkowy pozoruje krótką piłkę.',
       'Rozgrywający wystawia wysoko na skrzydło. Gdy tylko piłka opuszcza jego ręce, wszyscy ruszają w stronę atakującego.',
-      'Uderzenie. Bliski krąg trzech zawodników jest nisko i blisko atakującego, z oczami na bloku; dalszy krąg dwóch zawodników wypełnia luki głębiej.',
-      'Blok odbija piłkę prosto z powrotem. Spada w półkole asekuracji, gdzie rozgrywający już nisko czeka, żeby ją obronić.',
+      'Uderzenie. Rozgrywający i środkowy są nisko i blisko atakującego, z oczami na bloku; trzej zawodnicy drugiej linii tworzą głęboką linię 4–5 m od siatki.',
+      'Blok odbija piłkę prosto z powrotem. Spada krótko, gdzie rozgrywający już nisko czeka, żeby ją obronić.',
     ],
   },
   'opposite-attacks-zone-2': {
     title: 'Atakujący atakuje ze strefy 2',
     summary:
-      'Odbicie lustrzane po prawej stronie. Rozgrywający, który wyszedł z drugiej linii do wystawy, asekuruje po lewej stronie atakującego.',
+      'Odbicie lustrzane po prawej stronie. Rozgrywający, który wyszedł z drugiej linii do wystawy, i środkowy asekurują blisko; przyjmujący i libero tworzą głęboką linię.',
     positioning: [
-      'Bliski krąg: rozgrywający za atakującym i na lewo od niego, środkowy od środka po pozorowaniu i libero tuż za atakującym.',
-      'Tutaj rozgrywający to zawodnik z prawej strony drugiej linii, który wyszedł do wystawy, więc miejsce tuż za atakującym zajmuje libero (środek drugiej linii).',
-      'Dalszy krąg: obaj przyjmujący, około 4–5 m od siatki, w lukach.',
+      'Bliska para: rozgrywający za atakującym i na lewo od niego oraz środkowy od środka po pozorowaniu.',
+      'Tutaj rozgrywający to zawodnik z prawej strony drugiej linii, który wyszedł do wystawy, więc prawy koniec głębokiej linii, za atakującym, zajmuje libero.',
+      'Głęboka linia: przyjmujący z pierwszej linii (schodzi od siatki), przyjmujący z drugiej linii i libero, około 4–5 m od siatki.',
     ],
     execution: [
       'Rozgrywający zaraz po wystawie odwraca się do atakującego i robi dwa kroki w jego stronę.',
-      'Libero podchodzi ze środka drugiej linii, gdy tylko wystawa idzie w prawo.',
+      'Libero przesuwa się ze środka drugiej linii w prawo, za atakującego, gdy tylko wystawa idzie w prawo.',
       'Wszyscy zatrzymują się nisko przed uderzeniem i patrzą na blok.',
     ],
     principles: [
-      'Ten sam kształt co po lewej stronie, w odbiciu lustrzanym.',
+      'Ten sam kształt co po lewej stronie, w odbiciu lustrzanym: dwóch blisko, trzech głęboko.',
       'Rozgrywający zawsze asekuruje po wystawie.',
       'Wołaj „Asekuracja!”, żeby atakujący wiedział, że może zagrać w blok.',
     ],
     captions: [
       'Rozgrywający wychodzi z drugiej linii do wystawy. Atakujący odchodzi na rozbieg po prawej; środkowy pozoruje krótką piłkę.',
       'Rozgrywający wystawia na prawą stronę. Wszyscy ruszają w stronę atakującego.',
-      'Uderzenie. Rozgrywający, środkowy i libero tworzą bliski krąg; przyjmujący wypełniają luki za nimi.',
-      'Piłka wraca od bloku w półkole asekuracji, między rozgrywającego i libero.',
+      'Uderzenie. Rozgrywający i środkowy asekurują blisko; obaj przyjmujący i libero tworzą głęboką linię.',
+      'Piłka wraca od bloku i spada krótko, tuż przed rozgrywającego.',
     ],
   },
   'middle-quick-zone-3': {
     title: 'Środkowy atakuje krótką piłkę w strefie 3',
     summary:
-      'Krótka wystawa prawie nie daje czasu, więc asekuracja jest ciaśniejsza i tworzą ją zawodnicy, którzy już są blisko siatki.',
+      'Krótka wystawa prawie nie daje czasu: dwaj zawodnicy, którzy już są blisko atakującego, asekurują blisko, pozostali tworzą głęboką linię.',
     positioning: [
-      'Bliski krąg: rozgrywający, tuż obok atakującego po krótkiej wystawie, oraz obaj skrzydłowi, którzy zaraz po pozorowanym rozbiegu odwracają się do środka.',
-      'Dalszy krąg: libero i zawodnik z lewej strony drugiej linii, około 4–5 m od siatki.',
+      'Bliska para: rozgrywający, tuż obok atakującego po krótkiej wystawie, oraz przyjmujący z lewej strony, który zaraz po pozorowanym rozbiegu odwraca się do środka.',
+      'Głęboka linia: zawodnik z lewej strony drugiej linii, libero i atakujący, który tylko krótko pozoruje po prawej i cofa się, około 4–5 m od siatki.',
     ],
     execution: [
       'Między wystawą a uderzeniem jest mniej niż sekunda: pozorujący kończą rozbieg i od razu się odwracają.',
-      'Półkole jest ciaśniejsze niż przy ataku ze skrzydła, bo blok jest tuż przed atakującym.',
+      'Bliska para stoi ciaśniej niż przy ataku ze skrzydła, bo blok jest tuż przed atakującym.',
     ],
     principles: [
       'Pozorujący są asekurującymi: skończ pozorowanie, odwróć się i asekuruj.',
-      'Ciasne półkole, szybkie nogi, niska pozycja.',
+      'Dwóch blisko i ciasno, trzech głęboko; szybkie nogi, niska pozycja.',
       'Rozgrywający jest już blisko: jeden krok i nisko.',
     ],
     captions: [
       'Dobre przyjęcie. Środkowy już rozbiega się do krótkiej piłki; obaj skrzydłowi pozorują atak.',
       'Krótka wystawa prosto w rękę środkowego. Pozorujący odciągnęli skrzydłowych blokujących przeciwnika.',
-      'Uderzenie. Rozgrywający i obaj pozorujący tworzą ciasne półkole; libero i zawodnik z lewej strony drugiej linii zostają głębiej.',
-      'Środkowy przeciwnika dotyka piłki w bloku; piłka spada w półkole asekuracji.',
+      'Uderzenie. Rozgrywający i pozorujący z lewej strony asekurują blisko; atakujący, libero i zawodnik z lewej strony drugiej linii tworzą głęboką linię.',
+      'Środkowy przeciwnika dotyka piłki w bloku; piłka spada krótko, do bliskiej pary.',
     ],
   },
   'pipe-from-zone-6': {
     title: 'Atak z drugiej linii (pipe) ze strefy 6',
     summary:
-      'Przyjmujący z drugiej linii atakuje zza linii ataku. Pozorujący z pierwszej linii odwracają się i asekurują blisko; pozostali asekurują głęboko.',
+      'Przyjmujący z drugiej linii atakuje zza linii ataku. Rozgrywający i środkowy asekurują blisko; pozostali trzej tworzą głęboką linię.',
     positioning: [
-      'Pozorujący z pierwszej linii (przyjmujący i środkowy): lądują po pozorowaniu i odchodzą w bok z toru ataku, asekurując blisko, obok atakującego.',
-      'Rozgrywający: za atakującym i na prawo od niego, na piłkę odbitą głęboko od bloku.',
-      'Atakujący i libero: dalsza warstwa, wypełniają prawą stronę i głęboką lewą.',
+      'Bliska para (rozgrywający i środkowy): krótko obok atakującego, rozgrywający na prawo, środkowy na lewo po pozorowaniu, obaj poza torem ataku.',
+      'Głęboka linia (przyjmujący z pierwszej linii, libero, atakujący): przyjmujący i atakujący tylko krótko pozorują i cofają się; libero stoi głęboko za atakującym.',
     ],
     execution: [
       'Pipe uderza się zza linii ataku, więc piłka odbita od bloku leci dalej: asekuruj trochę głębiej niż przy ataku z pierwszej linii.',
@@ -337,14 +336,14 @@ export const PL_SITUATIONS: Readonly<Record<string, SituationText>> = {
     ],
     principles: [
       'Najpierw zwolnij tor, potem asekuruj.',
-      'Bliska asekuracja obok atakującego, głęboka za nim.',
+      'Dwóch krótko obok atakującego, trzech głęboko za nim.',
       'Rozgrywający zawsze asekuruje po wystawie.',
     ],
     captions: [
       'Rozgrywający wychodzi do wystawy. Wszyscy trzej zawodnicy pierwszej linii pozorują atak; przyjmujący z drugiej linii zaczyna rozbieg do pipe.',
       'Rozgrywający wystawia za linię ataku. Pozorujący lądują i od razu schodzą z toru ataku.',
-      'Uderzenie 2,8 m od siatki. Pozorujący z pierwszej linii asekurują blisko obok atakującego, rozgrywający za nim, a reszta głęboko.',
-      'Blok potrójny odbija piłkę głęboko, za atakującego, gdzie czeka rozgrywający.',
+      'Uderzenie 2,8 m od siatki. Rozgrywający i środkowy asekurują krótko obok atakującego; przyjmujący, libero i atakujący tworzą głęboką linię.',
+      'Blok potrójny odbija piłkę głęboko, za atakującego, gdzie czeka libero.',
     ],
   },
 };
