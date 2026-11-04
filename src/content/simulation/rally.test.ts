@@ -6,7 +6,13 @@ import { ZONES } from '../../domain/zones';
 import { SYSTEMS } from '../systems';
 import { EN_SIM_CAPTIONS } from './captions';
 import { PL_SIM_CAPTIONS } from '../i18n/pl/simulation';
-import { mirrorToOpponent, phasePositions } from './positions';
+import {
+  mirrorToOpponent,
+  phasePositions,
+  settingSetterId,
+  settingSpot,
+  type Positions,
+} from './positions';
 import { buildRally, checkChoices, choicesFor } from './rally';
 import { buildTour, TOUR } from './tour';
 import { opponentTeam, ourTeam, teamOnCourt } from './teams';
@@ -187,5 +193,69 @@ describe('captions in both languages', () => {
   it('builds the whole Polish tour', () => {
     const tour = buildTour('6-2', true, 'pl');
     expect(tour.at(-1)!.rally.scene.keyframes.every((k) => k.caption.trim() !== '')).toBe(true);
+  });
+});
+
+describe('both teams keep moving (#62)', () => {
+  const cases = SYSTEMS.flatMap((system) =>
+    [true, false].flatMap((libero) =>
+      buildTour(system, libero, 'en').map((t, i) => ({
+        name: `${system} libero ${libero} rally ${i + 1}`,
+        ...t,
+      })),
+    ),
+  );
+
+  it.each(cases)('$name', ({ start, rally }) => {
+    const { keyframes } = rally.scene;
+    const sides = { us: teamOnCourt(start, 'us'), them: teamOnCourt(start, 'them') };
+    const onCourt = (side: 'us' | 'them') => ZONES.map((z) => sides[side].zones[z]);
+
+    // The receiving team's setter left at the serve and is at the setting spot at the pass;
+    // everyone else on that team is still in the receive formation.
+    const receiving = start.serving === 'us' ? 'them' : 'us';
+    const team = sides[receiving];
+    const setter = settingSetterId(team);
+    const formation = phasePositions(team, { kind: 'receive' });
+    const shared = (p: Positions) => (receiving === 'us' ? p : mirrorToOpponent(p));
+    const atPass = keyframes[1]!.positions;
+    expect(atPass[setter]).toEqual(shared({ [setter]: settingSpot(team.system) })[setter]);
+    for (const id of onCourt(receiving).filter((id) => id !== setter)) {
+      expect(atPass[id]).toEqual(shared(formation)[id]);
+    }
+
+    // Between every two moments both teams move, except into the point and the line-up after.
+    // One exception: from the serve to the pass the receiving team only moves its setter,
+    // so when the setter already stands on the setting spot (a front-row setter) nobody needs to.
+    const setterAlreadyThere = distanceBetween(formation[setter]!, settingSpot(team.system)) < 0.3;
+    for (let k = 0; k + 1 <= keyframes.length - 3; k++) {
+      for (const side of ['us', 'them'] as const) {
+        if (k === 0 && side === receiving && setterAlreadyThere) continue;
+        const moved = onCourt(side).some(
+          (id) =>
+            distanceBetween(keyframes[k]!.positions[id]!, keyframes[k + 1]!.positions[id]!) >= 0.3,
+        );
+        expect(moved, `${side} between moments ${k + 1} and ${k + 2}`).toBe(true);
+      }
+    }
+
+    // Everyone stays in the playable area, and the setter never digs.
+    for (const k of keyframes) {
+      for (const p of Object.values(k.positions)) {
+        expect(p.x).toBeGreaterThanOrEqual(-3);
+        expect(p.x).toBeLessThanOrEqual(12);
+        expect(p.y).toBeGreaterThanOrEqual(-3);
+        expect(p.y).toBeLessThanOrEqual(21);
+      }
+      if (/dig/i.test(k.caption)) {
+        const ball = k.ball!.position;
+        const digger = Object.entries(k.positions).find(
+          ([, p]) => distanceBetween(p, ball) < 0.01,
+        )?.[0];
+        expect(digger).toBeDefined();
+        const side = digger!.startsWith('them-') ? 'them' : 'us';
+        expect(digger).not.toBe(settingSetterId(sides[side]));
+      }
+    }
   });
 });

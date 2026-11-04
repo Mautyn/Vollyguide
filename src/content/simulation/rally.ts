@@ -195,8 +195,13 @@ export function buildRally(
     1.4,
   );
 
-  // The pass: the receiving team stays in formation; the servers switch.
+  // The pass: the receiving team stays in formation, except its setter, who left at the
+  // serve and is at the setting spot when the ball is passed. The servers switch.
   const passer = passerOf(teams[receiving], at[receiving]);
+  at[receiving] = {
+    ...at[receiving],
+    [settingSetterId(teams[receiving])]: { ...settingSpot(teams[receiving].system) },
+  };
   at[serving] = phasePositions(teams[serving], { kind: 'switch' });
   push(
     frame(at.us, at.them, {
@@ -232,9 +237,14 @@ export function buildRally(
       side === 'us' ? (step.attack as AttackOption) : themOption(team, step.attack as AttackSide)!;
     const setter = settingSetterId(team);
     const attacker = attackerId(team, option);
+    const from = SIDE_OF[option];
     at[side] = phasePositions(team, { kind: i === 0 ? 'set' : 'transition' });
-    // The other team waits in its ready spots (it attacked last, or sent an easy ball).
-    at[other] = phasePositions(teams[other], { kind: 'switch' });
+    // The defenders start moving as the set leaves the setter's hands: halfway from their
+    // ready spots to their block-and-defense spots.
+    at[other] = halfway(
+      phasePositions(teams[other], { kind: 'switch' }),
+      phasePositions(teams[other], { kind: 'block', from }),
+    );
     push(
       frame(at.us, at.them, {
         ball: { position: pointFor(side, settingSpot(team.system)), height: 'high' },
@@ -243,7 +253,6 @@ export function buildRally(
       1,
     );
     at[side] = phasePositions(team, { kind: 'attack', option }, at[side]);
-    const from = SIDE_OF[option];
     at[other] = phasePositions(teams[other], { kind: 'block', from });
     const jumping = blockers(teams[other], from);
     push(
@@ -256,8 +265,15 @@ export function buildRally(
     );
     last = { side, option };
     if (i < choices.steps.length - 1) {
-      // The defenders dig; the next step is their counter-attack.
+      // The defenders dig; the next step is their counter-attack. The team that attacked
+      // returns to its ready spots; everyone but the digger starts the transition.
       const digger = diggerOf(teams[other], at[other]);
+      at[side] = phasePositions(team, { kind: 'switch' });
+      const blockSpots = at[other];
+      at[other] = {
+        ...halfway(blockSpots, phasePositions(teams[other], { kind: 'transition' })),
+        [digger]: { ...blockSpots[digger]! },
+      };
       push(
         frame(at.us, at.them, {
           ball: { position: pointFor(other, at[other][digger]!), height: 'low' },
@@ -342,12 +358,29 @@ function passerOf(team: TeamOnCourt, positions: Positions): string {
   );
 }
 
-/** The defender who digs: the deepest player in the middle of the court. */
+/** The defender who digs: the deepest player in the middle, never the setter (who sets the dig). */
 function diggerOf(team: TeamOnCourt, positions: Positions): string {
-  const ids = ZONES.map((z) => team.zones[z]);
+  const setter = settingSetterId(team);
+  const ids = ZONES.map((z) => team.zones[z]).filter((id) => id !== setter);
   const target = { x: 4.5, y: 1.5 };
   return ids.reduce((best, id) =>
     dist(positions[id]!, target) < dist(positions[best]!, target) ? id : best,
+  );
+}
+
+/** Every player halfway between two sets of positions. */
+function halfway(a: Positions, b: Positions): Positions {
+  return Object.fromEntries(
+    Object.entries(a).map(([id, p]) => {
+      const q = b[id] ?? p;
+      return [
+        id,
+        {
+          x: Math.round(((p.x + q.x) / 2) * 100) / 100,
+          y: Math.round(((p.y + q.y) / 2) * 100) / 100,
+        },
+      ];
+    }),
   );
 }
 
